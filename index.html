@@ -3744,6 +3744,32 @@ body.perfil-quieto .panels,body.perfil-quieto .panel{
   .intro.se-va{animation:none}
 }
 
+/* ==================== OPCIONES DE APORTE · COLOR ====================
+   Las tarjetas de "aportar valor complementario" venían de la paleta clara:
+   fondo blanco y borde gris. Pero la pantalla que las contiene es del tema
+   oscuro y fuerza color:#fff, y .vop__n no declaraba color propio: el título
+   heredaba el blanco y quedaba invisible sobre la tarjeta blanca. Sólo se leía
+   la descripción, que sí tenía color.
+
+   En vez de devolverle al título un color oscuro, se pasa la tarjeta entera al
+   vidrio translúcido que usa el resto de esta pantalla. Va acá, fuera de la
+   capa de escritorio, porque el título tampoco se veía en el teléfono: es un
+   error de lectura, no una cuestión de tamaño de pantalla.
+   Se acota a #screen-aporte, que es donde vive .vop. */
+#screen-aporte .vop{
+  background:var(--vidrio);
+  border-color:var(--canto);
+  border-radius:16px;
+  color:#fff}
+#screen-aporte .vop__n{color:#fff}
+#screen-aporte .vop__d{color:var(--celeste)}
+#screen-aporte .vop:hover{background:var(--vidrio2);border-color:var(--canto-vivo)}
+#screen-aporte .vop.is-on{
+  border-color:var(--turq);
+  background:rgba(45,212,191,.13);
+  box-shadow:0 0 0 1px rgba(45,212,191,.35)}
+#screen-aporte .vop.is-on .vop__d{color:rgba(255,255,255,.8)}
+
 /* ==================== FLECHAS DE CARRIL · BASE ====================
    Las usa hoy sólo el carril de subastas. Nacen escondidas y fuera del flujo:
    en el teléfono el carril se recorre con el dedo y estos botones no tienen
@@ -3782,15 +3808,18 @@ body.perfil-quieto .panels,body.perfil-quieto .panel{
     padding-left:var(--aire-lat) !important;
     padding-right:var(--aire-lat) !important}
 
-  /* Las pantallas de placa están fijas a los dos bordes y no se pueden
-     centrar con margin: el aire se les da por relleno, calculado contra el
-     ancho de la ventana. */
+  /* Las pantallas de placa están fijas a los dos bordes. Con max-width y
+     márgenes automáticos ya quedan centradas, así que el relleno es sólo el
+     aire contra sus propios bordes. Antes acá se calculaba el relleno contra
+     el ancho de la ventana, y al sumarse al centrado el contenido se comía dos
+     veces el margen: a 1920 el carril de eventos terminaba midiendo 556px en
+     lugar de 1216. */
   #screen-deseos .stats-pantalla,
   #screen-subastas .stats-pantalla,
   #screen-eventos .stats-pantalla,
   #screen-fundaciones .stats-pantalla{
-    padding-left:max(var(--aire-lat), calc((100vw - var(--ancho-max)) / 2)) !important;
-    padding-right:max(var(--aire-lat), calc((100vw - var(--ancho-max)) / 2)) !important}
+    padding-left:var(--aire-lat) !important;
+    padding-right:var(--aire-lat) !important}
 
   .stats-pantalla,.alta,.admin{
     max-width:var(--ancho-max) !important;
@@ -3910,8 +3939,40 @@ body.perfil-quieto .panels,body.perfil-quieto .panel{
   /* Deshabilitada se ve pero no invita: sigue ocupando su lugar para que las
      tarjetas no se corran cuando se llega a una punta. */
   .flecha-carril:disabled{opacity:.3;cursor:default}
-  .flecha-carril--izq{left:max(6px, calc((100vw - var(--ancho-max)) / 2 - 52px))}
-  .flecha-carril--der{right:max(6px, calc((100vw - var(--ancho-max)) / 2 - 52px))}
+  /* Las flechas se posicionan contra .stats-pantalla, no contra la ventana:
+     calcular su desplazamiento con 100vw las metía dentro del carril en cuanto
+     la caja dejaba de tocar los bordes (a 1920 quedaban 236px adentro, encima
+     de las tarjetas). Se anclan al borde de la caja y el carril les cede un
+     hueco lateral propio para que no se pisen. */
+  #screen-subastas .stats-pantalla{
+    padding-left:60px !important;
+    padding-right:60px !important}
+  .flecha-carril--izq{left:6px}
+  .flecha-carril--der{right:6px}
+
+  /* ---- 3b bis. el estado "todavía no hay nada" ----
+     La caja se estiraba a todo el ancho para tres líneas de texto centradas, y
+     encima quedaba pegada arriba con media pantalla vacía debajo. Acotada y
+     centrada se lee como un aviso y no como una franja. */
+  #screen-deseos .esperando,
+  #screen-subastas .esperando,
+  #screen-eventos .esperando{
+    max-width:560px;
+    margin-left:auto;
+    margin-right:auto;
+    padding:44px 32px;
+    gap:14px}
+  #screen-deseos .esperando span,
+  #screen-subastas .esperando span,
+  #screen-eventos .esperando span{max-width:42ch;font-size:15px}
+  /* El centrado vertical se pide sólo cuando el listado está vacío: con
+     tarjetas, la pista tiene que arrancar arriba y ocupar todo el alto. */
+  #screen-deseos .stats-pantalla:has(.esperando),
+  #screen-subastas .stats-pantalla:has(.esperando){
+    justify-content:center;
+    justify-content:safe center}
+  #screen-deseos .stats-pantalla:has(.esperando) > *,
+  #screen-subastas .stats-pantalla:has(.esperando) > *{flex:0 0 auto}
 
   /* ---- 3c. el carril de eventos se centra en el alto disponible ----
      La tarjeta se mide por su contenido, así que en una pantalla alta quedaba
@@ -3981,6 +4042,53 @@ body.perfil-quieto .panels,body.perfil-quieto .panel{
   /* El listado no crece: si se estira como ítem flex ocupa todo el alto y el
      centrado del contenedor deja de tener nada que repartir. */
   #listaAvisos{flex:0 0 auto}
+
+  /* ---- 3e. elegir cómo aportar ----
+     Cinco tarjetas en una columna de 520px dejaban media pantalla vacía. En
+     ancho van en dos columnas y el bloque se centra en el alto libre.
+
+     Para que haya algo que centrar, primero hay que devolverle el alto a la
+     pantalla: declara height:100dvh sin !important y .screen{height:auto
+     !important} se lo come, así que quedaba midiendo lo que ocupa su
+     contenido.
+
+     Se repone en el paso de elección y en el formulario de la propuesta, que
+     se distinguen por .vopciones y .tarjeta-form. Probado también en el paso 1
+     del flujo complementario: ahí acomoda el botón, que hoy cae por debajo de
+     la barra, pero al recortar el alto de #apCampos el bloque "Se envía por
+     Gmail" queda pisado por el botón. Ese formulario necesita poder
+     desplazarse, que es un arreglo aparte; hasta entonces conviene no tocarlo.
+
+     El :has(.vopciones) acota el centrado al paso de elección: la misma .alta
+     aloja después el formulario de la propuesta, que sí necesita estirarse a
+     lo alto. Sin ese filtro, centrar y quitarle el crecimiento lo achicaría. */
+  #screen-aporte.is-active:has(.vopciones),
+  #screen-aporte.is-active:has(.tarjeta-form){
+    height:100vh !important;
+    height:100dvh !important}
+  /* La columna del formulario venía del ancho del teléfono. Un poco más ancha
+     deja respirar los campos sin volverse incómoda de leer. */
+  #screen-aporte .alta:has(.tarjeta-form){max-width:620px !important}
+  #screen-aporte .alta:has(.vopciones){
+    max-width:880px !important;
+    justify-content:center;
+    justify-content:safe center}
+  /* Dejan de crecer, o el centrado no tiene sobrante que repartir. */
+  #screen-aporte .alta:has(.vopciones) .alta__form,
+  #screen-aporte .alta:has(.vopciones) #apCampos{flex:0 1 auto}
+
+  #screen-aporte .vopciones{grid-template-columns:1fr 1fr;gap:14px}
+  /* Son cinco: la última quedaría sola y desbalanceada en media fila. */
+  #screen-aporte .vopciones .vop:last-child{grid-column:1 / -1}
+  #screen-aporte .vop{padding:18px 20px;gap:6px}
+  #screen-aporte .vop__n{font-size:16px}
+  #screen-aporte .vop__d{font-size:13px}
+
+  /* El botón es inline-flex y en una caja en línea los márgenes automáticos
+     valen cero: con el contenedor angosto del teléfono daba igual porque lo
+     llenaba entero, pero acá sobra ancho y quedaba pegado a la izquierda.
+     Se centra desde el contenedor, que sí puede alinear cajas en línea. */
+  #screen-aporte .alta__acciones{text-align:center}
 
   /* ---- 4. la barra inferior ----
      Estirada a 1440px los tres íconos quedan desparramados y lejos del
@@ -4980,7 +5088,7 @@ function semilla(){
     mail:"contacto@fundaciongarrahan.org",
     direccion:"Combate de los Pozos 1881, Ciudad Autónoma de Buenos Aires",
     maps:"https://maps.google.com/?q=Combate+de+los+Pozos+1881+Buenos+Aires",
-    web:"https://www.fundaciongarrahan.org",
+    web:"https://www.garrahan.gov.ar/",
     presentacion:{
       texto:"Acompañamos al Hospital de Pediatría Juan P. Garrahan, donde se atienden por año más de seiscientos mil chicos y chicas de todo el país. Muchos llegan desde el interior, con sus familias, para tratamientos que duran meses.\n\nNuestro trabajo es hacer que eso sea posible: financiamos equipamiento, sostenemos la Casa Garrahan donde se alojan las familias que vienen de lejos, y acompañamos los programas de trasplante y de enfermedades poco frecuentes. La mayor parte de lo que recaudamos viene del reciclado de papel y de donaciones de personas comunes.",
       imagenes:[], video:""
@@ -5011,7 +5119,7 @@ function semilla(){
       personeria:"IGJ N° 000.884/87", banco:"CBU 0110599520000012437851",
       pais:"Argentina", domicilio:"Combate de los Pozos 1881, Ciudad Autónoma de Buenos Aires",
       representante:"Norberto Sanabria", mail:"institucional@fundaciongarrahan.org",
-      tel:"+54 11 4308-5300", web:"https://www.fundaciongarrahan.org", constancia:null
+      tel:"+54 11 4308-5300", web:"https://www.garrahan.gov.ar/", constancia:null
     },
     provisional:false
   };
@@ -5121,7 +5229,7 @@ function semilla(){
 
   // Sitio oficial de cada organización. Desde el carril del menú se abre
   // directamente, en una pestaña aparte.
-  var WEBS = {"fLel": "https://www.leloir.org.ar/", "fSi": "https://fundacionsi.org.ar/", "fPot": "https://potenciarsolidario.org/", "fIsf": "https://isf-argentina.org/", "fCar": "https://www.caritas.org.ar/", "fBra": "https://fundacionbrazosabiertos.org/", "fRaf": "https://fundacioncasarafael.org/", "fCub": "https://fundacioncuba.org.ar/", "fEsp": "https://espartanos.org/", "fFon": "https://fonbec.org.ar/", "fTec": "https://argentina.techo.org/", "fMal": "https://www.malba.org.ar/", "fAle": "https://alegranatas.org.ar/", "fUni": "https://www.unicef.org/argentina/", "fFav": "https://www.fundacionfavaloro.org/", "fGar": "https://www.fundaciongarrahan.org.ar/", "fTem": "https://www.temaiken.org.ar/"};
+  var WEBS = {"fLel": "https://www.leloir.org.ar/", "fSi": "https://fundacionsi.org.ar/", "fPot": "https://potenciarsolidario.org/", "fIsf": "https://isf-argentina.org/", "fCar": "https://www.caritas.org.ar/", "fBra": "https://www.brazos-abiertos.org.ar/", "fRaf": "https://www.casarafael.org.ar/", "fCub": "https://www.fcuba.org/", "fEsp": "https://www.fundacionespartanos.org/", "fFon": "https://www.fonbec.org.ar/", "fTec": "https://argentina.techo.org/", "fMal": "https://www.malba.org.ar/", "fAle": "https://alegranatas.org.ar/", "fUni": "https://www.unicef.org/argentina/", "fFav": "https://www.fundacionfavaloro.org/", "fGar": "https://www.garrahan.gov.ar/", "fTem": "https://www.temaiken.org.ar/"};
   Object.keys(WEBS).forEach(function(id){
     var f = fundacionPorId(id);
     if(f) f.web = WEBS[id];
@@ -5983,6 +6091,11 @@ function crearCarrilAuto(caja, selItem, solo){
     clearInterval(c.reloj);
     if(!c.solo) return;                // este carril sólo se mueve con el dedo
     if(menosMovimiento()) return;      // sin movimiento automático
+    // En pantalla ancha se ven tres o cuatro tarjetas a la vez y el avance
+    // centra una: las de los costados quedan cortadas por la mitad, incluida
+    // la primera, que se lee como un error de maquetado. Con mouse además hay
+    // flechas y rueda, así que el movimiento solo no aporta nada.
+    if(pantallaAncha()) return;
     c.reloj = setInterval(avanzar, CARRIL_INTERVALO);
   }
   function pausar(){
@@ -10249,6 +10362,17 @@ function cerrarAporte(){
 function pintarAporte(){
   if(!aporte) return;
   $("#apExtra").innerHTML = "";
+
+  // El bloque de título va oculto por CSS (lo repetía y empujaba el formulario
+  // fuera de pantalla), así que el único rótulo visible es el de la cabecera.
+  // Estaba fijo en "Cumplí tu sueño", que es el flujo de la propuesta: en el
+  // de valor complementario nombraba una pantalla que no era.
+  var rotulo = $("#screen-aporte .topbar__titulo");
+  if(rotulo){
+    rotulo.textContent = aporte.modo === "propuesta"
+      ? "Cumplí tu sueño"
+      : (aporte.paso === 0 ? "Aportar desde otra faceta" : "Valor complementario");
+  }
 
   // --- propuesta de donación ---
   if(aporte.modo === "propuesta"){
