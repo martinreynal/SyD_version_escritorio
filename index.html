@@ -3744,6 +3744,23 @@ body.perfil-quieto .panels,body.perfil-quieto .panel{
   .intro.se-va{animation:none}
 }
 
+/* ==================== MÉTRICA QUE LLEVA A SU DETALLE ====================
+   Algunas métricas del panel de la fundación son un acceso a la solapa que las
+   desarrolla, no sólo un número. Se ven igual que las demás; el chevrón es lo
+   único que avisa que se puede tocar. */
+.metrica--link{
+  position:relative;
+  width:100%;
+  text-align:left;
+  font:inherit;
+  cursor:pointer;
+  transition:border-color .15s, background .15s}
+.metrica--link:hover{background:rgba(255,255,255,.075);border-color:var(--canto-vivo)}
+.metrica__chev{
+  position:absolute;top:12px;right:12px;
+  font-size:17px;line-height:1;color:rgba(159,196,216,.55)}
+.metrica--link:hover .metrica__chev{color:var(--turq)}
+
 /* ==================== PRESENTACIÓN · PRIMERA VISITA O NO ====================
    La presentación tiene dos actos. La primera vez que un dispositivo abre la
    app se ven los dos. Después sólo se ve el primero, y como ya no hay adónde
@@ -4108,6 +4125,71 @@ body.perfil-quieto .panels,body.perfil-quieto .panel{
      Se centra desde el contenedor, que sí puede alinear cajas en línea. */
   #screen-aporte .alta__acciones{text-align:center}
 
+  /* ---- 3f. la interfaz de la fundación ----
+     Comunidad tiene poco contenido: en una ventana alta quedaba pegada arriba
+     con media pantalla vacía. Mismo remedio que en Novedades: columna acotada y
+     centrada en el alto libre, con centrado "safe" para que no se corte cuando
+     hay muchas publicaciones. */
+  #screen-comunidad .viewport{max-width:860px !important}
+  #screen-comunidad.is-active{
+    display:flex !important;
+    flex-direction:column;
+    height:100vh !important;
+    height:100dvh !important;
+    overflow:hidden}
+  #screen-comunidad .viewport{
+    flex:1;
+    min-height:0;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    justify-content:safe center;
+    overflow-y:auto}
+
+  /* "De dónde viene" era una barra de 1200px para dos o tres conceptos: se
+     acota al ancho de lectura, como el resto de los bloques de esa pantalla. */
+  #screen-fsubastas .rec-mezcla{max-width:720px}
+  /* Las métricas de la fundación aprovechan el ancho en dos columnas. */
+  #screen-fsubastas .fmetricas{grid-template-columns:1fr 1fr}
+
+  /* ---- 4b. la fundación navega por el costado en escritorio ----
+     Cuatro pestañas abajo es un gesto de pulgar. Con espacio lateral de sobra,
+     al costado quedan siempre visibles y con su nombre legible.
+
+     Se pone --nav-alto en 0 para esta rama: ese valor es el que todas las
+     pantallas usan para reservar sitio a la barra de abajo, y con la barra al
+     costado ese hueco ya no hace falta. El sitio se reserva ahora por la
+     izquierda. Todo va acotado a body.es-fundacion: las pantallas del donante
+     no se enteran. */
+  body.es-fundacion{--nav-alto:0px; --nav-lado:216px}
+  body.es-fundacion .nav5{
+    top:0;bottom:0;right:auto;
+    width:var(--nav-lado);
+    height:auto;
+    padding:14px 12px;
+    border-right:1px solid var(--canto)}
+  body.es-fundacion .nav5__fila--fundacion{
+    grid-template-columns:1fr;
+    grid-auto-rows:max-content;
+    align-content:start;
+    gap:4px;
+    height:auto}
+  /* De pastilla vertical a fila: ícono y nombre en línea, como un menú. */
+  body.es-fundacion .nav5__fila--fundacion .nav5__b{
+    grid-template-rows:none;
+    grid-template-columns:22px 1fr;
+    justify-items:start;
+    align-items:center;
+    gap:12px;
+    padding:11px 12px;
+    border-radius:12px}
+  body.es-fundacion .nav5__txt{font-size:13.5px}
+  body.es-fundacion .nav5__b.is-on{background:rgba(94,234,212,.12)}
+
+  /* El contenido se corre para dejarle sitio a la barra lateral. */
+  body.es-fundacion .screen.is-active{padding-left:var(--nav-lado)}
+  body.es-fundacion .nav5{padding-left:12px}
+
   /* ---- 4. la barra inferior ----
      Estirada a 1440px los tres íconos quedan desparramados y lejos del
      contenido. La fila se acota y se centra; la barra sigue siendo del ancho
@@ -4234,10 +4316,14 @@ body.perfil-quieto .panels,body.perfil-quieto .panel{
         <path d="M16.6 6.8a2.9 2.9 0 0 1 0 5.6"/><path d="M18.4 19c0-2.2-1-3.7-2.6-4.4"/></svg>
       <span class="nav5__txt">Comunidad</span>
     </button>
-    <button class="nav5__b" data-tab="fMas" aria-label="Más">
-      <svg viewBox="0 0 24 24" fill="currentColor">
-        <circle cx="6" cy="12" r="1.9"/><circle cx="12" cy="12" r="1.9"/><circle cx="18" cy="12" r="1.9"/></svg>
-      <span class="nav5__txt">Más</span>
+    <!-- Antes acá había un "Más" que abría un menú de tres filas: dos accesos
+         y un "Cerrar sesión" que ya estaba al final de Inicio. Esos dos accesos
+         pasaron al panel de Inicio y el lugar de la barra lo ocupa Avisos, que
+         era la ausencia real: una fundación no se enteraba de nada. -->
+    <button class="nav5__b" data-tab="fAvisos" aria-label="Avisos">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18 8.6a6 6 0 1 0-12 0c0 6-2 7.4-2 7.4h16s-2-1.4-2-7.4z"/><path d="M13.7 19.6a2 2 0 0 1-3.4 0"/></svg>
+      <span class="nav5__txt">Avisos</span>
     </button>
   </div>
 </nav>
@@ -5395,6 +5481,21 @@ function semilla(){
      suenoDe:"Estela Pereyra", monto:265000, fotos:[], fecha:"11 de agosto", fechaISO:"2026-08-11"}
   ];
   DB.avisos = [
+    // Avisos de la fundación (para:"fundacion"): los ve sólo ella, en su propia
+    // pestaña. Los de más abajo, sin "para", son los del donante, como siempre.
+    {id:nid("av"), para:"fundacion", fid:"fGar", titulo:"Te dirigieron un sueño",
+     texto:"Que mi hijo entre a la cancha con los jugadores de River sale a beneficio de tu fundación.",
+     hora:"10:05", cuando:"2026-08-21T10:05", destino:"recaudacion",
+     clase:"superado", leido:false},
+    {id:nid("av"), para:"fundacion", fid:"fGar", titulo:"Recibiste una donación",
+     texto:"$40.000 para Casa Garrahan: una cama para cada familia.",
+     hora:"18:05", cuando:"2026-08-20T18:05", destino:"recaudacion",
+     clase:"donacion", leido:false},
+    {id:nid("av"), para:"fundacion", fid:"fGar", titulo:"Transferencia programada",
+     texto:"El saldo pendiente se acredita el 5 del mes que viene.",
+     hora:"09:00", cuando:"2026-08-18T09:00", destino:"recaudacion",
+     clase:"aporte", leido:true},
+
     {id:nid("av"), titulo:"Tu aporte mensual se acreditó",
      texto:"UNICEF · Nivel 2", hora:"08:00", cuando:"2026-08-18T08:00",
      destino:"perfil", clase:"aporte", leido:true},
@@ -6817,10 +6918,62 @@ function pintarPanelFundacion(){
      '</div>'+
    '</div>'+
 
-   // La presentación va primero: es lo que un donante lee para decidir.
-   // El tablero del mes vive en Recaudación, junto al dinero. Acá el orden es
-   // el de un perfil: quiénes somos, qué estamos haciendo, cuándo nos pueden
-   // ver y con qué papeles. La gestión está en las otras pestañas.
+   // ---- lo accionable primero ----
+   // Antes esta pantalla arrancaba con la presentación: información que la
+   // fundación ya conoce. Lo que necesita al entrar es qué pasó desde la última
+   // vez y qué tiene pendiente. La vitrina pública sigue abajo.
+   (function(){
+     var enSubasta = suenos.filter(function(x){ return x.estado === "en subasta"; }).length;
+     var esperando = suenos.filter(function(x){ return x.estado === "por subastar"; }).length;
+     var porGirar = don.filter(function(d){ return d.transferido === false; })
+       .reduce(function(n,d){ return n + (d.monto||0); }, 0);
+     var noLeidos = DB.avisos.filter(function(a){
+       return a.para === "fundacion" && (!a.fid || a.fid === f.id) && !a.leido; }).length;
+
+     var filas = [];
+     if(noLeidos) filas.push(['fAvisos',
+       noLeidos + (noLeidos===1 ? ' aviso sin leer' : ' avisos sin leer'),
+       'Novedades de tu cuenta']);
+     if(enSubasta) filas.push(['fRecauda',
+       enSubasta + (enSubasta===1 ? ' sueño en subasta' : ' sueños en subasta'),
+       enJuego ? pesos(enJuego)+' en juego ahora' : 'Todavía sin ofertas']);
+     if(esperando) filas.push(['fRecauda',
+       esperando + (esperando===1 ? ' sueño esperando' : ' sueños esperando'),
+       'Aprobados, a la espera de salir']);
+     if(porGirar) filas.push(['fRecauda', pesos(porGirar)+' por acreditarse',
+       'Se transfiere el 5 de cada mes']);
+
+     if(!filas.length){
+       return '<p class="frotulo">Para hoy</p>'+
+         '<div class="empty">No tenés nada pendiente. Todo al día.</div>';
+     }
+     return '<p class="frotulo">Para hoy</p>'+
+       '<div class="fpendientes">'+ filas.map(function(r){
+         return '<button class="fila-op" data-tab="'+r[0]+'">'+
+           '<span class="fila-op__t"><b>'+r[1]+'</b><span>'+r[2]+'</span></span>'+
+           '<span class="fila-op__chev">&#8250;</span></button>';
+       }).join("") +'</div>';
+   })()+
+
+   // ---- gestión ----
+   // Estos dos accesos vivían en la pestaña "Más", que además repetía el
+   // "Cerrar sesión" que ya está al final de esta misma pantalla.
+   '<p class="frotulo">Gestión</p>'+
+   '<div class="fpendientes">'+
+     '<button class="fila-op" id="masPublicar">'+
+       '<span class="fila-op__t"><b>Publicar actividad</b>'+
+       '<span>Contá lo que están haciendo</span></span>'+
+       '<span class="fila-op__chev">&#8250;</span></button>'+
+     '<button class="fila-op" id="masEventos">'+
+       '<span class="fila-op__t"><b>Eventos</b>'+
+       '<span>Agenda de tu fundación</span></span>'+
+       '<span class="fila-op__chev">&#8250;</span></button>'+
+   '</div>'+
+
+   // La presentación va después: es lo que un donante lee para decidir, pero
+   // la fundación ya se la sabe. Acá abajo el orden es el de un perfil:
+   // quiénes somos, qué estamos haciendo, cuándo nos pueden ver y con qué
+   // papeles.
    '<p class="frotulo">Quiénes somos</p>'+
    '<div class="fpresenta">'+
      ((f.presentacion && f.presentacion.texto)
@@ -7620,6 +7773,9 @@ function modalDonarDirecto(fid, campanaId){
           quienPublico:anon ? "Donante anónimo" : sesion.nombre, anonimo:anon,
           mail:sesion.mail, fid:f.id, causa:destinoTxt, monto:monto,
           tipo:"directa", metodo:medio, fecha:"hoy", fechaISO:hoyISO()});
+        avisarFundacion(f.id, "Recibiste una donación",
+          pesos(monto)+" para "+destinoTxt+".", "recaudacion", "donacion");
+
         cerrarModal(); pintarTodo();
         toast("¡Gracias! Donaste "+pesos(monto)+(anon?" de forma anónima":"")+" a "+destinoTxt+".");
       };
@@ -8500,7 +8656,15 @@ function bloqueDeseos(id, titulo, lista, conAcciones){
 
 // Cada entrada del menú abre su propia pantalla.
 // La barra refleja dónde estás: quedaba encendida la sección anterior.
+// En modo fundación las pestañas se llaman distinto ("fAvisos" en vez de
+// "avisos"). abrirAvisos() y compañía marcan por el nombre del donante, así que
+// acá se traduce: si no, la barra de la fundación quedaba sin ninguna marcada.
+var TAB_FUNDACION = {avisos:"fAvisos", inicio:"fInicio", apoyo:"fComunidad"};
+
 function marcarTab(cual){
+  if(document.body.classList.contains("es-fundacion") && TAB_FUNDACION[cual]){
+    cual = TAB_FUNDACION[cual];
+  }
   $$(".nav5__b").forEach(function(b){ b.classList.toggle("is-on", b.dataset.tab === cual); });
 }
 
@@ -8703,9 +8867,26 @@ var ICONOS_AVISO = {
   aporte:'<rect x="2.6" y="5.4" width="18.8" height="13.2" rx="2.4"/><path d="M2.6 9.8h18.8"/><path d="M6 14.4h4"/>'
 };
 
+// Avisa a una fundación. Los avisos llevan "para" y "fid": pintarAvisos()
+// muestra a cada quien los suyos. Sin esto la fundación no se entera de nada
+// de lo que pasa con su cuenta salvo que entre a mirar.
+function avisarFundacion(fid, titulo, texto, destino, clase){
+  if(!fid) return;
+  DB.avisos.push({id:nid("av"), para:"fundacion", fid:fid,
+    titulo:titulo, texto:texto, hora:"ahora",
+    cuando:new Date().toISOString(),
+    destino:destino || "recaudacion", clase:clase || "actividad", leido:false});
+}
+
 function pintarAvisos(){
   var caja = $("#listaAvisos"); if(!caja) return;
-  var orden = DB.avisos.slice().sort(function(x,y){
+  // Los avisos llevan "para": los que no lo dicen son del donante, que es como
+  // venía la app. La fundación ve sólo los suyos, y sólo si son de su casa.
+  var mia = (typeof miFundacion === "function") ? miFundacion() : null;
+  var orden = DB.avisos.filter(function(a){
+    if(mia) return a.para === "fundacion" && (!a.fid || a.fid === mia.id);
+    return a.para !== "fundacion";
+  }).sort(function(x,y){
     return String(y.cuando||"").localeCompare(String(x.cuando||""));
   });
   if(!orden.length){
@@ -8725,7 +8906,7 @@ function pintarAvisos(){
     grupos[n <= 0 ? 0 : (n === 1 ? 1 : (n <= 7 ? 2 : 3))][1].push(av);
   });
 
-  var sinLeer = DB.avisos.filter(function(a){ return !a.leido; }).length;
+  var sinLeer = orden.filter(function(a){ return !a.leido; }).length;
 
   caja.innerHTML =
     (sinLeer
@@ -8736,7 +8917,9 @@ function pintarAvisos(){
       return '<p class="avisos__grupo">'+esc(g[0])+'</p>'+
         g[1].map(function(a){
           var cl = a.clase || "actividad";
-          var urgente = cl === "superado";
+          // "Volver a ofertar" sólo tiene sentido para quien perdió una puja.
+          // La fundación comparte el estilo de aviso, no esa acción.
+          var urgente = cl === "superado" && a.para !== "fundacion";
           return '<button class="aviso av--'+cl+(a.leido?'':' es-nuevo')+(urgente?' es-urge':'')+'" '+
             'data-aviso="'+esc(a.destino||"")+'">'+
             '<span class="aviso__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" '+
@@ -8757,12 +8940,22 @@ function pintarAvisos(){
 
 function abrirApoyo(){ abrirPantalla("screen-apoyo", pintarMuroApoyo); marcarTab("apoyo"); }
 function abrirAvisos(){
-  marcarTab("avisos");
   abrirPantalla("screen-avisos", function(){
     pintarAvisos();
-    // Al abrir la pantalla, las novedades quedan marcadas como leídas.
-    DB.avisos.forEach(function(a){ a.leido = true; });
+    // Al abrir la pantalla, las novedades quedan marcadas como leídas. Sólo las
+    // que se están viendo: antes se marcaban todas, así que una fundación daba
+    // por leídos los avisos del donante y al revés.
+    var mia = (typeof miFundacion === "function") ? miFundacion() : null;
+    DB.avisos.forEach(function(a){
+      var propio = mia
+        ? (a.para === "fundacion" && (!a.fid || a.fid === mia.id))
+        : (a.para !== "fundacion");
+      if(propio) a.leido = true;
+    });
   });
+  // Después de abrirPantalla, no antes: abrirPantalla llama a marcarTab("") y
+  // borraba la marca que se acababa de poner.
+  marcarTab("avisos");
 }
 
 // Publicar una actividad: hasta cinco fotos, título y texto.
@@ -9168,7 +9361,10 @@ function estadoLote(a){
 var solapaFSub = "resumen";
 
 // La gente detrás de los números: es el activo real de una fundación.
-function abrirComunidad(){ abrirPantalla("screen-comunidad", pintarComunidad); }
+function abrirComunidad(){
+  abrirPantalla("screen-comunidad", pintarComunidad);
+  marcarTab("fComunidad");   // abrirPantalla la borra: se repone después
+}
 
 // Registro de agradecimientos: sirve para no repetir ni olvidarse de nadie.
 DB.gracias = DB.gracias || {};
@@ -9363,6 +9559,7 @@ function modalGracias(nombre){
 
 function abrirFSubastas(){
   abrirPantalla("screen-fsubastas", pintarFSubastas);
+  marcarTab("fRecauda");   // abrirPantalla la borra: se repone después
 }
 
 function pintarFSubastas(){
@@ -9403,10 +9600,17 @@ function pintarFSubastas(){
   }
   var prox = proximaTransferencia();
 
-  function metrica(rot, val, pie){
-    return '<div class="metrica"><span class="metrica__r">'+rot+'</span>'+
+  // "solapa" convierte la métrica en un acceso a la solapa que la desarrolla:
+  // un número que promete un detalle y no lleva a ningún lado es una promesa
+  // incumplida.
+  function metrica(rot, val, pie, solapa){
+    var cuerpo = '<span class="metrica__r">'+rot+'</span>'+
       '<b class="metrica__v">'+val+'</b>'+
-      (pie ? '<span class="metrica__p">'+pie+'</span>' : '')+'</div>';
+      (pie ? '<span class="metrica__p">'+pie+'</span>' : '');
+    return solapa
+      ? '<button class="metrica metrica--link" data-solapa="'+solapa+'">'+cuerpo+
+          '<span class="metrica__chev">&#8250;</span></button>'
+      : '<div class="metrica">'+cuerpo+'</div>';
   }
 
   // ---- el historial de movimientos, ordenado del más nuevo al más viejo ----
@@ -9468,11 +9672,12 @@ function pintarFSubastas(){
     '</div>'+
 
     '<div class="solapas">'+
-      [["resumen","Resumen"],["movimientos","Movimientos"],
+      [["resumen","Resumen"],["suenos","Sueños"],["movimientos","Movimientos"],
        ["donantes","Donantes"],["planes","Planes"]].map(function(par){
         var n = par[0] === "movimientos" ? movs.length
               : (par[0] === "donantes" ? gente.length
-              : (par[0] === "planes" ? (f.planes||[]).length : 0));
+              : (par[0] === "suenos" ? suenos.length
+              : (par[0] === "planes" ? (f.planes||[]).length : 0)));
         return '<button class="solapa'+(solapaFSub===par[0]?' is-on':'')+'" data-solapa="'+par[0]+'">'+
           par[1]+(n?' <i>'+n+'</i>':'')+'</button>';
       }).join("")+
@@ -9497,9 +9702,10 @@ function pintarFSubastas(){
             metrica("Apoyos mensuales", pesos(porMes),
                     susc.length+(susc.length===1?" donante":" donantes"))+
             metrica("Sueños dirigidos", String(suenos.length),
-                    enJuego ? pesos(enJuego)+" en juego" : "sin ofertas")+
+                    enJuego ? pesos(enJuego)+" en juego" : "sin ofertas", "suenos")+
             metrica("Donantes", String(gente.length),
-                    nuevos.length ? nuevos.length+" nuevos este mes" : "sin altas este mes")+
+                    nuevos.length ? nuevos.length+" nuevos este mes" : "sin altas este mes",
+                    "donantes")+
           '</div>'+
 
           '<p class="frotulo">De dónde viene</p>'+
@@ -9527,6 +9733,37 @@ function pintarFSubastas(){
                   '<div class="fcampana__p">'+pesos(c.r)+' de '+pesos(c.meta)+'</div></div>';
               }).join("")
             : '<div class="empty">Todavía no abriste ninguna campaña.</div>');
+      }
+
+      // ---------- SUEÑOS: los que eligieron a esta fundación ----------
+      // La fila ya existía escrita (filaSuenoFund) pero no la llamaba nadie:
+      // el resumen decía "Sueños dirigidos: 4" y ese número no llevaba a
+      // ninguna parte. Se agrupan por estado porque lo que la fundación
+      // necesita saber primero es qué está en juego ahora.
+      if(solapaFSub === "suenos"){
+        if(!suenos.length){
+          return '<div class="empty">Todavía nadie dirigió un sueño a tu fundación. '+
+                 'Cuando alguien lo haga, aparece acá.</div>';
+        }
+        var grupos = [
+          ["en subasta",  "En subasta ahora"],
+          ["por subastar","Esperando salir a subasta"],
+          ["cumplido",    "Cumplidos"],
+          ["pendiente",   "Esperando aprobación"]
+        ];
+        var vistos = {};
+        var bloques = grupos.map(function(g){
+          var lista = suenos.filter(function(x){ return x.estado === g[0]; });
+          lista.forEach(function(x){ vistos[x.id] = true; });
+          if(!lista.length) return "";
+          return '<p class="frotulo">'+g[1]+'</p>'+ lista.map(filaSuenoFund).join("");
+        }).join("");
+        // Cualquier estado que no esté en la lista de arriba no se pierde.
+        var resto = suenos.filter(function(x){ return !vistos[x.id]; });
+        if(resto.length){
+          bloques += '<p class="frotulo">Otros</p>'+ resto.map(filaSuenoFund).join("");
+        }
+        return bloques;
       }
 
       // ---------- MOVIMIENTOS: el extracto ----------
@@ -9616,7 +9853,9 @@ function filaSuenoFund(x){
       '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">'+
       '<path d="M12 3.4l2.2 4.6 5 .6-3.7 3.4 1 5-4.5-2.5-4.5 2.5 1-5L4.8 8.6l5-.6z"/></svg></span>'+
     '<span class="lotef__t"><b>'+esc(x.titulo)+'</b>'+
-      '<span class="lotef__d">Lo pidió '+esc(x.quien)+'</span>'+
+      // Sin autor, como el resto de la app. A la fundación le sirve más saber
+      // de cuánto parte el sueño que quién lo pidió.
+      '<span class="lotef__d">Base '+pesos(x.valor||0)+'</span>'+
       '<span class="lotef__d">'+(m ? pesos(m.monto)+' en juego' : 'Sin ofertas')+
       ' · '+esc(x.destino||"Aporte general")+'</span></span>'+
     '<span class="lotef__chev">&#8250;</span></button>';
@@ -9779,29 +10018,9 @@ function selectorCampanaFund(f){
 }
 
 // Un menú con lo que no entra en la barra.
-function modalMasFundacion(){
-  var f = miFundacion(); if(!f) return;
-  abrirModal({eyebrow:"Más", titulo:"Gestión de "+f.nombre, sub:"",
-    body:
-      '<button class="fila-op" id="masPublicar"><span class="fila-op__ico">'+
-        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">'+
-        '<rect x="3.6" y="4.6" width="16.8" height="14.8" rx="2.6"/><path d="M3.6 9.4h16.8"/>'+
-        '<path d="M12 12.4v4M10 14.4h4"/></svg></span>'+
-        '<span class="fila-op__t"><b>Publicar actividad</b><span>Contá lo que están haciendo</span></span>'+
-        '<span class="fila-op__chev">&#8250;</span></button>'+
-      '<button class="fila-op" id="masEventos"><span class="fila-op__ico">'+
-        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">'+
-        '<rect x="3.6" y="5" width="16.8" height="15" rx="2.6"/><path d="M8 3v3.4M16 3v3.4M3.6 9.6h16.8"/></svg></span>'+
-        '<span class="fila-op__t"><b>Eventos</b><span>Agenda de tu fundación</span></span>'+
-        '<span class="fila-op__chev">&#8250;</span></button>'+
-      '<button class="fila-op es-salir" id="masSalir"><span class="fila-op__ico">'+
-        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">'+
-        '<path d="M14 4.5H6.5v15H14"/><path d="M12.5 12h8"/><path d="M17.5 8.5 21 12l-3.5 3.5"/></svg></span>'+
-        '<span class="fila-op__t"><b>Cerrar sesión</b><span>Salir de la cuenta</span></span>'+
-        '<span class="fila-op__chev">&#8250;</span></button>',
-    ok:"Cerrar", onOk:function(){ cerrarModal(); }});
-}
-
+// El menú "Más" se retiró: sus dos accesos pasaron al panel de Inicio y su
+// "Cerrar sesión" ya estaba al final de esa misma pantalla. El lugar que
+// ocupaba en la barra ahora es Avisos.
 var garantiaDe = null, garantiaMedio = "tarjeta", garantiaMonto = 0, garantiaTipo = "sueno";
 
 // Devuelve, para lo que se esté ofertando, los datos que la pantalla necesita:
@@ -10580,6 +10799,9 @@ function avanzarAporte(){
     DB.solicitudes.push({id:nid("s"), quien:sesion.nombre, titulo:titulo, aCambio:texto,
       fid:fid, destino:null, valor:valor, asociado:null, estado:"en subasta", cierreISO:"2026-09-08T21:00", fecha:hoyISO(),
       mail:sesion.mail, whatsapp:null, ofertas:[]});
+
+    avisarFundacion(fid, "Te dirigieron un sueño",
+      titulo+" salió a subasta a beneficio de tu fundación.", "recaudacion", "superado");
 
     cerrarAporte(); pintarTodo();
     toast("Tu deseo quedó publicado a beneficio de "+f.nombre+".");
@@ -11396,7 +11618,9 @@ document.addEventListener("click", function(e){
   if(e.target.closest("#btnCumpliSueno")) return abrirPantallaAporte("propuesta");
   if((t = e.target.closest("[data-tab]"))){
     var cual = t.dataset.tab;
-    $$(".nav5__b").forEach(function(b){ b.classList.toggle("is-on", b === t); });
+    // marcarTab marca por nombre de destino, así que da igual si el clic vino
+    // de la barra o de un acceso dentro del panel.
+    marcarTab(cual);
     if(cual === "inicio") volverHome();
     else if(cual === "apoyo") abrirApoyo();
     else if(cual === "avisos") abrirAvisos();
@@ -11408,7 +11632,7 @@ document.addEventListener("click", function(e){
     else if(cual === "fInicio"){ volverHome(); irA(0); revisarCielo(); }
     else if(cual === "fRecauda") abrirFSubastas();
     else if(cual === "fComunidad") abrirComunidad();
-    else if(cual === "fMas") modalMasFundacion();
+    else if(cual === "fAvisos") abrirAvisos();
     return;
   }
   if((t = e.target.closest("[data-ir]"))){
@@ -11428,7 +11652,15 @@ document.addEventListener("click", function(e){
     return;
   }
   if(e.target.closest("#btnLeerTodo")){
-    DB.avisos.forEach(function(a){ a.leido = true; });
+    // Sólo los que esa persona está viendo: la fundación y el donante comparten
+    // la lista pero no la bandeja.
+    var miaLeer = (typeof miFundacion === "function") ? miFundacion() : null;
+    DB.avisos.forEach(function(a){
+      var propio = miaLeer
+        ? (a.para === "fundacion" && (!a.fid || a.fid === miaLeer.id))
+        : (a.para !== "fundacion");
+      if(propio) a.leido = true;
+    });
     pintarAvisos();
     toast("Listo, todo marcado como leído.");
     return;
@@ -11601,12 +11833,11 @@ document.addEventListener("click", function(e){
       }});
     return;
   }
-  if(e.target.closest("#masPublicar")){ cerrarModal(); setTimeout(modalPublicarActividad, 260); return; }
-  if(e.target.closest("#masEventos")){ cerrarModal(); setTimeout(abrirEventos, 260); return; }
-  if(e.target.closest("#masSalir")){
-    cerrarModal(); sesion = null; pintarTodo(); abrirLogin(); toast("Cerraste sesión.");
-    return;
-  }
+  // Los dos accesos de gestión de la fundación. Antes vivían dentro de un modal
+  // y por eso cerraban primero; ahora están en el panel de Inicio, así que van
+  // directo. (#masSalir se fue con el menú: "Cerrar sesión" ya está en Inicio.)
+  if(e.target.closest("#masPublicar")) return modalPublicarActividad();
+  if(e.target.closest("#masEventos")) return abrirEventos();
   if(e.target.closest("#btnPublicarActividad")) return modalPublicarActividad();
   if(e.target.closest("#btnVerSubastas")) return abrirSubastas();
   if(e.target.closest("#btnVerEventos")) return abrirEventos();
@@ -12163,6 +12394,9 @@ function abrirSubastaDeSueno(id){
         DB.avisos.push({id:nid("av"), titulo:"Tu sueño salió a subasta",
           texto:x.titulo+" está abierto por "+dias+" días.", hora:"ahora",
           cuando:new Date().toISOString(), destino:"subastas", clase:"actividad", leido:false});
+        // La fundación beneficiada también quiere enterarse: es plata que entra.
+        avisarFundacion(x.fid, "Se abrió una subasta a tu beneficio",
+          x.titulo+" está abierto por "+dias+" días.", "recaudacion", "superado");
         toast("Subasta abierta por "+dias+" días.");
       } else {
         // Queda programada: sigue en la espera hasta la fecha elegida.
