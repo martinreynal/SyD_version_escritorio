@@ -3744,6 +3744,24 @@ body.perfil-quieto .panels,body.perfil-quieto .panel{
   .intro.se-va{animation:none}
 }
 
+/* ==================== PRESENTACIÓN · PRIMERA VISITA O NO ====================
+   La presentación tiene dos actos. La primera vez que un dispositivo abre la
+   app se ven los dos. Después sólo se ve el primero, y como ya no hay adónde
+   continuar, la pista de abajo se cambia por el botón que cierra.
+   La clase es-repetida la pone el script al abrir. */
+.intro__cta--acto1{display:none}
+.intro.es-repetida .intro__pista--acto1{display:none}
+.intro.es-repetida .intro__cta--acto1{display:flex}
+/* Entra encadenada con el resto del acto, en el mismo turno que ocupaba la
+   pista, en vez de con el retardo fijo que usa el botón del paso a paso. */
+.intro.es-repetida .intro__cta--acto1{
+  opacity:0;transform:translateY(16px);
+  animation:introEntra .6s cubic-bezier(.22,.9,.3,1) forwards;
+  animation-delay:calc(.3s + var(--i) * .42s)}
+@media (prefers-reduced-motion:reduce){
+  .intro.es-repetida .intro__cta--acto1{animation:none;opacity:1;transform:none}
+}
+
 /* ==================== OPCIONES DE APORTE · COLOR ====================
    Las tarjetas de "aportar valor complementario" venían de la paleta clara:
    fondo blanco y borde gris. Pero la pantalla que las contiene es del tema
@@ -4606,6 +4624,17 @@ body.perfil-quieto .panels,body.perfil-quieto .panel{
     <p class="intro__porque" style="--i:6">Queremos que todas las fundaciones
       puedan recaudar y cumplir su misión.</p>
     <p class="intro__pista intro__pista--acto1" style="--i:7">Tocá para continuar</p>
+
+    <!-- En una visita repetida el paso a paso no se muestra, así que la pista
+         "Tocá para continuar" no llevaría a ningún lado: en su lugar aparece
+         este botón, el mismo que cierra la presentación al final del paso a
+         paso. Cuál de los dos se ve lo decide la clase es-repetida. -->
+    <button class="cta cta--corto intro__cta intro__cta--acto1" id="introEmpezar1" style="--i:7">
+      <span class="cta__txt">SOÑÁ Y DONÁ</span>
+      <svg class="intro__cta-f" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+           stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M4 12h15"/><path d="M13.5 6.5 19.5 12l-6 5.5"/></svg>
+    </button>
   </div>
 
   <!-- Segundo acto: cinco pantallas, una por paso. Se avanza tocando. -->
@@ -6537,8 +6566,8 @@ function tarjetaPorSubastar(x){
     '<div class="lote__cuerpo">'+
       '<span class="lote__rot">Esperando salir a subasta</span>'+
       '<h3 class="lote__t">'+esc(x.titulo)+'</h3>'+
-      '<p class="lote__q">'+(x.anonimo ? 'Lo pidió alguien de forma anónima'
-                                       : 'Lo pidió '+esc(x.quien))+'</p>'+
+      // Los sueños se muestran sin autor: lo que importa es el sueño y la
+      // fundación beneficiada, no quién lo pidió.
       // Sin la historia: acá la tarjeta muestra qué se subasta y a beneficio de
       // quién. El relato completo se lee al abrir el sueño.
 
@@ -8976,7 +9005,6 @@ function mejorOferta(x){
 
 function tarjetaSueno(x){
   var f = x.fid ? fundacionPorId(x.fid) : null;
-  var quien = DB.perfilesAnonimos[x.quien] ? "Donante anónimo" : x.quien;
   var mejor = mejorOferta(x);
   var actual = mejor ? mejor.monto : (x.valor || 0);
   var minimo = mejor ? mejor.monto + 1000 : (x.valor || 1000);
@@ -9043,17 +9071,8 @@ function tarjetaSueno(x){
         'Cierra el '+esc(fechaHoraLarga(x.cierreISO))+'</span>'+
     '</div>'+
 
-    // Quien pide un sueño puede no querer dar su nombre: el pedido se muestra
-    // igual, pero sin avatar ni acceso al perfil.
-    (x.anonimo
-      ? '<span class="sueno__autor es-anon">'+
-          '<span class="sueno__ava sueno__ava--anon">?</span>'+
-          '<span>Lo pidió alguien de forma anónima</span></span>'
-      : '<button class="sueno__autor" data-ver-perfil="'+esc(x.quien)+'">'+
-          avatarUsuario(quien, "sueno__ava")+
-          '<span>Lo pidió <b>'+esc(quien)+'</b></span>'+
-          '<span class="sueno__mas">&#8250;</span>'+
-        '</button>')+
+    // Los sueños se muestran sin autor. Antes acá iba "Lo pidió …", con avatar
+    // y acceso al perfil de quien lo pidió; el sueño se presenta solo.
 
     (propio ? '<button class="borrar-sueno" data-borrar-sueno="'+x.id+'">Eliminar publicación</button>' : '')+
     (puedeAportar()
@@ -9973,8 +9992,8 @@ function modalOfertarSueno(did){
   var minimo = mejor ? mejor.monto + 1000 : (x.valor || 1000);
 
   abrirModal({eyebrow:"Quedarte con el deseo", titulo:x.titulo||"Deseo",
-    sub:"Lo pidió "+esc(DB.perfilesAnonimos[x.quien] ? "Donante anónimo" : x.quien)+
-      (x.valor ? " · salió en "+pesos(x.valor) : ""),
+    // Sin autor, igual que la tarjeta de la que se abre este modal.
+    sub:(x.valor ? "Salió en "+pesos(x.valor) : ""),
     ancho:"grande",
     body:
       (mejor
@@ -12209,9 +12228,11 @@ try {
      fallara, la bienvenida y el paso a paso se siguen viendo igual. -->
 <script>
 /* ==================== INTRO DE BIENVENIDA ====================
-   Se ve una sola vez por dispositivo. La marca queda guardada; si el navegador
-   no deja guardar (modo privado, permisos), no se rompe nada: se muestra igual
-   y se recuerda mientras dure la pestaña. */
+   La primera vez que un dispositivo abre la app se ven los dos actos: la
+   portada y el paso a paso. Después se ve sólo la portada, con el botón para
+   entrar. La marca de "ya vista" queda guardada en el navegador; si no deja
+   guardar (modo privado, permisos), se muestra completa otra vez y se recuerda
+   mientras dure la pestaña: no se rompe nada, sólo se repite. */
 var INTRO_CLAVE = "syd_intro_vista";
 var introVistaEnSesion = false;
 
@@ -12258,12 +12279,19 @@ function cerrarIntro(){
 // que explica de qué se trata todo, y leerla lleva el tiempo que lleve.
 var relojActo = null;
 
+// Si este dispositivo ya abrió la app antes, el paso a paso no se vuelve a
+// mostrar: se ve sólo el primer acto y se sale con el botón. Se decide una vez
+// al abrir y no en cada clic, para que no cambie de comportamiento a mitad de
+// la presentación si algo toca el almacenamiento mientras tanto.
+var introRepetida = false;
+
 // Los cinco pasos se muestran juntos: no hay nada que avanzar dentro del
 // segundo acto, se sale con el botón EMPEZAR o con Saltar.
 
 function pasarAlPasoAPaso(){
   var intro = document.getElementById("intro");
   if(!intro || !intro.classList.contains("es-acto1")) return;
+  if(introRepetida) return;      // en visitas repetidas no hay segundo acto
   clearTimeout(relojActo);
   intro.classList.remove("es-acto1");
   requestAnimationFrame(acomodarIntro);
@@ -12272,6 +12300,8 @@ function pasarAlPasoAPaso(){
 function abrirIntro(){
   var intro = document.getElementById("intro");
   if(!intro) return;
+  introRepetida = introYaVista();
+  intro.classList.toggle("es-repetida", introRepetida);
   intro.hidden = false;
   intro.classList.add("is-on", "es-acto1");
   clearTimeout(relojActo);
@@ -12280,29 +12310,42 @@ function abrirIntro(){
 
 (function(){
   var empezar = document.getElementById("introEmpezar");
+  var empezar1 = document.getElementById("introEmpezar1");
   var saltar = document.getElementById("introSaltar");
   var acto1 = document.getElementById("introActo1");
   if(empezar) empezar.addEventListener("click", cerrarIntro);
+  // El botón del primer acto vive dentro de introActo1, que también escucha el
+  // clic para avanzar: se corta la propagación para que el clic no haga las dos
+  // cosas. (Hoy pasarAlPasoAPaso ya se corta solo en visitas repetidas, pero
+  // esto lo deja a salvo si mañana el botón se muestra en otro caso.)
+  if(empezar1) empezar1.addEventListener("click", function(e){
+    e.stopPropagation();
+    cerrarIntro();
+  });
   if(saltar) saltar.addEventListener("click", cerrarIntro);
   // Tocar la primera pantalla adelanta al paso a paso sin esperar.
   if(acto1) acto1.addEventListener("click", pasarAlPasoAPaso);
 
   // Con el teclado, para probarlo en la computadora: del primer acto se pasa
-  // a la lista, y de la lista se sale.
+  // a la lista, y de la lista se sale. En una visita repetida no hay lista, así
+  // que la primera pulsación ya cierra.
   document.addEventListener("keydown", function(e){
     var intro = document.getElementById("intro");
     if(!intro || intro.hidden) return;
     if(e.key === "ArrowRight" || e.key === " " || e.key === "Enter"){
-      if(intro.classList.contains("es-acto1")) pasarAlPasoAPaso(); else cerrarIntro();
+      if(intro.classList.contains("es-acto1") && !introRepetida) pasarAlPasoAPaso();
+      else cerrarIntro();
     }
   });
   window.addEventListener("resize", acomodarIntro);
   document.addEventListener("keydown", function(e){
     if(e.key === "Escape") cerrarIntro();
   });
-  // La presentación se muestra en cada visita, no una sola vez: es una demo y
-  // lo primero que hay que poder mostrar es cómo funciona la plataforma.
-  // Se sale tocando "Saltar" o el botón del final.
+  // La primera vez que este dispositivo abre la app se ve la presentación
+  // completa: la portada y el paso a paso. A partir de la segunda visita se ve
+  // sólo la portada, con el botón para entrar. Se sale tocando "Saltar" o el
+  // botón. Si el navegador no deja guardar la marca (modo privado, permisos),
+  // se muestra completa de nuevo: no se rompe nada, sólo se repite.
   abrirIntro();
 })();
 
