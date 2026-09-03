@@ -28,7 +28,6 @@ img{display:block;max-width:100%}
 #screen-aporte,#screen-deseos,#screen-registro,#screen-admin,#screen-stats,
 #screen-subastas,#screen-fundaciones,#screen-eventos{
   position:relative;z-index:2;min-height:100vh;min-height:100dvh}
-.muted{color:var(--gris)}
 
 /* ---------- botones / campos ---------- */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 20px;border-radius:10px;border:1px solid transparent;font-size:14.5px;font-weight:600;cursor:pointer;transition:background .15s,border-color .15s,color .15s,transform .1s}
@@ -55,7 +54,6 @@ img{display:block;max-width:100%}
 .field input[type=number]{-moz-appearance:textfield}
 .field input[type=number]::-webkit-outer-spin-button,
 .field input[type=number]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
-.field__moneda{display:block;margin-top:3px;font-weight:400;letter-spacing:.02em;text-transform:none;color:var(--gris);font-size:10.5px}
 .pesos{position:relative;display:flex;align-items:center}
 .pesos__signo{position:absolute;font-weight:600;color:var(--gris);pointer-events:none}
 .pesos input{padding-left:38px !important;font-variant-numeric:tabular-nums}
@@ -66,22 +64,7 @@ img{display:block;max-width:100%}
 
 /* ================= HOME ================= */
 .brand{display:flex;align-items:center;gap:12px}
-.brand__mark{width:26px;height:26px;border-radius:0;background:var(--cielo);position:relative;flex:none}
-.brand__mark::after{content:"";position:absolute;inset:7px;border-radius:0;background:var(--verde)}
 .brand__name{font-size:13px;font-weight:700;letter-spacing:.28em;text-transform:uppercase}
-/* En el home el logo manda: cuadrado grande de esquinas rectas. */
-.brand--grande{gap:20px}
-.brand--grande .brand__mark{width:64px;height:64px}
-.brand--grande .brand__mark::after{inset:17px}
-.brand--grande .brand__name{font-size:26px;letter-spacing:.24em}
-.creditos{display:flex;align-items:center;gap:10px;margin-top:auto;padding-top:34px;opacity:.28;
-  transition:opacity .25s;text-decoration:none;width:fit-content}
-.creditos:hover{opacity:.55}
-.creditos span{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--tinta)}
-.creditos img{width:132px;height:auto}
-/* El bloque se apoya contra el borde interno: queda cerca del centro
-   de la pantalla en vez de flotar al fondo a la derecha. */
-.auth{width:100%;max-width:400px;margin:0 auto 0 0}
 .linkish{background:none;border:0;padding:0;font-weight:600;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
 .alert{font-size:13px;color:#B3261E;background:rgba(179,38,30,.07);padding:9px 12px;border-radius:8px;
   margin-bottom:14px;display:none}
@@ -91,32 +74,9 @@ img{display:block;max-width:100%}
 .topbar{position:sticky;top:0;z-index:40;border-bottom:1px solid var(--linea)}
 .topbar{background:var(--blanco)}
 .topbar__row{max-width:1120px;margin:0 auto;padding:14px 24px;display:flex}
-.logo-perfil{background:none;border:0;padding:6px;cursor:pointer;line-height:0;
-  transition:transform .15s,opacity .15s}
-.logo-perfil:hover{opacity:.8}
-.logo-perfil:active{transform:scale(.94)}
-.logo-perfil__marca{display:block;width:36px;height:36px;object-fit:contain;filter:drop-shadow(0 0 10px rgba(103,232,249,.5))}
-.topbar__user{display:flex;align-items:center;gap:12px;font-size:13px;color:var(--gris)}
 .avatar{width:32px;height:32px;border-radius:50%;background:var(--cielo);color:var(--tinta);display:grid;place-items:center;font-size:12px;font-weight:700;flex:none;background-size:cover;background-position:center}
 .avatar--lg{width:76px;height:76px;font-size:24px}
-.seg{background:none;border:0;cursor:pointer;padding:18px 8px 16px;font-size:12px;font-weight:700;
-  letter-spacing:.16em;text-transform:uppercase;color:var(--gris);transition:color .2s;white-space:nowrap;
-  overflow:hidden;text-overflow:ellipsis}
-.seg:hover,.seg[aria-selected="true"]{color:var(--tinta)}
-.seg--centro[aria-selected="true"]{color:var(--verde)}
 .viewport{max-width:1120px;margin:0 auto;padding:0 24px}
-.panel__head{margin-bottom:22px}
-.panel__title{font-size:clamp(28px,4.4vw,44px);font-weight:200;letter-spacing:-.03em;margin:6px 0 0}
-.panel__note{color:var(--gris);font-size:14.5px;margin:10px 0 0;max-width:56ch}
-.btn--grande{font-size:17px;padding:17px 42px;border-radius:12px}
-.panel-donar{margin-top:18px;border:1px solid var(--linea);border-radius:16px;padding:26px 22px;display:grid;align-items:center}
-.panel-donar--dos{grid-template-columns:1fr 1fr;align-items:start}
-.panel-donar__lado{min-width:0}
-.panel-donar__centro{display:flex;justify-content:center}
-.panel-donar__centro .btn{white-space:nowrap}
-.panel-donar__sub{font-size:12.5px;color:var(--gris);margin:10px 0 0;text-align:center}
-.titulazo--cielo{border-bottom-color:var(--verde)}
-.titulazo--cielo h3{color:var(--cielo)}
 .titulazo{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;margin:44px 0 20px;padding-bottom:14px;border-bottom:3px solid var(--cielo)}
 .titulazo h3{font-size:clamp(28px,4vw,40px);font-weight:200;letter-spacing:-.03em;margin:0}
 .titulazo h3 b{font-weight:600}
@@ -130,7 +90,6 @@ img{display:block;max-width:100%}
   background:var(--nube);font-size:15px;transition:border-color .15s,box-shadow .15s,background .15s}
 .buscador input:focus{outline:none;border-color:var(--verde);background:var(--blanco);
   box-shadow:0 0 0 3px rgba(67,170,139,.14)}
-.buscador__count{position:absolute;right:16px;font-size:12px;color:var(--gris);white-space:nowrap}
 
 /* ---- buscador con sugerencias ---- */
 .buscador-wrap{position:relative;margin-bottom:26px}
@@ -204,7 +163,6 @@ img{display:block;max-width:100%}
 }
 .carrusel__flecha{flex:none;width:38px;height:38px;border-radius:50%;font-size:20px;line-height:1;cursor:pointer;display:grid;place-items:center;transition:border-color .15s,color .15s,background .15s}
 .carrusel__flecha:hover{border-color:var(--verde);color:var(--verde)}
-.carrusel__puntos{display:flex;justify-content:center;gap:7px;margin:14px 0 6px}
 .punto{width:6px;height:6px;border-radius:50%;border:0;padding:0;cursor:pointer;transition:background .2s,transform .2s}
 .punto.is-on{transform:scale(1.4)}
 .sin-resultados{padding:40px 10px;text-align:center;color:var(--gris);font-size:14.5px}
@@ -219,76 +177,19 @@ img{display:block;max-width:100%}
 .card__id{margin-top:0}
 .card__id .avatar{font-size:20px;border:2px solid var(--linea);background-size:contain;background-repeat:no-repeat;box-shadow:none}
 .card__name{letter-spacing:-.02em}
-
-.campana-click{position:relative;border-radius:12px;padding:12px 14px;margin:-12px -14px;cursor:pointer;
-  transition:background .16s}
-.campana-click:hover{background:var(--nube)}
-.campana-click__cta{display:block;font-size:11.5px;font-weight:600;color:var(--cielo);margin-top:8px;
-  opacity:0;transform:translateY(-3px);transition:opacity .18s,transform .18s}
-.campana-click:hover .campana-click__cta{opacity:1;transform:none}
-.causa__row{display:flex;justify-content:space-between;gap:14px;font-size:13.5px;margin-bottom:6px}
-.causa__meta{font-size:12.5px;white-space:nowrap}
 .meter{height:8px;border-radius:99px;background:var(--nube);overflow:hidden;border:1px solid var(--linea)}
 .meter__fill{height:100%;border-radius:99px;transition:width .6s cubic-bezier(.4,0,.2,1)}
 .meter__fill.is-full{background:var(--verde)}
 .causa__pie{display:flex;justify-content:space-between;gap:12px;font-size:12px;color:var(--gris);margin-top:6px}
 .causa__pie b{font-weight:600}
 .aporte-general{margin-top:16px;padding-top:14px;border-top:1px dashed var(--linea)}
-.card__side{border-left:1px solid var(--linea);padding:20px 0 0 24px;display:flex;flex-direction:column;
-  justify-content:space-between;gap:16px}
-.evento-click{border-radius:12px;padding:12px 14px;margin:-12px -14px;cursor:pointer;transition:background .16s}
-.evento-click:hover{background:var(--nube)}
-.evento-click__cta{display:block;font-size:11.5px;font-weight:600;color:var(--cielo);margin-top:8px;
-  opacity:0;transform:translateY(-3px);transition:opacity .18s,transform .18s}
-.evento-click:hover .evento-click__cta{opacity:1;transform:none}
-.evento__fecha{font-size:15px;font-weight:600;margin:6px 0 2px}
-.evento__nombre{font-size:13px;color:var(--gris);margin:0}
-.chiprow{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
-.minitag{font-size:11px;color:var(--gris);border:1px solid var(--linea);border-radius:999px;padding:4px 9px}
-.minitag--link{cursor:pointer;transition:border-color .15s,color .15s}
-.minitag--link:hover{border-color:var(--verde);color:var(--verde)}
-
-/* ---- tarjetas de subasta: la imagen manda ---- */
-.subastas-nav{align-items:center}
-.subastas-nav__txt{font-size:12.5px;color:var(--gris)}
 .subastas-grid{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;
   -webkit-overflow-scrolling:touch;scrollbar-width:none;overscroll-behavior-x:contain;padding-bottom:4px}
 .subastas-grid::-webkit-scrollbar{display:none}
 .subastas-grid > .lote{scroll-snap-align:center}
-.subastas-nav{display:flex;justify-content:center;gap:7px;margin-top:14px}
-.subastas-grid--viejo{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px}
 .subasta-card{border:1px solid var(--linea);border-radius:18px;background:var(--blanco);overflow:hidden;
   display:flex;flex-direction:column;transition:border-color .18s,box-shadow .18s,transform .18s}
 .subasta-card:hover{border-color:var(--cielo);box-shadow:var(--sombra);transform:translateY(-2px)}
-.subasta-foto{position:relative;aspect-ratio:4/3;background-size:contain;background-repeat:no-repeat;background-position:center;background-image:linear-gradient(115deg,rgba(135,206,235,.5),rgba(67,170,139,.32))}
-.subasta-foto__mini{position:absolute;left:12px;bottom:12px;gap:6px}
-.subasta-foto__mini img{width:42px;height:42px;border-radius:9px;object-fit:cover;border:2px solid var(--blanco);
-  box-shadow:var(--sombra)}
-.subasta-foto__cant{position:absolute;right:12px;top:12px;background:rgba(16,36,44,.72);color:var(--blanco);
-  font-size:11px;font-weight:600;padding:5px 9px;border-radius:999px}
-.subasta-card__body{padding:16px 18px 18px;display:flex;flex-direction:column;flex:1}
-.subasta-card__titulo{font-size:16.5px;font-weight:600;letter-spacing:-.015em}
-.subasta-card__oferta{margin-top:14px;padding:10px 0;border-radius:12px;background:transparent}
-.subasta-card__label{font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gris)}
-.subasta-card__precio{font-size:24px;font-weight:600;letter-spacing:-.03em;margin-top:3px}
-.subasta-card__min{font-size:11.5px;color:var(--gris);margin-top:3px}
-.subasta-card__cierre{display:flex;align-items:center;gap:7px}
-.subasta-card__cierre b{font-weight:600}
-.subasta-card__oferta.es-boton{cursor:pointer;border-radius:12px;transition:background .15s}
-.subasta-card__fund{display:flex;align-items:center;gap:11px;margin-top:14px;padding-top:14px;border-top:1px solid var(--linea);font-size:13.5px}
-.subasta-card__fund .avatar{width:34px;height:34px;font-size:11px;flex:none}
-.subasta-card__benef{font-size:11px;letter-spacing:.1em;text-transform:uppercase}
-.subasta-card__fund span{cursor:pointer;display:block;font-size:16px;font-weight:600;letter-spacing:-.015em;margin-top:1px}
-.subasta-card__fund span:hover{color:var(--verde)}
-.subasta-card__accion{margin-top:14px}
-.subasta-card__accion .btn{width:100%}
-
-/* ---- chips de producto (modal de oferta) ---- */
-.subasta-card__productos{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
-.producto-chip{display:flex;align-items:center;gap:7px;border:1px solid var(--linea);border-radius:999px;
-  padding:4px 12px 4px 4px;font-size:12px;background:var(--nube)}
-.producto-chip__img{width:24px;height:24px;border-radius:50%;object-fit:cover;flex:none;background:var(--cielo)}
-.producto-chip__sin{width:24px;height:24px;border-radius:50%;background:var(--cielo);flex:none}
 
 /* ---- cielo nocturno: cubre el fondo del segmento central ---- */
 #screen-app{position:relative;z-index:1;background:transparent}
@@ -350,7 +251,6 @@ body.noche{background:#060f1e}
 /* sobre el cielo, el texto del segmento se aclara */
 body.noche #vistaLista .titulazo{border-bottom-color:rgba(255,255,255,.3)}
 body.noche #vistaLista .titulazo h3{color:#fff}
-body.noche #vistaLista .titulazo--cielo h3{color:var(--cielo)}
 body.noche #vistaLista .titulazo__nota,
 body.noche #vistaLista .subastas-nav__txt{color:rgba(255,255,255,.65)}
 body.noche #vistaLista .carrusel__flecha{background:rgba(255,255,255,.1);
@@ -373,8 +273,6 @@ body.noche #vistaLista .empty{color:rgba(255,255,255,.7);border-color:rgba(255,2
 
 .borrar-sueno{background:none;border:0;padding:6px 0 0;margin-top:8px;cursor:pointer;font-size:11.5px;text-decoration:underline;text-underline-offset:3px;align-self:flex-start}
 .borrar-sueno:active{color:#B3261E}
-@media (max-width:820px){
-}
 .oferta-fila{display:flex;align-items:center;gap:12px;border:1px solid var(--linea);border-radius:12px;padding:10px 14px}
 .oferta-fila.is-mejor{border-color:var(--verde);background:rgba(67,170,139,.06)}
 .oferta-fila .avatar{width:30px;height:30px;font-size:11px;flex:none}
@@ -384,13 +282,6 @@ body.noche #vistaLista .empty{color:rgba(255,255,255,.7);border-color:rgba(255,2
 .oferta-fila__t b{display:block;font-size:13.5px;font-weight:600}
 .oferta-fila__t span{display:block;font-size:11.5px;color:var(--gris)}
 .oferta-fila__m{font-size:15px;font-weight:600;color:var(--verde);white-space:nowrap}
-.deseo-fila{display:flex;align-items:center;gap:16px;padding:16px 0;border-bottom:1px solid var(--linea)}
-.deseo-fila .avatar{width:40px;height:40px;font-size:13px;flex:0 0 40px}
-.deseo-fila__t{flex:1;min-width:0}
-.deseo-fila__t b{display:block;font-size:16px;font-weight:600;letter-spacing:-.015em}
-.deseo-fila__t span{display:block;font-size:12.5px;color:var(--gris);margin-top:3px}
-.deseo-fila__acc{display:flex;align-items:center;gap:8px;flex:none}
-.sobre--wsp:hover{border-color:#25D366;color:#25D366}
 .deseo-texto{font-size:16px;line-height:1.7;white-space:pre-wrap;border-radius:14px;padding:20px 22px;margin:0}
 
 /* ---- estadísticas de fundación ---- */
@@ -417,71 +308,11 @@ body.noche #vistaLista .empty{color:rgba(255,255,255,.7);border-color:rgba(255,2
 
 /* ---- panel de administración ---- */
 .admin{max-width:1180px;margin:0 auto;padding:30px 34px 90px;display:grid;grid-template-columns:230px 1fr;gap:34px}
-.admin__nav{display:flex;flex-direction:column;gap:4px;align-self:start;position:sticky;top:86px}
-.admin__tab{background:none;border:0;border-radius:10px;padding:12px 14px;text-align:left;font-size:13.5px;
-  font-weight:600;color:var(--gris);cursor:pointer;transition:background .15s,color .15s}
-.admin__tab:hover{background:var(--nube);color:var(--tinta)}
-.admin__tab.is-on{background:var(--tinta);color:var(--blanco)}
-.admin__cuerpo{min-width:0}
-.admin__titulo{font-size:30px;font-weight:200;letter-spacing:-.03em;margin:0}
-.admin__lede{font-size:14px;color:var(--gris);margin:8px 0 22px;max-width:64ch;line-height:1.55}
-.admin__barra{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:18px}
-.admin__barra input,.admin__barra select{padding:10px 13px;border:1px solid var(--linea);border-radius:10px;font-size:14px}
-.admin__barra input{flex:1;min-width:200px}
-.tabla{width:100%;border-collapse:collapse;font-size:13.5px}
-.tabla th{text-align:left;font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:0 12px 10px;border-bottom:1px solid var(--linea)}
-.tabla td{padding:12px;border-bottom:1px solid var(--linea);vertical-align:middle}
-.tabla tr.is-baja td{opacity:.45}
-.tabla__quien{display:flex;align-items:center;gap:10px}
-.tabla__quien .avatar{width:32px;height:32px;font-size:11px}
-.tabla__n{font-weight:600}
-.tabla__m{font-size:12px;color:var(--gris)}
-.tabla select{padding:7px 9px;border:1px solid var(--linea);border-radius:8px;font-size:12.5px;background:var(--blanco)}
-.tabla .acciones{justify-content:flex-end}
-.admin__grupo{margin-bottom:34px}
-.admin__grupo h4{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gris);
-  margin:0 0 12px;display:flex;align-items:center;justify-content:space-between;gap:14px}
-.galeria-admin{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px}
 .archivo{border:1px solid var(--linea);border-radius:12px;overflow:hidden;background:var(--blanco)}
-.archivo__img{height:110px;background-size:cover;background-position:center;background-color:var(--nube)}
-.archivo__pie{padding:10px 12px;display:flex;align-items:center;justify-content:space-between;gap:8px}
-.archivo__t{font-size:11.5px;line-height:1.3;min-width:0}
-.archivo__t b{display:block;font-weight:600;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.archivo__t span{color:var(--gris)}
-.mini-x{border:0;background:none;color:var(--gris);font-size:16px;cursor:pointer;line-height:1;padding:2px 4px}
-.mini-x:hover{color:#B3261E}
-.rolchip{font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 8px;
-  border-radius:999px;background:var(--nube);color:var(--gris)}
-.rolchip--admin{background:rgba(16,36,44,.85);color:var(--blanco)}
-.rolchip--mod{background:rgba(135,206,235,.3);color:#1c5c78}
-.rolchip--inv{background:rgba(16,36,44,.06);color:var(--gris)}
-
-.crear-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px}
-.crear-op{display:grid;gap:6px;text-align:left;border:1px solid var(--linea);background:var(--blanco);
-  border-radius:16px;padding:22px 20px;cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .15s}
-.crear-op:hover{border-color:var(--verde);box-shadow:var(--sombra);transform:translateY(-2px)}
-.crear-op__n{font-size:16px;font-weight:600;letter-spacing:-.015em}
-.crear-op__d{font-size:13px;color:var(--gris);line-height:1.45}
-
-.saltar-toggle{display:flex;align-items:center;gap:16px;width:100%;text-align:left;cursor:pointer;
-  border:1px solid var(--linea);border-radius:16px;padding:22px;background:var(--blanco);
-  transition:border-color .18s,background .18s}
-.saltar-toggle:hover{border-color:var(--cielo)}
-.saltar-toggle.is-on{border-color:var(--verde);background:rgba(67,170,139,.06)}
-.saltar-toggle__luz{width:14px;height:14px;border-radius:50%;background:var(--linea);flex:none;transition:background .18s}
-.saltar-toggle.is-on .saltar-toggle__luz{background:var(--verde);box-shadow:0 0 0 5px rgba(67,170,139,.18)}
-.saltar-toggle b{display:block;font-size:15px;font-weight:600}
-.saltar-toggle span span{font-size:13px;color:var(--gris);line-height:1.5}
 .respaldo{display:flex;align-items:center;gap:18px;border:1px solid var(--linea);border-radius:16px;padding:22px}
-.respaldo__num{font-size:40px;font-weight:200;letter-spacing:-.04em;color:var(--verde);line-height:1}
-.respaldo__t{display:grid;gap:3px}
-.respaldo__t b{font-size:15px;font-weight:600}
-.respaldo__t span{font-size:12.5px;color:var(--gris)}
 
 /* ---- pantalla de alta ---- */
 .alta__intro{align-self:start;position:sticky;top:100px}
-.alta--login{align-items:center;min-height:70vh}
-.alta--login .alta__intro{position:static}
 .alta__pasos-barra{display:flex;align-items:center;gap:8px;margin-bottom:26px;max-width:280px}
 .paso-punto{flex:1;height:4px;border-radius:99px;background:var(--linea);transition:background .25s}
 .paso-punto.is-on{background:var(--verde)}
@@ -519,53 +350,9 @@ body.noche #vistaLista .empty{color:rgba(255,255,255,.7);border-color:rgba(255,2
 .empty{padding:24px;text-align:center;font-size:14px}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--linea);border:1px solid var(--linea);
   border-radius:14px;overflow:hidden;margin-top:16px}
-.stat{background:var(--blanco);padding:18px}
-.stat__num{font-size:28px;font-weight:200;letter-spacing:-.03em}
-.stat__label{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gris);margin-top:4px}
-.perfil__hero{border:1px solid var(--linea)}
-.perfil__id{display:flex;align-items:flex-end;gap:18px}
-.perfil__id .avatar{border:4px solid var(--blanco);box-shadow:var(--sombra)}
 .estado{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:5px 9px;border-radius:999px}
-.estado--pend{background:rgba(135,206,235,.22);color:#1c5c78}
-.estado--no{background:rgba(16,36,44,.07);color:var(--gris)}
-.tag{font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--verde);
-  border:1px solid rgba(67,170,139,.35);border-radius:999px;padding:5px 9px;white-space:nowrap}
 .colabs{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:18px}
-.colab-card{position:relative;border:1px solid var(--linea);border-radius:18px;padding:30px 20px 22px;
-  text-align:center;background:var(--blanco);transition:border-color .18s,box-shadow .18s,transform .18s;
-  border-top:3px solid var(--linea)}
-.colab-card--persona{border-top-color:var(--cielo)}
-.colab-card--org{border-top-color:var(--verde)}
-.colab-card__tipo{position:absolute;top:12px;right:14px;font-size:9.5px;font-weight:700;letter-spacing:.14em;
-  text-transform:uppercase;padding:4px 8px;border-radius:999px}
-.colab-card--persona .colab-card__tipo{background:rgba(135,206,235,.28);color:#1c5c78}
-.colab-card--org .colab-card__tipo{background:rgba(67,170,139,.12);color:var(--verde)}
-.colab-card__aporte{font-size:12.5px;color:var(--gris);line-height:1.5;margin:10px 0 0}
-.colab-card__causas{list-style:none;padding:0;margin:8px 0 0;display:grid;gap:7px}
-.colab-card__causas li{display:grid;gap:1px;font-size:12px;padding:7px 10px;background:var(--nube);border-radius:9px}
-.colab-card__causas b{font-weight:600;font-size:12.5px}
-.colab-card__causas span{color:var(--gris);font-size:11px}
-.colab-card:hover{border-color:var(--cielo);box-shadow:var(--sombra);transform:translateY(-2px)}
-.colab-card__foto{width:92px;height:92px;border-radius:50%;margin:0 auto 14px;display:grid;place-items:center;
-  font-size:28px;font-weight:700;color:var(--tinta);background-size:cover;background-position:center;
-  border:3px solid var(--blanco);box-shadow:0 0 0 1px var(--linea),var(--sombra)}
-.colab-card__nombre{font-size:16.5px;font-weight:600;letter-spacing:-.015em}
-.colab-card__rol{font-size:12.5px;color:var(--gris);margin-top:3px}
-.colab-card__label{font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gris);
-  margin:16px 0 8px}
-.colab-card__funds{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
-.colab{border:1px solid var(--linea);border-radius:14px;padding:16px 18px;display:flex;align-items:center;gap:16px;
-  transition:border-color .18s}
-.colab:hover{border-color:var(--cielo)}
-.colab__body{flex:1;min-width:0}
-.colab__name{font-size:16px;font-weight:600;letter-spacing:-.01em}
-.colab__rol{font-size:12.5px;color:var(--gris);margin-top:2px}
 .rank{display:grid;gap:1px;background:var(--linea);border:1px solid var(--linea);border-radius:14px;overflow:hidden}
-.rank__row{background:var(--blanco);display:grid;grid-template-columns:34px 1fr auto;align-items:center;gap:14px;padding:13px 18px}
-.rank__row--simple{grid-template-columns:1fr auto}
-.rank__row.is-me{background:rgba(135,206,235,.12)}
-.rank__pos{font-size:14px;font-weight:700;color:var(--gris);text-align:center}
-.rank__row:nth-child(1) .rank__pos{color:var(--verde)}
 .acciones{display:flex;flex-wrap:wrap;gap:8px}
 
 /* ---- página de fundación (detalle) ---- */
@@ -579,11 +366,6 @@ body.noche #vistaLista .empty{color:rgba(255,255,255,.7);border-color:rgba(255,2
 .ficha__lugar{font-size:13.5px;color:var(--gris);margin-top:3px}
 .ficha__acciones{display:flex;flex-direction:column;gap:10px;margin-top:16px;padding:0 20px}
 .ficha__acciones .btn{width:100%;min-height:50px}
-
-.ficha--colab{border-top:3px solid var(--linea)}
-.ficha--colab.colab-card--persona{border-top-color:var(--cielo)}
-.ficha--colab.colab-card--org{border-top-color:var(--verde)}
-.ficha__texto{font-size:14.5px;color:var(--gris);line-height:1.6;margin:0;padding:0 26px 22px}
 
 /* ---- presentación ---- */
 .presentacion__texto{font-size:15.5px;line-height:1.65;white-space:pre-wrap;margin:0}
@@ -606,20 +388,11 @@ body.noche #vistaLista .empty{color:rgba(255,255,255,.7);border-color:rgba(255,2
 .bloque__pie{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:16px}
 .bloque__fecha{font-size:13px;font-weight:600;color:var(--verde)}
 .asistentes{font-size:12.5px;color:var(--gris);margin-left:auto}
-
-/* ---- destino y niveles dentro de Donar ---- */
-.tabs--destino{grid-template-columns:repeat(3,1fr);margin-bottom:16px}
-.destino-pane{display:none}
-.destino-pane.is-on{display:block}
 .niveles{display:grid;gap:8px;margin-bottom:16px}
 .nivel{display:grid;gap:2px;text-align:left;border:1px solid var(--linea);background:var(--blanco);
   border-radius:12px;padding:13px 15px;cursor:pointer;transition:border-color .15s,background .15s}
 .nivel:hover{border-color:var(--cielo)}
 .nivel.is-on{border-color:var(--verde);background:rgba(67,170,139,.06)}
-.nivel__nombre{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gris)}
-.nivel__monto{font-size:18px;font-weight:600;letter-spacing:-.02em}
-.nivel__monto small{font-size:12px;font-weight:400;color:var(--gris)}
-.nivel__benef{font-size:12.5px;color:var(--gris);line-height:1.45;margin-top:2px}
 
 /* ---- valor complementario ---- */
 .vopciones{display:grid;gap:9px}
@@ -668,9 +441,6 @@ body.noche #vistaLista .empty{color:rgba(255,255,255,.7);border-color:rgba(255,2
 .statc__f-t span{display:block;font-size:11.5px;color:var(--gris);margin-top:1px}
 .statc__f-v{font-size:13px;font-weight:600;color:var(--verde);white-space:nowrap}
 .stats-lista .row:last-child{border-bottom:0}
-.referidos{border:1px solid rgba(67,170,139,.3);background:rgba(67,170,139,.05);border-radius:16px;padding:22px}
-.referidos__num{font-size:32px;font-weight:200;letter-spacing:-.04em;color:var(--verde);line-height:1}
-.referidos__t{font-size:13.5px;color:var(--gris);line-height:1.55;margin:8px 0 16px}
 .referidos__link{display:flex;gap:8px}
 .referidos__link input{flex:1;min-width:0;padding:11px 13px;border:1px solid var(--linea);border-radius:10px;
   font-size:13px;background:var(--blanco);color:var(--gris)}
@@ -693,9 +463,6 @@ body.noche #vistaLista .empty{color:rgba(255,255,255,.7);border-color:rgba(255,2
 .selfund__op > span:not(.avatar){flex:1;min-width:0}
 .selfund__op b{display:block;font-size:14px;font-weight:600;letter-spacing:-.01em}
 .selfund__op span span{display:block;font-size:12px;color:var(--gris);margin-top:1px}
-.selfund__check{margin-left:auto;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;
-  border:1px solid var(--linea);font-size:13px;color:var(--gris);flex:none}
-.selfund__op.is-on .selfund__check{background:var(--verde);border-color:var(--verde);color:var(--blanco)}
 .selfund__vacio{padding:16px;font-size:13px;color:var(--gris);text-align:center;margin:0}
 .selfund__elegido{display:flex;align-items:center;gap:11px;padding:11px 14px;background:rgba(67,170,139,.07)}
 .selfund__elegido .avatar{width:34px;height:34px;font-size:12px}
@@ -741,7 +508,6 @@ body.noche #vistaLista .empty{color:rgba(255,255,255,.7);border-color:rgba(255,2
 .plan__monto{font-size:26px;font-weight:200;letter-spacing:-.03em;margin-top:8px}
 .plan__monto span{font-size:13px;font-weight:400;color:var(--gris);letter-spacing:0}
 .plan__pie{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:auto;padding-top:16px}
-.plan__cant{font-size:12px;color:var(--gris);margin-left:auto}
 
 /* ---- contactar donante ---- */
 .sobre{width:30px;height:30px;border-radius:8px;border:1px solid var(--linea);background:var(--blanco);
@@ -749,56 +515,18 @@ body.noche #vistaLista .empty{color:rgba(255,255,255,.7);border-color:rgba(255,2
   transition:border-color .15s,color .15s}
 .sobre:hover{border-color:var(--verde);color:var(--verde)}
 .sobre svg{width:15px;height:15px}
-.rank__row{position:relative}
-.rank__acciones{display:flex;align-items:center;gap:10px}
-
-/* ---- encabezado del perfil con controles ---- */
-.perfil-head{display:flex;justify-content:space-between;flex-wrap:wrap;margin-bottom:22px}
 .buscador-cuentas{flex:1;min-width:230px;margin-bottom:0}
 .buscador-cuentas .buscador input{padding:11px 14px 11px 42px;font-size:14px}
 .handle{font-size:13px;color:var(--verde);font-weight:600;margin-top:4px}
 .sug__handle{color:var(--verde);font-weight:600}
 .sug__tipo{margin-left:auto;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
   color:var(--gris);white-space:nowrap}
-.perfil-head .panel__title{margin:0}
-.perfil-head__ctrls{display:flex;flex-wrap:wrap}
 .switch{display:flex;align-items:center;gap:11px;border:1px solid var(--linea);border-radius:12px;cursor:pointer;text-align:left;transition:border-color .18s,background .18s}
 .switch:hover{border-color:var(--cielo)}
 .switch.is-on{border-color:var(--verde);background:rgba(67,170,139,.06)}
-.switch__riel{width:36px;height:20px;border-radius:99px;background:var(--linea);position:relative;flex:none;
-  transition:background .2s}
-.switch.is-on .switch__riel{background:var(--verde)}
-.switch__bola{position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;background:var(--blanco);
-  box-shadow:0 1px 3px rgba(16,36,44,.3);transition:transform .2s}
-.switch.is-on .switch__bola{transform:translateX(16px)}
-.switch__t b{display:block;font-weight:600;letter-spacing:-.01em}
-.switch__t span{display:block;margin-top:2px;line-height:1.4}
-
-.deseos-config{margin:18px 0 6px}
-.deseos-config .switch{width:100%}
 
 .apoyo{align-items:center;gap:14px;border:1px solid var(--linea);border-radius:14px}
 .apoyo .avatar{width:42px;height:42px;font-size:14px;flex:0 0 42px}
-.apoyo__t{flex:1;min-width:0}
-.apoyo__t b{display:block;font-size:15.5px;font-weight:600;letter-spacing:-.015em;cursor:pointer}
-.apoyo__t b:hover{color:var(--verde)}
-.apoyo__t span{display:block;font-size:12.5px;margin-top:2px}
-.apoyo__m{letter-spacing:-.02em}
-
-/* ---- insignias de fundaciones apoyadas ---- */
-.insignias{display:grid;gap:14px}
-.insignia{position:relative;border:0;padding:14px 8px 16px;cursor:pointer;text-align:center;border-radius:14px;transition:background .15s}
-.insignia:hover{background:var(--nube)}
-.insignia__aro{display:grid;place-items:center;width:70px;height:70px;margin:0 auto 10px;border-radius:50%;
-  border:2px solid var(--linea);transition:border-color .18s}
-.insignia:hover .insignia__aro{border-color:var(--cielo)}
-.insignia.is-mensual .insignia__aro{border-color:var(--verde);border-width:3px}
-.insignia__foto{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;
-  background-size:cover;background-position:center;font-size:16px;font-weight:700;color:var(--tinta)}
-.insignia__n{display:block;font-size:12.5px;font-weight:600;line-height:1.25;letter-spacing:-.01em}
-.insignia__d{display:block;font-size:11px;color:var(--gris);margin-top:3px}
-.insignia__tag{display:inline-block;margin-top:6px;font-size:9.5px;font-weight:700;letter-spacing:.1em;
-  text-transform:uppercase;color:var(--verde);background:rgba(67,170,139,.12);padding:3px 7px;border-radius:999px}
 
 /* ---- desplegables ---- */
 .desplegable{border:1px solid var(--linea);border-radius:14px;overflow:hidden;margin-top:26px}
@@ -809,11 +537,6 @@ body.noche #vistaLista .empty{color:rgba(255,255,255,.7);border-color:rgba(255,2
 .desplegable.is-open .desplegable__flecha{transform:rotate(180deg)}
 .desplegable__cuerpo{display:none;padding:0 18px 18px;border-top:1px solid var(--linea)}
 .desplegable.is-open .desplegable__cuerpo{display:block}
-.tabla--hist{margin-top:14px}
-.tabla--hist th{padding-bottom:8px}
-.tabla--hist td{padding:11px 10px}
-.hist__tipo{display:block;font-size:11px;color:var(--gris);margin-top:2px}
-.hist__monto{text-align:right;font-weight:600;color:var(--verde);white-space:nowrap}
 
 /* ---- contacto de la fundación ---- */
 .contacto{border:1px solid var(--linea);border-radius:14px;overflow:hidden;margin-top:16px}
@@ -839,15 +562,12 @@ body.noche #vistaLista .empty{color:rgba(255,255,255,.7);border-color:rgba(255,2
   color:#fff;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:0;
   transition:opacity .18s;pointer-events:none}
 .avatar-edit:hover::after,.avatar-edit:hover::before{opacity:1}
-.perfil__id .editable{padding:2px 6px;margin-left:-6px}
 .pista-edicion{font-size:12px;color:var(--gris);margin:10px 0 0}
 
 /* ---- editar perfil ---- */
 
 /* ---- propuesta de donación ---- */
 .propuesta{border:1px solid rgba(67,170,139,.3);background:rgba(67,170,139,.05);border-radius:16px;padding:22px}
-.propuesta__sub{font-size:13.5px;color:var(--gris);margin:12px 0 0;line-height:1.55;max-width:60ch}
-.propuesta__lista{margin-top:18px}
 
 /* ---- modal ---- */
 .modal{position:fixed;inset:0;z-index:80;display:none;align-items:center;justify-content:center;padding:20px}
@@ -868,51 +588,25 @@ body.noche #vistaLista .empty{color:rgba(255,255,255,.7);border-color:rgba(255,2
 .tab{background:none;border:0;border-radius:9px;padding:9px 6px;font-size:12px;font-weight:600;
   color:var(--gris);cursor:pointer;line-height:1.25}
 .tab.is-on{background:var(--blanco);color:var(--tinta);box-shadow:var(--sombra)}
-.tabpane{display:none}
-.tabpane.is-on{display:block}
 .check{display:flex;gap:10px;align-items:flex-start;font-size:14px;cursor:pointer}
 .check input{margin-top:3px;accent-color:var(--verde)}
 .toast{position:fixed;left:50%;bottom:26px;padding:13px 20px;border-radius:999px;font-size:14px;z-index:95;max-width:90vw;text-align:center}
 
-/* ================= MODO DIOS ================= */
-.gm.is-open{display:block}
-.gm button.gmb{background:#1A1A1A;border:1px solid #2A2A2A;color:#EDEDED;border-radius:9px;padding:9px 10px;
-  font-size:12.5px;cursor:pointer;text-align:left;transition:.15s}
-.gm button.gmb:hover{background:#242424;border-color:var(--verde);color:#fff}
-.gm button.gmb.is-on{border-color:var(--verde);color:var(--verde)}
-.gm select{width:100%;background:#1A1A1A;border:1px solid #2A2A2A;color:#EDEDED;border-radius:9px;
-  padding:10px;font-size:13px}
-body.godmode .topbar{box-shadow:inset 0 3px 0 #000}
-
 @media (max-width:940px){
-  .home{grid-template-columns:1fr}
   .card__body{grid-template-columns:1fr;gap:18px}
-  .card__side{border-left:0;border-top:1px solid var(--linea);padding:18px 0 0}
-  .seg{font-size:10.5px;letter-spacing:.1em;padding:16px 4px 14px}
   .stats{grid-template-columns:1fr}
   .grid2{grid-template-columns:1fr}
-  .subasta-card__top{flex-direction:column;align-items:stretch}
-  .subasta-card__top .btn{align-self:flex-start}
   .topbar__user span:not(.avatar){display:none}
   .carrusel__slide{flex-basis:88%}
   .alta{grid-template-columns:1fr;gap:24px;padding:30px 18px 70px}
   .alta__intro{position:static}
-  .panel-donar,.panel-donar--dos{grid-template-columns:1fr;gap:14px}
-  .panel-donar__centro{order:-1}
-  .panel-donar__centro .btn{width:100%}
   .stats-pantalla{padding:24px 16px 70px}
   .admin{grid-template-columns:1fr;gap:20px;padding:22px 16px 70px}
-  .admin__nav{flex-direction:row;overflow-x:auto;position:static}
-  .admin__tab{white-space:nowrap;font-size:12.5px}
-  .tabla thead{display:none}
-  .tabla td{display:block;border:0;padding:6px 0}
-  .tabla tr{display:block;border-bottom:1px solid var(--linea);padding:14px 0}
   .alta__top{padding:16px 18px}
   .alta__form{padding:22px}
   .subastas-grid{grid-template-columns:1fr}
   .carrusel__flecha{width:32px;height:32px;font-size:17px}
   .buscador input{padding:13px 60px 13px 42px;font-size:14px}
-  .buscador__count{font-size:11px}
 }
 
 /* ==================== APP MÓVIL (siempre activa en la beta) ==================== */
@@ -929,13 +623,11 @@ body{-webkit-text-size-adjust:100%}
   .alta__top{padding-top:calc(12px + env(safe-area-inset-top))}
   .topbar__row{padding:10px 14px}
   .brand__name{font-size:10px;letter-spacing:.18em}
-  .brand__mark{width:22px;height:22px}
   .viewport{padding-top:14px}
   .panels{align-items:start}
   .panel{padding:6px 0 30px}
   .panel[aria-hidden="true"]{display:none}
   .panels{grid-template-columns:1fr;transform:none !important}
-  .panel__head{margin-bottom:14px}
 
   /* menú principal: alto cómodo para el pulgar */
 
@@ -959,12 +651,6 @@ body{-webkit-text-size-adjust:100%}
   .card__id .avatar{width:54px;height:54px}
   .ecard__img{height:150px}
 
-  /* sueños */
-
-  /* subastas */
-  .subasta-card__titulo{font-size:17px}
-  .subastas-nav{gap:10px}
-
   /* modales a pantalla completa, como una app */
   .modal{align-items:flex-end;padding:0}
   .modal__box,.modal__box--grande{max-width:100%;width:100%;max-height:88vh;max-height:88dvh;padding:20px 16px 16px;
@@ -980,16 +666,8 @@ body{-webkit-text-size-adjust:100%}
   .grid2{grid-template-columns:1fr;gap:0}
   .acciones{flex-wrap:wrap}
   .acciones .btn{flex:1;min-width:130px}
-
-  /* perfil */
-  .perfil-head{gap:14px;margin-bottom:16px}
-  .panel__title{font-size:26px}
   .buscador-cuentas{max-width:100%;order:3}
-  .perfil-head__ctrls{width:100%;justify-content:space-between}
-  .switch__t span{max-width:26ch}
-  .insignias{gap:12px}
   .apoyo{flex-wrap:wrap}
-  .apoyo__m{margin-left:auto}
 
   /* tablas y listas */
   .row{flex-direction:column;align-items:flex-start;gap:10px}
@@ -1025,32 +703,12 @@ body{-webkit-text-size-adjust:100%}
    una pantalla de una sola tarjeta se nota mucho. */
 #screen-fundaciones .buscador-wrap{margin-bottom:10px}
 
-#screen-subastas .subasta-foto{aspect-ratio:auto}
-
 /* los deseos también se pasan de a uno */
 .suenos-lista{flex:1;min-height:0;flex-direction:row;overscroll-behavior-x:contain}
 
 #screen-deseos .buscador{max-width:100%}
-
-/* Cumplí tu deseo: formulario que entra y botones cómodos */
-/* la acción queda pegada abajo, al alcance del pulgar */
-
-/* Perfil: todo al alcance del pulgar */
-
-.perfil-head{flex-direction:column;align-items:stretch;gap:12px}
-.perfil-head .panel__title{font-size:24px}
-.perfil-head__ctrls{flex-direction:column;align-items:stretch}
-.perfil-head__ctrls .btn{width:100%;min-height:46px}
 .switch{width:100%;padding:12px 14px}
-.switch__t b{font-size:13.5px}
-.switch__t span{max-width:none;font-size:11.5px}
 .buscador-cuentas{max-width:100%;order:0}
-.perfil__hero .banner{height:70px}
-.perfil__id{padding:0 16px 16px;margin-top:-24px}
-.perfil__id .avatar{width:62px;height:62px;font-size:20px}
-.panel-donar{grid-template-columns:1fr;gap:10px}
-.panel-donar .btn{min-height:52px}
-.insignias{grid-template-columns:repeat(auto-fill,minmax(64px,1fr))}
 .stack{gap:10px}
 .subhead{margin:22px 0 10px}
 .subhead span{font-size:10.5px}
@@ -1073,14 +731,7 @@ body{-webkit-text-size-adjust:100%}
 #screen-fundaciones .card__name{font-size:19px;line-height:1.15}
 #screen-fundaciones .card__place{font-size:12px;margin-top:2px}
 #screen-fundaciones .card__body .eyebrow{margin-top:0 !important;margin-bottom:8px}
-/* mostramos la campaña principal: el resto está en la ficha */
-#screen-fundaciones .campana-click__cta{display:none}
-#screen-fundaciones .card__side{display:none}
 #screen-fundaciones .card .btn--primary{width:100%;min-height:50px;margin-top:12px}
-
-/* ===== Subastas ===== */
-
-#screen-subastas .subasta-card__accion .btn{width:100%}
 
 /* ==================== BASE MÓVIL DEFINITIVA ====================
    Un solo scroll: el de la página. iOS se lleva mal con contenedores
@@ -1135,11 +786,6 @@ h1,h2,h3,p,b,span{overflow-wrap:anywhere}
 /* subastas y muro */
 .subasta-card,.post{background:linear-gradient(180deg,var(--noche2),var(--noche));
   border:1px solid rgba(61,219,181,.22);color:#fff}
-.subasta-card__titulo,.post__titulo{color:#fff}
-.subasta-card__precio{color:var(--turquesa);text-shadow:0 0 20px rgba(61,219,181,.4)}
-.subasta-card__label,.subasta-card__min,.subasta-card__cierre{color:rgba(255,255,255,.55)}
-.subasta-card__fund{border-top-color:var(--linea-noche);color:rgba(255,255,255,.6)}
-.subasta-card__fund span{color:#fff}
 .subasta-card .btn--cielo{background:linear-gradient(180deg,#3ddbb5,#1f9c7f);border:0;color:#06231c;font-weight:600}
 
 /* eventos */
@@ -1156,12 +802,6 @@ h1,h2,h3,p,b,span{overflow-wrap:anywhere}
 .post__cab .avatar{width:38px;height:38px;font-size:12px;flex:none;box-shadow:0 0 0 2px rgba(61,219,181,.45)}
 .post__cab b{display:block;font-size:14px;cursor:pointer}
 .post__cab span{display:block;font-size:11.5px;color:rgba(255,255,255,.5)}
-.post__titulo{font-size:19px;font-weight:400;letter-spacing:-.02em;margin:0 0 10px;line-height:1.2}
-.post__texto{font-size:14px;line-height:1.6;color:rgba(255,255,255,.78);margin:12px 0 0}
-.post__fotos{display:grid;gap:6px;border-radius:14px;overflow:hidden}
-.post__fotos.es-varias{grid-template-columns:1fr 1fr}
-.post__fotos span{display:block;height:150px;background-size:cover;background-position:center;
-  background-color:rgba(255,255,255,.06)}
 .post__previas{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
 .post__previas span{width:62px;height:62px;border-radius:10px;background-size:cover;background-position:center;
   border:1px solid var(--linea)}
@@ -1196,8 +836,6 @@ h1,h2,h3,p,b,span{overflow-wrap:anywhere}
   filter:blur(.4px);animation:corre 2.8s ease-in-out infinite}
 @keyframes corre{0%{left:-36%}100%{left:102%}}
 
-.portada__frase{position:relative;z-index:1;margin:0 0 30px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.82);font-weight:500;text-shadow:0 0 18px rgba(255,255,255,.22)}
-
 .portada__zona{position:relative;z-index:1;width:100%;max-width:none;
   animation:apareceZona .38s cubic-bezier(.2,.8,.3,1) both}
 @keyframes apareceZona{from{opacity:0;transform:translateY(12px) scale(.98)}to{opacity:1;transform:none}}
@@ -1208,14 +846,9 @@ h1,h2,h3,p,b,span{overflow-wrap:anywhere}
 .cta:active{transform:scale(.965);
   box-shadow:0 0 46px rgba(94,234,212,.85),0 0 90px rgba(163,230,53,.45),
     inset 0 1px 0 rgba(255,255,255,.6);filter:brightness(1.08)}
-.cta__ico{flex:none;width:38px;height:38px;display:grid;place-items:center;color:#06312a}
-.cta__ico svg{width:100%;height:100%;filter:drop-shadow(0 1px 2px rgba(255,255,255,.4))}
-.cta__linea{width:1px;height:34px;background:rgba(255,255,255,.45);border-radius:1px;flex:none}
 .cta__txt{text-shadow:0 2px 10px rgba(0,0,0,.32)}
 .cta--corto{width:100%;padding:17px 22px;border-radius:18px;margin-top:6px}
 .cta--corto .cta__txt{font-size:18px;letter-spacing:.04em}
-
-.portada__pie{margin:16px 0 0;color:rgba(255,255,255,.72)}
 
 /* acceso, con vidrio */
 .portada__acceso{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:24px;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 20px 50px rgba(0,0,0,.42),inset 0 1px 0 rgba(255,255,255,.16)}
@@ -1232,13 +865,6 @@ h1,h2,h3,p,b,span{overflow-wrap:anywhere}
 .portada__links{display:flex;flex-wrap:wrap;justify-content:center;margin-top:16px}
 .portada__links .linkish{color:rgba(255,255,255,.72);font-size:13px}
 .portada__links .linkish:hover{color:#5eead4}
-.portada__ayuda{margin:14px 0 0;font-size:11.5px;color:rgba(255,255,255,.5);line-height:1.5}
-.portada__ayuda b{color:rgba(94,234,212,.9)}
-
-.portada__sincuenta{position:relative;z-index:1;margin-top:24px;background:none;border:0;cursor:pointer;
-  color:rgba(255,255,255,.5);font-size:13px;font-family:inherit;text-decoration:underline;
-  text-underline-offset:4px}
-.portada__sincuenta:active{color:#fff}
 
 #screen-home .alert{background:rgba(229,72,77,.14);border:1px solid rgba(229,72,77,.4);color:#ffb4b6}
 
@@ -1247,7 +873,6 @@ h1,h2,h3,p,b,span{overflow-wrap:anywhere}
   .portada__marca{margin-top:14px}
   .portada__m1,.portada__m2{font-size:clamp(34px,10vw,46px)}
   .portada__linea{margin:14px 0 10px}
-  .portada__frase{margin-bottom:20px}
   .cta{padding:18px 22px}
 }
 
@@ -1275,7 +900,6 @@ body{color:#fff}
   backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
   border-bottom:1px solid rgba(255,255,255,.08) !important}
 .brand__name{color:#fff}
-.logo-perfil__marca{box-shadow:0 0 18px rgba(103,232,249,.35)}
 
 /* ---------- panel de vidrio, la pieza base ---------- */
 .card,.subasta-card,.sueno-fila,.ecard,.post,.plan,.bloque,.ficha,.st-caja,.oferta-fila,
@@ -1335,18 +959,14 @@ b,strong{color:#fff}
 .meter,.sueno-card__barra,.avance__meter{background:rgba(255,255,255,.08) !important;
   border-color:rgba(255,255,255,.12) !important}
 .meter__fill{background:linear-gradient(90deg,#22d3ee,#2dd4bf) !important;box-shadow:0 0 14px rgba(45,212,191,.5)}
-.causa__row span,.causa__meta{color:var(--celeste) !important}
 
 /* ---------- filas, tablas, desplegables ---------- */
 .row{background:transparent !important;border-bottom:1px solid rgba(255,255,255,.08) !important;border-radius:0 !important;box-shadow:none !important}
 .row__main,.tabla__n{color:#fff !important}
-.tabla th{color:var(--celeste) !important;border-color:rgba(255,255,255,.12) !important}
-.tabla td{border-color:rgba(255,255,255,.08) !important;color:#fff}
 .desplegable__cab{background:transparent !important;color:#fff}
 .desplegable__meta{color:var(--celeste) !important}
 .empty{background:rgba(255,255,255,.03) !important;border:1px dashed rgba(255,255,255,.16) !important;color:var(--celeste) !important;border-radius:16px}
 .estado{border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.06);color:var(--celeste)}
-.estado--ok{background:rgba(45,212,191,.16);color:var(--turq);border-color:rgba(45,212,191,.35)}
 
 /* ---------- carruseles ---------- */
 .carrusel__flecha{background:rgba(255,255,255,.07) !important;border:1px solid rgba(255,255,255,.16) !important;color:#fff !important}
@@ -1364,19 +984,8 @@ b,strong{color:#fff}
 .modal__sub{color:var(--celeste)}
 .deseo-texto{background:rgba(255,255,255,.05) !important;color:#fff}
 .toast{background:rgba(8,22,38,.96);border:1px solid var(--canto);color:#fff;box-shadow:var(--sombra-honda)}
-
-/* ---------- planes ---------- */
-.plan__nivel{color:var(--turq) !important}
 .plan__monto{color:#fff !important}
-
-/* ---------- perfil ---------- */
-.perfil__hero{border-radius:22px;overflow:hidden}
 .switch{background:rgba(255,255,255,.05) !important;border-color:rgba(255,255,255,.16) !important}
-.switch__t b{color:#fff}
-.switch__t span{color:var(--celeste)}
-.insignia{background:transparent}
-.apoyo__t b{color:#fff}
-.apoyo__t span{color:var(--celeste)}
 
 /* la entrada del menú conserva su color pero con el mismo vidrio */
 
@@ -1385,35 +994,6 @@ b,strong{color:#fff}
 /* portada */
 .cta{gap:0}
 .cta__txt{width:100%;text-align:center}
-.portada__beta{position:relative;z-index:1;margin:16px 0 0;font-size:12.5px;color:rgba(159,196,216,.75);line-height:1.9}
-.atajo{background:none;border:0;padding:2px 4px;cursor:pointer;font-family:inherit;
-  font-size:12.5px;font-weight:700;letter-spacing:.08em}
-.atajo--verde{color:#4ade80;text-shadow:0 0 12px rgba(74,222,128,.65)}
-.atajo--cielo{color:#67e8f9;text-shadow:0 0 12px rgba(103,232,249,.65)}
-.atajo:active{filter:brightness(1.25)}
-
-/* las 5 entradas, un color cada una */
-
-/* ---------- Cumplí tu sueño: entra en una pantalla ---------- */
-/* el buscador de fundación, discreto */
-
-/* ---------- Sueños: la descripción se lee entera ---------- */
-
-/* ---------- Subastas ---------- */
-.subasta-foto{background-color:rgba(255,255,255,.04) !important;border-radius:18px 18px 0 0}
-.subasta-foto__mini{display:none}
-.subasta-card__cierre{color:var(--celeste) !important;background:transparent !important;border:0 !important;padding:0 !important;margin-top:10px;font-size:12px}
-.subasta-card__cierre b{color:#fff !important}
-.subasta-card__cierre span{color:var(--celeste) !important}
-.subasta-card__cierre.is-urgente{color:#fca5a5 !important}
-.subasta-card__cierre.is-urgente b{color:#fecaca !important}
-.subasta-card__oferta.es-boton{background:transparent !important;margin:0;padding:10px 0}
-.subasta-card__oferta.es-boton:active{background:rgba(103,232,249,.08) !important}
-.subasta-card__productos,.producto-chip{display:none !important}
-.subasta-card__accion .btn{background:linear-gradient(100deg,#22d3ee,#2dd4bf 55%,#34d399) !important;color:#04222b !important;border:0 !important}
-
-/* ---------- perfil ---------- */
-.perfil-head__ctrls{gap:8px}
 
 /* ==================== TARJETAS DE ENTRADA ====================
    Superficie pulida: degradado intenso, brillo alto, canto luminoso,
@@ -1455,8 +1035,6 @@ body.menu-fijo{overflow:hidden}
 /* montos de las campañas, más brillantes */
 .causa__pie span{color:var(--celeste) !important}
 .causa__pie b{color:#5eead4 !important;text-shadow:0 0 14px rgba(94,234,212,.45)}
-.causa__row b{color:#67e8f9 !important}
-.causa__meta{color:#7dd3fc !important}
 
 /* ==================== CIERRE: UNA SOLA RESOLUCIÓN ====================
    Última capa. Fija el lienzo para que ninguna regla heredada del
@@ -1470,13 +1048,10 @@ body.portada,body.menu-fijo{height:100vh;height:100dvh;overflow:hidden !importan
 /* el contenido de la portada se mide en alto de pantalla */
 
 .portada__marca{margin-top:clamp(10px,2.2vh,22px)}
-.portada__frase{font-size:clamp(11px,1.6vh,14px)}
 .cta{padding:clamp(15px,2.4vh,22px) 26px}
 .cta__txt{font-size:clamp(21px,3.4vh,30px)}
-.portada__pie{margin-top:clamp(8px,1.6vh,16px);font-size:clamp(12px,1.7vh,14px)}
 .campo-neon{margin-bottom:clamp(8px,1.6vh,14px)}
 .campo-neon input{padding:clamp(10px,1.8vh,14px) 15px}
-.portada__beta{margin-top:clamp(8px,1.6vh,16px)}
 .portada__halo{opacity:.75}
 
 /* el menú: la barra inferior es el piso exacto */
@@ -1496,21 +1071,6 @@ body.portada,body.menu-fijo{height:100vh;height:100dvh;overflow:hidden !importan
   background:linear-gradient(90deg,transparent,rgba(190,245,255,.95));
   box-shadow:0 0 10px rgba(160,235,255,.9)}
 .chispas .fugaz.is-on{animation:cruza var(--dur,1.4s) ease-in forwards}
-
-/* ---- Cumplí tu sueño: tarjeta de vidrio y selector en tiras ---- */
-
-.fund-tiras{display:flex;gap:9px;overflow-x:auto;padding:2px 0 6px;
-  scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;scrollbar-width:none}
-.fund-tiras::-webkit-scrollbar{display:none}
-.fund-tira{flex:0 0 auto;scroll-snap-align:start;display:flex;align-items:center;gap:9px;
-  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);border-radius:999px;
-  padding:7px 14px 7px 7px;cursor:pointer;color:#fff;font-family:inherit;
-  transition:border-color .16s,background .16s,box-shadow .16s}
-.fund-tira .avatar{width:30px;height:30px;font-size:11px;flex:none}
-.fund-tira__n{font-size:13px;white-space:nowrap}
-.fund-tira.is-on{border-color:rgba(94,234,212,.8);background:rgba(45,212,191,.16);
-  box-shadow:0 0 20px rgba(45,212,191,.28)}
-.fund-tira.is-on .fund-tira__n{color:#5eead4;font-weight:600}
 
 /* ==================== REPARTO DEL ESPACIO ====================
    El menú se resuelve con una grilla de cinco filas iguales:
@@ -1551,22 +1111,9 @@ body.sin-scroll{overflow:hidden !important;position:fixed;inset:0}
 
 /* ==================== NOTIFICACIONES ==================== */
 #screen-avisos #listaAvisos{flex-direction:column}
-
-/* ---- perfil ordenado ---- */
-#panelIzq .panel__title{margin:6px 0 14px}
 #panelIzq .buscador-wrap{margin-bottom:16px}
-#panelIzq .perfil__hero{margin-bottom:14px}
 #panelIzq .switch{width:100%;margin-bottom:4px}
 .apoyo{display:block;padding:14px 16px}
-.apoyo__cab{display:flex;align-items:center;gap:11px;margin-bottom:10px}
-.apoyo__cab .avatar{width:34px;height:34px;font-size:12px;flex:none}
-.apoyo__cab b{font-size:15px;font-weight:600;line-height:1.25;color:#fff;cursor:pointer;
-  overflow-wrap:anywhere}
-.apoyo__linea{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
-.apoyo__m{font-size:19px;font-weight:600;color:var(--turq);white-space:nowrap}
-.apoyo__m span{font-size:12px;font-weight:400;color:var(--celeste)}
-.apoyo__plan{font-size:12px;color:var(--celeste)}
-.apoyo__baja{margin-top:12px;width:100%}
 .cerrar-zona{margin:20px 0 0}
 
 /* ==================== MENÚ: OCUPA TODO EL ALTO ====================
@@ -1602,8 +1149,6 @@ body.sin-scroll{overflow:hidden !important;position:fixed;inset:0}
 /* apoyos mensuales, en una línea */
 .fila-apoyo{display:flex;gap:11px;background:rgba(255,255,255,.05);border:1px solid rgba(103,232,249,.16);border-radius:13px}
 .fila-apoyo .avatar{width:28px;height:28px;font-size:10px;flex:none}
-.fila-apoyo__n{flex:1;min-width:0;font-size:14px;font-weight:600;cursor:pointer;
-  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 
 /* historial simple: fecha, destino, monto */
 .hist-lista{display:flex;flex-direction:column}
@@ -1613,13 +1158,7 @@ body.sin-scroll{overflow:hidden !important;position:fixed;inset:0}
 .hist-fila__f{color:var(--celeste);font-size:11.5px}
 .hist-fila__d{color:#fff;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .hist-fila__m{color:var(--turq);font-weight:600;white-space:nowrap}
-
-/* perfil: título y estadísticas a la misma altura, y sin mover la ventana */
-.perfil-titulo{display:flex;align-items:center;justify-content:space-between;gap:12px;
-  margin:2px 0 12px}
-.perfil-titulo .panel__title{margin:0;font-size:24px}
 #panelIzq{flex-direction:column;min-height:0}
-body.perfil-fijo{overflow:hidden}
 
 /* modal a pantalla completa, para el registro */
 .modal__box--pleno{max-width:100% !important;width:100% !important;height:100vh !important;height:100dvh !important;
@@ -1641,17 +1180,9 @@ body.perfil-quieto #panelIzq{flex:1;min-height:0;overflow-y:auto;-webkit-overflo
 body.perfil-quieto #panelIzq::-webkit-scrollbar{display:none}
 /* medidas compactas para que entre todo */
 body.perfil-quieto .volver{margin-bottom:2px}
-body.perfil-quieto .perfil-titulo{margin:0 0 10px}
-body.perfil-quieto .perfil-titulo .panel__title{font-size:22px}
 body.perfil-quieto .buscador-wrap{margin-bottom:12px}
-body.perfil-quieto .perfil__hero{margin-bottom:12px}
-body.perfil-quieto .perfil__hero .banner{height:56px}
-body.perfil-quieto .perfil__id{padding:0 14px 14px;margin-top:-20px}
-body.perfil-quieto .perfil__id .avatar{width:54px;height:54px;font-size:17px}
 body.perfil-quieto .pista-edicion{display:none}
 body.perfil-quieto .switch{padding:11px 13px}
-body.perfil-quieto .switch__t span{font-size:11px}
-body.perfil-quieto .panel-donar{margin-top:12px}
 body.perfil-quieto .cerrar-zona{margin:18px 0 0}
 
 /* estadísticas: cabecera fija y el detalle desplazándose adentro */
@@ -1709,7 +1240,6 @@ body.menu-fijo .placa{display:flex;flex-direction:column;pointer-events:auto}
 #screen-eventos .carrusel{flex:1;min-height:0;margin-top:0}
 #screen-eventos .carrusel__viewport{height:100%}
 #screen-subastas .subasta-foto,#screen-eventos .ecard__img{flex:1;min-height:110px;height:auto}
-#screen-subastas .subastas-nav{flex:none;margin-top:10px}
 
 /* ==================== TARJETAS COMPLETAS A LA VISTA ====================
    Nada de scroll interno ni recortes: la tarjeta reparte su alto entre
@@ -1721,25 +1251,8 @@ body.menu-fijo .placa{display:flex;flex-direction:column;pointer-events:auto}
 
 /* ---- Subastas solidarias ---- */
 #screen-subastas .subasta-card{height:100%;display:flex;flex-direction:column;overflow:hidden}
-#screen-subastas .subasta-foto{flex:0 0 34%;min-height:0;height:auto}
-#screen-subastas .subasta-card__body{flex:1;min-height:0;display:flex;flex-direction:column;padding:12px 15px 14px;gap:0;overflow:hidden}
-#screen-subastas .subasta-card__titulo{flex:none;font-size:16px;line-height:1.22;margin:0;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-#screen-subastas .subasta-card__oferta{flex:none;margin:8px 0 0;padding:6px 0}
-#screen-subastas .subasta-card__label{font-size:9.5px;letter-spacing:.12em}
-#screen-subastas .subasta-card__precio{font-size:clamp(21px,3.1vh,27px);line-height:1.05}
-#screen-subastas .subasta-card__min{font-size:10.5px;line-height:1.35;margin-top:3px}
-#screen-subastas .subasta-card__cierre{flex:none;margin-top:7px;font-size:11px}
-#screen-subastas .subasta-card__fund{flex:none;margin-top:9px;padding-top:9px;gap:9px}
-#screen-subastas .subasta-card__fund .avatar{width:28px;height:28px;font-size:10px}
-#screen-subastas .subasta-card__benef{font-size:9.5px;letter-spacing:.1em}
-#screen-subastas .subasta-card__fund span span{font-size:13.5px;margin-top:0}
-#screen-subastas .subasta-card__accion{flex:none;margin-top:auto;padding-top:10px}
-#screen-subastas .subasta-card__accion .btn{min-height:44px;font-size:14.5px}
 
 /* en pantallas cortas, el texto cede primero */
-@media (max-height:700px){
-  #screen-subastas .subasta-foto{flex:0 0 26%}
-}
 
 /* Aportar desde otra faceta: títulos en negro. Para que se lean, la caja
    pasa a fondo claro; en oscuro el negro sería invisible. */
@@ -1767,10 +1280,6 @@ body.menu-fijo .placa{display:flex;flex-direction:column;pointer-events:auto}
 .cab__marca span{color:#fff}
 .cab__marca b{font-weight:800;background:linear-gradient(95deg,#22d3ee,#2dd4a4 45%,#a3e635);
   -webkit-background-clip:text;background-clip:text;color:transparent}
-.cab__lema{margin:3px 0 0;font-size:12px;line-height:1.3;color:rgba(159,196,216,.85);font-style:normal}
-.cab__lema i{font-style:normal;font-weight:600}
-.cab__lema .es-cielo{color:#67e8f9}
-.cab__lema .es-verde{color:#4ade80}
 .cab__perfil{position:relative;flex:none;width:46px;height:46px;border-radius:50%;
   background:rgba(255,255,255,.05);border:1px solid rgba(103,232,249,.35);
   display:grid;place-items:center;color:rgba(255,255,255,.75);cursor:pointer}
@@ -1908,20 +1417,8 @@ body.noche .cielo-fondo{opacity:1}
   font-size:12.5px;color:rgba(159,196,216,.85)}
 
 .lote{display:flex;flex-direction:column;overflow:hidden;border-radius:22px;background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));border:1px solid rgba(103,232,249,.22);box-shadow:0 18px 44px rgba(2,10,20,.5)}
-.lote__foto{position:relative;min-height:0;background-size:cover;background-position:center;background-color:rgba(255,255,255,.05)}
-.lote__fav{position:absolute;top:12px;right:12px;width:38px;height:38px;border-radius:50%;
-  background:rgba(6,17,31,.72);border:1px solid rgba(255,255,255,.16);color:#fff;
-  display:grid;place-items:center;cursor:pointer}
-.lote__fav svg{width:19px;height:19px}
-.lote__fav:active{color:#5eead4;border-color:rgba(94,234,212,.6)}
 
 .lote__cuerpo{flex:1;min-height:0;display:flex;flex-direction:column;gap:0}
-.lote__titulo{margin:0;font-weight:700;color:#fff;display:-webkit-box;-webkit-box-orient:vertical;overflow:hidden}
-.lote__rotulo{display:block;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;
-  color:rgba(94,234,212,.85);font-weight:600}
-.lote__cifras{display:flex;align-items:flex-start}
-.lote__precio{flex:1;min-width:0}
-.lote__monto{display:block;font-weight:700;color:#2dd4bf;line-height:1.05;text-shadow:0 0 20px rgba(45,212,191,.45)}
 
 .reloj{display:flex;padding:10px 12px;border-radius:15px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09)}
 .reloj__ico{flex:none;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;
@@ -1941,12 +1438,6 @@ body.noche .cielo-fondo{opacity:1}
 
 .lote__fund{display:flex;gap:11px}
 .lote__fund .avatar{font-size:14px;flex:none;background-color:#fff}
-.lote__fund-t{flex:1;min-width:0}
-.lote__fund-t b{display:block;font-weight:700;color:#fff;line-height:1.2;cursor:pointer}
-
-.lote__ofertar{letter-spacing:.08em;display:flex;align-items:center;justify-content:center;width:100%;border:0;border-radius:16px;cursor:pointer;font-family:inherit;font-weight:700;letter-spacing:.02em;color:#04222b;background:linear-gradient(100deg,#22d3ee,#2dd4bf 55%,#34d399);box-shadow:0 0 26px rgba(45,212,191,.4), inset 0 1px 0 rgba(255,255,255,.5)}
-
-.lote__ofertar:active{filter:brightness(1.1)}
 
 /* ==================== CUMPLÍ TU SUEÑO ====================
    La tarjeta ocupa todo el hueco entre la cabecera y el botón. */
@@ -1958,13 +1449,9 @@ body.noche .cielo-fondo{opacity:1}
 .sueno__btn{white-space:nowrap;padding:0 14px}
 @media (max-height:740px){
   .sueno{padding:15px 15px 13px}
-  .sueno__ava{width:44px;height:44px}
   .sueno__titulo{font-size:clamp(18px,2.6vh,22px)}
   .sueno__btn{min-height:50px}
 }
-
-/* la foto del lote se abre en grande */
-.lote__foto.es-tocable{cursor:zoom-in}
 .visor{position:fixed;inset:0;z-index:120;display:flex;flex-direction:column;align-items:center;
   justify-content:center;gap:16px;padding:24px;background:rgba(3,9,18,.92);
   backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
@@ -1992,10 +1479,6 @@ body.noche .cielo-fondo{opacity:1}
 #screen-deseos .buscador-wrap{margin-bottom:8px}
 #screen-deseos .suenos-lista{margin-top:0}
 
-/* Otros sueños: el botón, algo más contenido. */
-.lote__ofertar{min-height:48px;font-size:15px;gap:10px}
-.lote__ofertar svg{width:18px;height:18px}
-
 /* ==================== SUBASTAS ACTIVAS: LA TARJETA ENTRA ENTERA ====================
    Todo se mide contra el alto de pantalla, y la cita es lo único elástico:
    cede líneas para que el botón y el pie nunca queden bajo el menú. */
@@ -2003,8 +1486,6 @@ body.noche .cielo-fondo{opacity:1}
 #screen-deseos .suenos-lista{padding-bottom:0}
 
 .sueno__titulo{margin-top:clamp(8px,1.4vh,14px)}
-
-.sueno__pie{margin-top:clamp(6px,1vh,10px)}
 
 /* si la pantalla es corta, la cita cede primero */
 @media (max-height:780px){ .sueno__cita p{-webkit-line-clamp:3} }
@@ -2043,11 +1524,6 @@ body.es-fundacion #panelIzq{overflow:visible;padding-bottom:0}
 .garantia{border-radius:16px;padding:14px 16px;
   background:linear-gradient(150deg, rgba(45,212,191,.16), rgba(255,255,255,.04));
   border:1px solid rgba(94,234,212,.35)}
-.garantia__monto{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
-.garantia__monto span{font-size:11px;letter-spacing:.16em;text-transform:uppercase;
-  color:rgba(94,234,212,.9);font-weight:600}
-.garantia__monto b{font-size:26px;font-weight:700;color:#fff;letter-spacing:-.02em}
-.garantia__nota{margin:8px 0 0;font-size:12.5px;line-height:1.45;color:rgba(159,196,216,.9)}
 .medios{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:14px}
 .medio{display:flex;align-items:center;gap:9px;padding:12px 13px;border-radius:14px;cursor:pointer;
   font-family:inherit;font-size:13.5px;font-weight:600;color:#fff;
@@ -2073,15 +1549,8 @@ body.es-fundacion #panelIzq{overflow:visible;padding-bottom:0}
   background-repeat:no-repeat}
 .lote--foto .lote__cuerpo{flex:none;padding:14px 16px 16px}
 .lote--foto .lote__t{font-size:clamp(18px,2.7vh,23px)}
-/* Con la foto arriba, la historia se resume: lo que no entra se corta con
-   puntos suspensivos en vez de empujar el resto fuera de la tarjeta. */
-.lote--foto .lote__d{margin-top:8px;font-size:13.5px;
-  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .lote--foto .lote__valor{margin-top:10px;padding-top:9px}
 @media (max-height:700px){
-  /* Con poco alto, la historia se reduce a un renglón y la foto cede espacio:
-     lo que no puede faltar es el valor, la fundación y el aviso. */
-  .lote--foto .lote__d{-webkit-line-clamp:1}
   .lote--foto .lote__img{min-height:76px}
   .lote--foto .lote__aviso{margin-top:8px;padding:8px 10px;font-size:11.5px}
   .lote--foto .lote__cuerpo{padding:12px 14px 13px}
@@ -2099,8 +1568,6 @@ body.es-fundacion #panelIzq{overflow:visible;padding-bottom:0}
   text-transform:uppercase;color:var(--turq)}
 .lote__t{margin:8px 0 0;font-size:clamp(21px,3.4vh,28px);font-weight:800;line-height:1.15;
   color:#fff}
-.lote__q{margin:6px 0 0;font-size:13.5px;color:rgba(255,255,255,.6)}
-.lote__d{margin:12px 0 0;font-size:14.5px;line-height:1.45;color:rgba(255,255,255,.8)}
 /* Un valor de ocho cifras no entra al lado del rótulo: van uno arriba del
    otro, y el número nunca se parte. */
 .lote__valor{display:flex;flex-direction:column;gap:2px;
@@ -2230,8 +1697,6 @@ body.es-admin #screen-admin.is-active{display:block;height:auto}
 .feed{display:flex;flex-direction:column;gap:16px;margin-top:16px}
 .post{border-radius:20px;overflow:hidden;background:var(--vidrio);
   box-shadow:inset 0 1px 0 rgba(255,255,255,.08), 0 0 0 1px var(--canto)}
-.post--mio{box-shadow:inset 0 1px 0 rgba(255,255,255,.10), 0 0 0 1px var(--canto-vivo),
-  0 0 22px rgba(45,212,191,.14)}
 .post__cab{display:flex;align-items:center;gap:10px;padding:12px 14px}
 .post__av{flex:none;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;
   background:#fff center/cover no-repeat;color:#0b1b2c;font-size:13px;font-weight:800}
@@ -2268,10 +1733,6 @@ body.es-admin #screen-admin.is-active{display:block;height:auto}
    vacía a la derecha. Con auto ocupa de borde a borde. */
 .sueno__img,.lote__img{display:block;width:auto;border:0;padding:0;cursor:zoom-in;
   font:inherit}
-
-.sueno__autor.es-anon{cursor:default}
-.sueno__ava--anon{display:grid;place-items:center;background:rgba(255,255,255,.1);
-  color:rgba(255,255,255,.6);font-weight:800}
 
 /* Filas de "tus sueños publicados" y "subastas donde participaste". Estaban
    sin estilo: como la cuenta demo no tenía sueños ni ofertas, estos bloques
@@ -2372,24 +1833,10 @@ body.es-admin #screen-admin.is-active{display:block;height:auto}
   box-shadow:0 0 0 1px var(--canto)}
 .rend__t{display:flex;align-items:center;gap:10px}
 .rend__t b{flex:1;min-width:0;font-size:15.5px;color:#fff}
-.rend__e{font-size:11.5px;font-weight:700;padding:3px 9px;border-radius:99px}
-.rend__e.es-ok{color:#0b2018;background:var(--turq)}
-.rend__e.es-revision{color:#3a2c05;background:#f6c453}
 .rend__d{margin:6px 0 0;font-size:13.5px;line-height:1.4;color:rgba(255,255,255,.7)}
 .rend__m{display:block;margin-top:6px;font-weight:700;color:var(--turq)}
 
 .fmetricas--3{grid-template-columns:repeat(3,1fr)}
-
-.crear-subasta{display:flex;align-items:center;gap:14px;width:100%;text-align:left;cursor:pointer;
-  font-family:inherit;padding:18px;border-radius:20px;border:0;color:#04222b;
-  background:linear-gradient(105deg,#22d3ee,#2dd4bf 52%,#34d399);
-  box-shadow:0 0 34px rgba(45,212,191,.45), inset 0 1px 0 rgba(255,255,255,.5)}
-.crear-subasta:active{filter:brightness(1.1)}
-.crear-subasta__ico{flex:none;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;
-  background:rgba(4,34,43,.16);color:#04222b}
-.crear-subasta__ico svg{width:24px;height:24px}
-.crear-subasta__t b{display:block;font-size:19px;font-weight:700;line-height:1.15}
-.crear-subasta__t span{display:block;margin-top:3px;font-size:12.5px;opacity:.8}
 #screen-fsubastas .perfil-rotulo{margin-top:22px}
 
 /* ==================== OTROS SUEÑOS: CAJAS PAREJAS ==================== */
@@ -2399,8 +1846,6 @@ body.es-admin #screen-admin.is-active{display:block;height:auto}
 /* el bloque de la fundación sube y su logo también */
 .lote__fund{align-items:center}
 .lote__fund .avatar{width:48px;height:48px;margin-top:-6px}
-
-.lote__ofertar{margin-top:10px}
 
 /* ==================== FUNDACIONES: TARJETAS PAREJAS Y GRANDES ==================== */
 #screen-fundaciones .carrusel__slide{display:flex;align-items:stretch}
@@ -2418,21 +1863,7 @@ body.es-admin #screen-admin.is-active{display:block;height:auto}
 
 /* Otros sueños: caja más angosta y la última oferta siempre en una línea. */
 .subastas-grid > .lote{flex:0 0 74%}
-.lote__monto{font-size:clamp(19px,2.7vh,25px);white-space:nowrap;letter-spacing:-.03em}
-.lote__cifras{gap:10px}
-
-/* la pantalla de registrar subasta */
-
-/* ==================== OTROS SUEÑOS: EL TÍTULO SE VE ====================
-   Sin el bloque de "va ganando", la foto cede lugar y el título respira. */
-#screen-subastas .lote__foto{flex:0 0 34%}
 #screen-subastas .lote__cuerpo{padding:14px 16px 12px}
-#screen-subastas .lote__titulo{font-size:clamp(18px,2.7vh,23px);line-height:1.2;margin:0 0 4px;
-  -webkit-line-clamp:2;min-height:0}
-#screen-subastas .lote__cifras{display:block;margin-top:10px}
-#screen-subastas .lote__precio{width:100%}
-#screen-subastas .lote__monto{font-size:clamp(22px,3.4vh,30px)}
-#screen-subastas .lote__rotulo{font-size:10px}
 #screen-subastas .reloj{margin-top:11px}
 #screen-subastas .lote__fund{margin-top:11px}
 
@@ -2750,26 +2181,6 @@ body.es-admin #screen-admin.is-active{display:block;height:auto}
 
 .fund-chip:active{border-color:rgba(94,234,212,.7);background:rgba(45,212,191,.14)}
 
-/* Publicar apagado hasta que haya datos */
-
-/* ==================== SUBASTAS ACTIVAS · AJUSTES ====================
-   La cita se corta por líneas completas: antes quedaba media línea partida. */
-@media (max-height:800px){ .sueno__cita p{--lineas:3} }
-@media (max-height:700px){ .sueno__cita p{--lineas:2} }
-
-/* la cabecera lleva a ver el perfil */
-.sueno__cab{cursor:pointer}
-.sueno__mas{margin-left:auto;font-size:20px;color:rgba(159,196,216,.5);font-weight:300}
-
-/* quién va ganando, y cuántas ofertas hubo */
-
-/* el cronómetro del sueño, en una línea */
-.sueno__reloj{display:flex;align-items:center;justify-content:center;gap:10px;padding:10px 18px;border-radius:16px;align-self:stretch;margin-top:10px;border:1px solid rgba(255,255,255,.13);background:rgba(255,255,255,.04);font-size:clamp(11px,1.5vh,12.5px);color:rgba(159,196,216,.85)}
-.sueno__reloj svg{width:22px;height:22px;color:#5eead4;flex:none}
-.sueno__reloj b{color:#fff;font-weight:700}
-.sueno__reloj.es-urgente{border-color:rgba(252,165,165,.5);background:rgba(229,72,77,.1)}
-.sueno__reloj.es-urgente svg,.sueno__reloj.es-urgente b{color:#fca5a5}
-
 /* el botón absorbe el monto: la cápsula repetida se fue */
 
 /* el buscador se despliega desde la lupa */
@@ -2803,10 +2214,6 @@ body.es-admin #screen-admin.is-active{display:block;height:auto}
 @media (max-height:760px){ .sueno__cita p{--lineas:4} }
 @media (max-height:700px){ .sueno__cita p{--lineas:3} }
 
-/* el bloque de la oferta se lleva el espacio libre y queda centrado */
-
-.sueno__reloj{margin-top:10px}
-
 /* ==================== PANEL DE FUNDACIÓN ====================
    Una fundación no navega la app como donante: administra lo suyo.
    Primero quién es, después cómo va, después qué puede publicar. */
@@ -2836,15 +2243,6 @@ body.es-admin #screen-admin.is-active{display:block;height:auto}
   letter-spacing:-.02em;line-height:1.1}
 .metrica__p{display:block;margin-top:2px;font-size:11px;color:rgba(159,196,216,.75)}
 
-.facciones{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
-.faccion{display:flex;flex-direction:column;align-items:center;gap:7px;padding:12px 6px;
-  border-radius:16px;cursor:pointer;font-family:inherit;font-size:11px;font-weight:600;color:#fff;
-  background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.1)}
-.faccion__i{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;color:#5eead4;
-  background:rgba(45,212,191,.14);border:1px solid rgba(94,234,212,.28)}
-.faccion__i svg{width:20px;height:20px}
-.faccion:active{border-color:rgba(94,234,212,.6);background:rgba(45,212,191,.12)}
-
 .fcampana{padding:13px 14px;border-radius:16px;
   background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.09)}
 .fcampana__t{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
@@ -2856,8 +2254,6 @@ body.es-admin #screen-admin.is-active{display:block;height:auto}
 .fcampana__p{font-size:11.5px;color:var(--celeste)}
 
 .fpendientes{display:flex;flex-wrap:wrap;gap:7px}
-.fpend{padding:7px 13px;border-radius:999px;font-size:12px;color:#fdba74;
-  background:rgba(251,146,60,.1);border:1px dashed rgba(251,146,60,.42)}
 
 /* ==================== SUBASTAS · VISTA DE FUNDACIÓN ====================
    La fundación no oferta: administra. El eje es el ciclo del lote. */
@@ -2871,11 +2267,6 @@ body.es-admin #screen-admin.is-active{display:block;height:auto}
 .fsub-cifras b{display:block;margin-top:4px;font-size:19px;font-weight:700;color:#fff;
   letter-spacing:-.02em}
 .fsub-cifras b.es-alerta{color:#fdba74}
-
-.fsub-aviso{display:flex;align-items:center;gap:9px;margin:12px 0 0;padding:11px 13px;
-  border-radius:14px;font-size:12.5px;line-height:1.35;color:#fdba74;
-  background:rgba(251,146,60,.1);border:1px solid rgba(251,146,60,.38)}
-.fsub-aviso svg{width:18px;height:18px;flex:none}
 
 .solapas{display:flex;gap:7px;margin:16px 0 11px}
 .solapa{flex:1;padding:9px 6px;border-radius:12px;cursor:pointer;font-family:inherit;
@@ -2899,25 +2290,6 @@ body.es-admin #screen-admin.is-active{display:block;height:auto}
 .lotef__d{display:block;margin-top:2px;font-size:11.5px;color:rgba(159,196,216,.8)}
 .lotef__chev{flex:none;font-size:22px;color:rgba(159,196,216,.5);font-weight:300}
 
-.estadof{display:inline-block;margin-top:5px;padding:3px 10px;border-radius:999px;
-  font-size:10px;font-weight:700;letter-spacing:.05em}
-.estadof.es-ok{color:#5eead4;background:rgba(45,212,191,.14);border:1px solid rgba(94,234,212,.35)}
-.estadof.es-urge{color:#fdba74;background:rgba(251,146,60,.14);border:1px solid rgba(251,146,60,.4)}
-.estadof.es-alerta{color:#fca5a5;background:rgba(229,72,77,.14);border:1px solid rgba(229,72,77,.4)}
-.estadof.es-medio{color:#93c5fd;background:rgba(96,165,250,.14);border:1px solid rgba(96,165,250,.4)}
-.estadof.es-gris{color:rgba(159,196,216,.85);background:rgba(255,255,255,.06);
-  border:1px solid rgba(255,255,255,.14)}
-
-.lote-detalle{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;
-  padding:14px;border-radius:16px;
-  background:linear-gradient(120deg, rgba(45,212,191,.14), rgba(255,255,255,.04));
-  border:1px solid rgba(94,234,212,.3)}
-.lote-detalle span{display:block;font-size:10px;letter-spacing:.12em;text-transform:uppercase;
-  color:rgba(94,234,212,.9);font-weight:600}
-.lote-detalle b{display:block;margin-top:3px;font-size:22px;font-weight:700;color:#fff}
-.lote-detalle__g b{font-size:15px}
-.lote-detalle__f{flex-basis:100%;margin:6px 0 0;font-size:12px;color:var(--celeste)}
-
 /* ==================== FUNDACIÓN: LA PANTALLA SE RECORRE ====================
    La regla que fija el perfil de donante usa prioridad máxima; sin esto,
    el panel de fundación quedaba inmóvil y no se podía llegar abajo. */
@@ -2939,17 +2311,6 @@ body.es-fundacion .placa{display:none !important}
 .nav5{pointer-events:auto}
 .nav5__b{pointer-events:auto}
 
-/* ==================== FUNDACIÓN · PENDIENTES Y COMUNIDAD ==================== */
-.pendf{display:flex;align-items:center;gap:11px;width:100%;text-align:left;cursor:pointer;
-  font-family:inherit;padding:12px 13px;border-radius:14px;color:#fff;font-size:13.5px;
-  background:rgba(251,146,60,.08);border:1px solid rgba(251,146,60,.34)}
-.pendf:active{background:rgba(251,146,60,.16)}
-.pendf__p{flex:none;width:8px;height:8px;border-radius:50%;background:#fb923c;
-  box-shadow:0 0 8px rgba(251,146,60,.8)}
-.pendf__t{flex:1;min-width:0;line-height:1.3}
-.fal-dia{margin-top:14px;padding:14px;border-radius:14px;text-align:center;font-size:13px;
-  color:#5eead4;background:rgba(45,212,191,.1);border:1px solid rgba(94,234,212,.3)}
-
 .pers{display:flex;align-items:center;gap:11px;border-radius:15px;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.09)}
 .pers__av{flex:none;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;
   font-size:13px;font-weight:700;color:#04222b;
@@ -2960,11 +2321,6 @@ body.es-fundacion .placa{display:none !important}
 .pers__t span{display:block;margin-top:2px;font-size:11.5px;color:var(--celeste)}
 .pers__m{flex:none;font-size:15px;font-weight:700;color:var(--turq)}
 .pers__m i{font-style:normal;font-size:10.5px;font-weight:400;color:var(--celeste)}
-.pers__grax{flex:none;margin-left:4px;padding:6px 12px;border-radius:999px;cursor:pointer;
-  font-family:inherit;font-size:11.5px;font-weight:700;color:#5eead4;
-  background:rgba(45,212,191,.14);border:1px solid rgba(94,234,212,.4)}
-.pers--baja{opacity:.6}
-.pers--baja .pers__av{background:rgba(255,255,255,.14);color:rgba(255,255,255,.7)}
 
 #screen-comunidad .stats-pantalla{padding:14px 16px calc(var(--nav-alto) + 24px) !important;
   display:block !important;overflow-y:auto;position:static !important;height:auto !important}
@@ -2980,8 +2336,6 @@ body.es-fundacion .placa{display:none !important}
 .pers__ir:active{opacity:.7}
 .pers--anon{opacity:.75}
 .pers--anon .pers__av{background:rgba(255,255,255,.14);color:rgba(255,255,255,.75)}
-.pers__grax.es-hecho{color:rgba(159,196,216,.7);background:rgba(255,255,255,.05);
-  border-color:rgba(255,255,255,.14)}
 #comunidadCuerpo .fsub-cifras b{margin-top:3px}
 
 /* ==================== TARJETA DE FUNDACIÓN ====================
@@ -3003,27 +2357,6 @@ body.es-fundacion .placa{display:none !important}
 .sello--ok{display:inline-flex;align-items:center;gap:5px;color:#04222b;border:0;font-weight:700;
   background:linear-gradient(100deg,#2dd4bf,#a3e635)}
 .sello--ok svg{width:11px;height:11px}
-
-.card__eyebrow{margin:14px 0 8px !important}
-
-.cam__t{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
-.cam__t b{font-size:14px;font-weight:600;color:#fff;line-height:1.25}
-.cam__t span{flex:none;font-size:13px;font-weight:700;color:#5eead4}
-.cam__barra{height:6px;border-radius:999px;background:rgba(255,255,255,.1);margin:7px 0 5px;
-  overflow:hidden}
-.cam__barra i{display:block;height:100%;border-radius:999px;
-  background:linear-gradient(90deg,#22d3ee,#2dd4bf,#a3e635)}
-/* el faltante deja de gritar: sólo lo donado va destacado */
-.cam__p{font-size:11.5px;color:rgba(159,196,216,.78)}
-.cam__p b{color:#fff;font-weight:600}
-
-.card__mas{width:100%;padding:9px;border-radius:12px;cursor:pointer;font-family:inherit;
-  font-size:12.5px;font-weight:600;color:#5eead4;
-  background:rgba(45,212,191,.1);border:1px dashed rgba(94,234,212,.4)}
-
-#screen-fundaciones .card__side{flex:none}
-#screen-fundaciones .evento-click{padding:10px 0 0;border-top:1px solid rgba(255,255,255,.08);
-  margin-top:10px}
 
 /* ==================== TARJETA DE FUNDACIÓN · AJUSTES ====================
    El bloque de campañas se estiraba aunque hubiera una sola: media tarjeta
@@ -3109,7 +2442,6 @@ body.portada #screen-home{height:100vh;height:100dvh}
 .portada__marca{margin:clamp(8px,1.8vh,18px) 0 0}
 .portada__m1,.portada__m2{font-size:clamp(34px,6.6vh,58px)}
 .portada__linea{align-self:center;margin:clamp(8px,1.6vh,18px) 0 clamp(6px,1.2vh,14px)}
-.portada__frase{margin-bottom:clamp(12px,2.4vh,26px)}
 .portada__acceso{padding:clamp(13px,2.2vh,20px) 16px}
 /* Firma del desarrollo, al pie de la portada. Definición única.
    Va fuera del flujo: la caja de la portada ya entra justa en pantallas
@@ -3146,8 +2478,6 @@ body.es-fundacion .nav5__fila--fundacion{display:grid;grid-template-columns:repe
 .nav5__b.is-on{color:#5eead4}
 .nav5__b.is-on svg{filter:drop-shadow(0 0 9px rgba(94,234,212,.75))}
 .nav5__b:active{transform:scale(.9)}
-.nav5__punto{position:absolute;top:22px;right:calc(50% - 21px);width:10px;height:10px;border-radius:50%;background:#E5484D;box-shadow:0 0 0 2px #071120;pointer-events:none;/* fuera del flujo: no puede alterar el alto de la barra */
-  margin:0;padding:0;line-height:0}
 .nav5__b{overflow:visible}
 body.portada .nav5{display:none}
 /* La barra NO se oculta por ningún otro motivo. Ocultarla mientras arranca la
@@ -3296,13 +2626,7 @@ body.perfil-quieto .panels,body.perfil-quieto .panel{
 .entrada:nth-child(4) .entrada__chispa{animation-delay:-2.1s}
 .entrada:nth-child(5) .entrada__chispa{animation-delay:-2.8s}
 @media (prefers-reduced-motion:reduce){.entrada__chispa{animation:none;opacity:.6}}
-
-/* La imagen manda: ocupa casi la mitad de la tarjeta y el título respira. */
-.lote__foto{flex:0 0 46%}
 .lote__cuerpo{padding:16px 16px 14px}
-.lote__titulo{font-size:clamp(19px,2.9vh,24px);line-height:1.18;margin-bottom:2px;-webkit-line-clamp:2}
-.lote__cifras{margin-top:12px}
-.lote__monto{margin-top:3px}
 .reloj{margin-top:13px}
 /* El mismo reloj de los lotes, ajustado al alto que deja la tarjeta. */
 .reloj--sueno{flex:none;flex-direction:column;align-items:stretch;gap:7px;
@@ -3313,11 +2637,7 @@ body.perfil-quieto .panels,body.perfil-quieto .panel{
 .reloj--sueno .reloj__fecha{justify-content:center;font-size:11.5px;
   padding-top:7px;border-top:1px solid rgba(255,255,255,.09)}
 .lote__fund{margin-top:13px}
-.lote__fund-t b{font-size:16px}
 .cab-seccion b{font-size:15px}
-@media (max-height:700px){
-  .lote__foto{flex:0 0 36%}
-}
 
 /* ==================== SUEÑOS EN SUBASTA ACTIVA ==================== */
 .cab-punto{width:8px;height:8px;border-radius:50%;background:#2dd4bf;
@@ -3329,12 +2649,6 @@ body.perfil-quieto .panels,body.perfil-quieto .panel{
 .suenos-lista{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}
 .suenos-lista::-webkit-scrollbar{display:none}
 .sueno{flex:0 0 84%;scroll-snap-align:center;height:100%;display:flex;flex-direction:column;padding:18px 18px 16px;border-radius:24px;overflow:hidden;background:linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.025));border:1px solid rgba(103,232,249,.25);box-shadow:0 18px 44px rgba(2,10,20,.5)}
-
-.sueno__cab{display:flex;align-items:center;gap:12px;flex:none}
-.sueno__ava{width:52px;height:52px;border-radius:50%;flex:none;display:grid;place-items:center;background-size:cover;background-position:center;border:2px solid rgba(94,234,212,.55);font-size:17px;font-weight:600;color:#0b2136}
-.sueno__quien{min-width:0}
-.sueno__quien b{display:flex;align-items:center;gap:6px;font-size:17px;font-weight:700;color:#fff;line-height:1.15}
-.sueno__quien span{display:block;margin-top:2px;font-size:13px;color:rgba(159,196,216,.85)}
 
 /* Tres renglones: con el tope de 70 caracteres, el título más largo entra
    completo. A dos se cortaban cuatro de los sueños. */
@@ -3348,10 +2662,6 @@ body.perfil-quieto .panels,body.perfil-quieto .panel{
 .sueno__btn{flex:none;margin-top:14px;letter-spacing:.08em;display:flex;align-items:center;justify-content:center;gap:12px;width:100%;min-height:56px;border:0;border-radius:16px;cursor:pointer;font-family:inherit;font-size:17px;font-weight:700;letter-spacing:.02em;color:#04222b;background:linear-gradient(100deg,#22d3ee,#2dd4bf 55%,#34d399);box-shadow:0 0 30px rgba(45,212,191,.45), inset 0 1px 0 rgba(255,255,255,.5)}
 .sueno__btn svg{width:20px;height:20px}
 .sueno__btn:active{filter:brightness(1.1)}
-
-.sueno__pie{flex:none;display:flex;align-items:center;justify-content:center;gap:7px;margin:11px 0 0;font-size:12px;color:rgba(159,196,216,.75)}
-.sueno__pie svg{width:16px;height:16px}
-.sueno__pie .borrar-sueno{margin-left:auto;padding:0;font-size:11px;color:rgba(255,255,255,.4)}
 
 /* ---- paleta de las entradas, una sola vez ---- */
 
@@ -3390,7 +2700,6 @@ body.perfil-quieto .panels,body.perfil-quieto .panel{
   .sueno--foto .reloj--sueno .reloj__u b{font-size:15px}
   .sueno--foto .reloj--sueno .reloj__u span{font-size:7.5px}
   .sueno--foto .reloj--sueno .reloj__fecha{font-size:10.5px;padding-top:5px}
-  .sueno--foto .sueno__autor{margin-top:6px}
   /* Los últimos pixeles: el bloque de la fundación con menos relleno. */
   .sueno--foto .sueno__fund{margin-top:7px;padding:7px 11px}
   .sueno--foto .sueno__fav{width:30px;height:30px}
@@ -3408,31 +2717,8 @@ body.perfil-quieto .panels,body.perfil-quieto .panel{
 .sueno__fundt b{display:block;font-size:14.5px;color:#fff;line-height:1.2;
   overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 
-/* El reloj pasa de pastilla discreta a bloque con peso propio. */
-.sueno__relojt{display:flex;flex-direction:column;line-height:1.05}
-.sueno__relojt i{font-style:normal;font-size:10.5px;letter-spacing:.16em;
-  text-transform:uppercase;color:rgba(159,196,216,.9);font-weight:700}
-.sueno__relojt b{font-size:clamp(17px,2.5vh,21px);font-weight:800;color:#fff;
-  font-variant-numeric:tabular-nums}
-.sueno__cuando{display:block;margin-top:2px;font-size:11.5px;
-  color:rgba(255,255,255,.5);font-weight:500}
-.sueno__reloj.es-urgente .sueno__relojt b{color:#ffb4b4}
-
-/* El autor, al pie y en tamaño de dato. */
-.sueno__autor{flex:none;display:flex;align-items:center;gap:9px;width:100%;
-  margin-top:10px;padding:0;border:0;background:none;cursor:pointer;
-  font-family:inherit;font-size:13px;color:rgba(255,255,255,.62);text-align:left}
-/* El width del avatar lo fija otra regla más específica; sin flex:none el
-   contenedor lo estira y la inicial queda en una elipse. */
-.sueno__autor .sueno__ava{flex:none;width:30px;height:30px;min-width:30px;
-  border-width:1px;font-size:11px}
-.sueno__autor span{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.sueno__autor b{color:rgba(255,255,255,.9);font-weight:600}
-.sueno__autor .sueno__mas{flex:none;color:rgba(255,255,255,.4)}
-
 /* ---- la cita, definición única: corta por líneas enteras ---- */
 .sueno__cita{position:relative;flex:1 1 0;min-height:0;overflow:hidden;margin:10px 0 0;padding:0 4px 0 22px;cursor:pointer}
-.sueno__comilla{position:absolute;left:0;top:-4px;font-size:clamp(20px,2.6vh,26px);line-height:1;color:rgba(94,234,212,.55);font-family:Georgia,serif}
 .sueno__cita p{margin:0;font-size:clamp(12px,1.6vh,13.5px);line-height:1.5;color:rgba(255,255,255,.82);display:-webkit-box;-webkit-box-orient:vertical;overflow:hidden;-webkit-line-clamp:var(--lineas,4);max-height:calc(1.5em * var(--lineas,4))}
 @media (max-height:800px){ .sueno__cita p{--lineas:3} }
 @media (max-height:700px){ .sueno__cita p{--lineas:2} }
@@ -3611,14 +2897,6 @@ body.perfil-quieto .panels,body.perfil-quieto .panel{
 .intro__paso[data-paso="3"]{--tono:163,230,53}
 .intro__paso[data-paso="4"]{--tono:45,212,191}
 .intro__paso[data-paso="5"]{--tono:103,232,249}
-/* Con los cinco a la vista, el tinte de fondo por paso sobra: el tono queda
-   sólo en el número, que es lo que los diferencia entre sí. */
-
-.intro__cierre{display:flex;flex-direction:column;align-items:center;
-  margin-top:clamp(10px,1.8vh,20px);
-  opacity:0;animation:introEntra .55s ease 1.75s forwards}
-.intro__corazon{width:clamp(26px,3.6vh,38px);height:auto;
-  filter:drop-shadow(0 0 16px rgba(45,212,191,.45))}
 .intro__marca{margin:clamp(4px,.8vh,8px) 0 0;font-weight:800;letter-spacing:.12em;
   font-size:clamp(15px,2.2vh,21px)}
 .intro__m1{color:#fff}
@@ -3627,14 +2905,6 @@ body.perfil-quieto .panels,body.perfil-quieto .panel{
 .intro__cta-f{width:20px;height:20px;flex:none}
 .intro__cta{margin-top:clamp(10px,1.8vh,18px);
   opacity:0;animation:introEntra .5s ease 1.95s forwards}
-
-/* Puntos de avance y pista de uso. */
-.intro__puntos{display:flex;justify-content:center;gap:7px;
-  margin-top:clamp(10px,2vh,18px);flex:none}
-.intro__punto{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.22);
-  transition:width .3s ease, background .3s ease}
-.intro__punto.is-on{width:22px;border-radius:999px;background:var(--turq);
-  box-shadow:0 0 12px rgba(94,234,212,.7)}
 .intro__pista{margin:clamp(8px,1.6vh,14px) 0 0;text-align:center;flex:none;
   color:rgba(226,240,255,.62);font-size:clamp(12px,1.6vh,14px);
   animation:pistaLate 2.4s ease-in-out infinite}
@@ -3743,6 +3013,87 @@ body.perfil-quieto .panels,body.perfil-quieto .panel{
   .intro__chispa{opacity:.5}
   .intro.se-va{animation:none}
 }
+
+/* ==================== FICHA DE DATOS ====================
+   Filas de etiqueta y valor para los modales que sólo informan. Cada dato en su
+   renglón, con el valor alineado a la derecha: así se leen en vertical y se
+   comparan sin buscarlos dentro de un párrafo. */
+.ficha{
+  display:flex;
+  flex-direction:column;
+  margin:0 0 14px;
+  border:1px solid var(--canto);
+  border-radius:12px;
+  overflow:hidden}
+.ficha__f{
+  display:flex;
+  align-items:baseline;
+  gap:16px;
+  padding:11px 14px;
+  border-bottom:1px solid rgba(255,255,255,.06)}
+.ficha__f:last-child{border-bottom:0}
+.ficha__f span{
+  flex:none;
+  font-size:11px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:rgba(159,196,216,.75)}
+.ficha__f b{
+  margin-left:auto;
+  text-align:right;
+  font-size:14px;
+  font-weight:600;
+  color:#fff}
+
+/* ==================== AVISO DE FUNDACIÓN ====================
+   La fundación no recibe notificaciones sociales: recibe movimientos de su
+   cuenta. Por eso la fila es una ficha y no una notificación con ícono de
+   color. Cada una dice primero de qué tipo es y a qué hora pasó, después el
+   hecho y después el detalle. Al alinearse todas igual, se comparan de un
+   vistazo, que es lo que hace falta cuando hay muchas. */
+.favi{
+  position:relative;
+  display:flex;
+  gap:14px;
+  width:100%;
+  margin:0 0 8px;
+  padding:14px 18px;
+  text-align:left;
+  font-family:inherit;
+  cursor:pointer;
+  color:#fff;
+  border:1px solid var(--canto);
+  border-radius:12px;
+  background:rgba(255,255,255,.03);
+  transition:background .15s, border-color .15s}
+.favi:hover{background:rgba(255,255,255,.06);border-color:var(--canto-vivo)}
+
+/* Una barra fina en el canto izquierdo en lugar del ícono: marca la fila sin
+   competir con el texto. Se enciende sólo si el aviso está sin leer. */
+.favi__marca{
+  flex:none;
+  width:3px;
+  border-radius:2px;
+  background:transparent}
+.favi.es-nuevo .favi__marca{background:var(--turq)}
+
+.favi__cuerpo{display:flex;flex-direction:column;gap:3px;min-width:0;flex:1}
+.favi__top{display:flex;align-items:baseline;gap:10px}
+.favi__tipo{
+  font-size:10.5px;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+  font-weight:600;
+  color:rgba(159,196,216,.85)}
+.favi__h{
+  margin-left:auto;
+  font-size:11.5px;
+  color:rgba(159,196,216,.6);
+  font-variant-numeric:tabular-nums}
+.favi__t{font-size:14.5px;font-weight:600;line-height:1.3;color:#fff}
+.favi__d{font-size:13px;line-height:1.45;color:rgba(226,240,255,.7)}
+/* Sin leer, sólo el título se refuerza: nada de fondos de color. */
+.favi.es-nuevo{background:rgba(255,255,255,.055)}
 
 /* ==================== MÉTRICA QUE LLEVA A SU DETALLE ====================
    Algunas métricas del panel de la fundación son un acceso a la solapa que las
@@ -4162,6 +3513,18 @@ body.perfil-quieto .panels,body.perfil-quieto .panel{
      izquierda. Todo va acotado a body.es-fundacion: las pantallas del donante
      no se enteran. */
   body.es-fundacion{--nav-alto:0px; --nav-lado:216px}
+
+  /* El centrado vertical de Novedades y Comunidad se pensó para la barra de
+     abajo: con ella ocupando el pie, un listado corto pegado al techo quedaba
+     descolgado. Acá esa barra no está, así que centrar deja el contenido
+     flotando en medio de la pantalla con vacío arriba y abajo. Con la
+     navegación al costado, el contenido arranca arriba, como se lee. */
+  body.es-fundacion #screen-avisos .stats-pantalla,
+  body.es-fundacion #screen-comunidad .viewport{
+    justify-content:flex-start;
+    /* el !important es para ganarle a .viewport,.stats-pantalla{padding-top:12px
+       !important}, que fija el respiro pensado para el teléfono */
+    padding-top:28px !important}
   body.es-fundacion .nav5{
     top:0;bottom:0;right:auto;
     width:var(--nav-lado);
@@ -4198,8 +3561,7 @@ body.perfil-quieto .panels,body.perfil-quieto .panel{
     max-width:620px;
     margin-left:auto;
     margin-right:auto}
-}
-</style>
+}</style>
 </head>
 <body class="menu-fijo">
 
@@ -4879,16 +4241,6 @@ function leerArchivo(input, cb){
   if(!f) return cb(null);
   var r = new FileReader(); r.onload = function(){ cb(r.result); }; r.readAsDataURL(f);
 }
-function leerArchivoP(input){
-  return new Promise(function(resolve){
-    var f = input && input.files && input.files[0];
-    if(!f) return resolve(null);
-    var r = new FileReader();
-    r.onload = function(){ resolve(r.result); };
-    r.readAsDataURL(f);
-  });
-}
-
 /* ==================== datos ==================== */
 var uid = 0;
 function nid(p){ uid++; return p + uid; }
@@ -4905,8 +4257,6 @@ var DB = { fundaciones:[], donaciones:[], solicitudes:[], aportes:[], posts:[], 
 // Verde = empresa u organización · Celeste = persona física.
 
 // Un perfil marcado como anónimo se muestra como "Donante anónimo" en todo lo público.
-function nombrePublico(n){ return DB.perfilesAnonimos[n] ? "Donante anónimo" : n; }
-
 function semilla(){
   uid = 0;
   DB.invitaciones = [];
@@ -5906,18 +5256,6 @@ function fundacionPorId(id){ return DB.fundaciones.filter(function(f){ return f.
 
 
 /* ==================== render: fundaciones (centro) ==================== */
-function barraCausa(c){
-  var pct = Math.min(100, Math.round(c.r / c.meta * 100));
-  var falta = Math.max(0, c.meta - c.r);
-  return '<div><div class="causa__row"><span>'+esc(c.t)+'</span>'+
-    '<span class="causa__meta">'+pct+'%</span></div>'+
-    '<div class="meter"><div class="meter__fill'+(pct>=100?' is-full':'')+'" style="width:'+pct+'%"></div></div>'+
-    '<div class="causa__pie"><span>Donado <b>'+pesos(c.r)+'</b></span>'+
-    (falta>0 ? '<span>Faltan <b>'+pesos(falta)+'</b> de '+pesos(c.meta)+'</span>'
-             : '<span style="color:var(--verde);font-weight:600">Meta alcanzada</span>')+
-    '</div></div>';
-}
-
 function tarjetaFundacion(f){
   var sigo = DB.sigo && DB.sigo[f.id];
   var abiertas = f.causas || [];
@@ -6524,65 +5862,6 @@ function pintarEventos(){
   montarCarriles();
 }
 
-function tarjetaSubasta(a){
-  var f = fundacionPorId(a.fid);
-  var minimo = (a.puja || a.base) + 1000;
-  var quien = a.pujador ? esc(a.pujador) : "Nadie todavía";
-  var foto = a.imagenGeneral || (a.productos && a.productos[0] && a.productos[0].imagen) || "";
-
-  return '<article class="lote">'+
-    '<div class="lote__foto'+(foto?' es-tocable':'')+'"'+
-      (foto ? ' style="background-image:url('+foto+')" data-ver-foto="'+a.id+'" role="button" tabindex="0"' : '')+'>'+
-      '<button class="lote__fav" aria-label="Guardar">'+
-        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">'+
-        '<path d="M12 20.4s-7.3-4.6-7.3-9.6a4.2 4.2 0 0 1 7.3-2.7 4.2 4.2 0 0 1 7.3 2.7c0 5-7.3 9.6-7.3 9.6z"/></svg></button>'+
-    '</div>'+
-
-    '<div class="lote__cuerpo">'+
-      '<h3 class="lote__titulo">'+esc(a.titulo)+'</h3>'+
-
-      '<div class="lote__cifras">'+
-        '<div class="lote__precio">'+
-          '<span class="lote__rotulo">'+(a.puja ? 'Última oferta' : 'Precio base')+'</span>'+
-          '<span class="lote__monto">'+pesos(a.puja || a.base)+'</span>'+
-        '</div>'+
-
-      '</div>'+
-
-      '<div class="reloj" data-cierra="'+esc(a.cierreISO||"")+'">'+
-        '<div class="reloj__fila">'+
-          '<span class="reloj__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">'+
-            '<circle cx="12" cy="12" r="8.4"/><path d="M12 7.4V12l3 1.8"/></svg></span>'+
-          '<span class="reloj__cuenta">'+
-            '<span class="reloj__u"><b data-u="d">--</b><span>días</span></span>'+
-            '<span class="reloj__u"><b data-u="h">--</b><span>horas</span></span>'+
-            '<span class="reloj__u"><b data-u="m">--</b><span>min</span></span>'+
-          '</span>'+
-        '</div>'+
-        '<span class="reloj__fecha">'+
-          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round">'+
-          '<rect x="3.6" y="5" width="16.8" height="15" rx="2.6"/><path d="M8 3v3.4M16 3v3.4M3.6 9.6h16.8"/></svg>'+
-          'Cierra el '+esc(a.cierre||"")+'</span>'+
-      '</div>'+
-
-      '<div class="lote__fund">'+
-        '<span class="avatar" style="'+(f?avatarCSS(f):"")+'">'+(f&&f.foto?"":esc(iniciales(f?f.nombre:"?")))+'</span>'+
-        '<div class="lote__fund-t">'+
-          '<span class="lote__rotulo">A beneficio de</span>'+
-          '<b data-ir-fundacion="'+(f?f.id:'')+'">'+esc(f?f.nombre:"—")+'</b>'+
-        '</div>'+
-      '</div>'+
-
-      (puedeAportar()
-        ? '<button class="lote__ofertar" data-pujar="'+a.id+'">'+
-            'SUBASTAR'+
-            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">'+
-            '<path d="M4 12h15"/><path d="M13.5 6.5 19.5 12l-6 5.5"/></svg></button>'
-        : '')+
-    '</div>'+
-  '</article>';
-}
-
 // El cronómetro late cada segundo mientras la pantalla está a la vista.
 var relojSubastas = null;
 function latirRelojes(){
@@ -6642,18 +5921,6 @@ function fechaHoraLarga(iso){
 
 // Días que faltan para el cierre, a partir de fechas escritas como "20 de septiembre".
 var MESES = ["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
-function diasHasta(txt){
-  if(!txt) return null;
-  var m = String(txt).toLowerCase().match(/(\d{1,2})\s+de\s+([a-zá-ú]+)/);
-  if(!m) return null;
-  var mes = MESES.indexOf(m[2]);
-  if(mes < 0) return null;
-  var hoy = new Date();
-  var destino = new Date(hoy.getFullYear(), mes, Number(m[1]));
-  if(destino < hoy) destino.setFullYear(hoy.getFullYear()+1);
-  return Math.max(0, Math.round((destino - hoy) / 86400000));
-}
-
 var subPag = 0;
 // "Sueños por subastar" son los que la administración ya aprobó pero todavía
 // no puso a competir. Acá no hay reloj ni se puede ofertar: falta que la
@@ -6725,37 +5992,6 @@ function pintarSubastas(){
 
 
 // Fundaciones donde el asociado puso plata, con el total aportado a cada una.
-function fundacionesApoyadasPor(nombre){
-  var mapa = {};
-  DB.donaciones.filter(function(d){ return d.quien === nombre; })
-    .forEach(function(d){ mapa[d.fid] = (mapa[d.fid]||0) + d.monto; });
-  return Object.keys(mapa).map(function(fid){
-    return {f:fundacionPorId(fid), total:mapa[fid]};
-  }).filter(function(x){ return x.f; }).sort(function(a,b){ return b.total - a.total; });
-}
-function apoyosMensualesDe(nombre){
-  return DB.suscripciones.filter(function(x){ return x.quien === nombre; });
-}
-function filasApoyoMensual(lista){
-  return lista.map(function(x){
-    var f = fundacionPorId(x.fid);
-    var pl = f && (f.planes||[]).filter(function(q){ return q.id===x.planId; })[0];
-    return '<div class="apoyo">'+
-      '<span class="avatar" style="'+(f?avatarCSS(f):"")+'">'+(f&&f.foto?"":esc(iniciales(f?f.nombre:"?")))+'</span>'+
-      '<div class="apoyo__t"><b data-ir-fundacion="'+(f?f.id:'')+'">'+esc(f?f.nombre:"—")+'</b>'+
-      '<span>'+esc(pl?pl.nombre:"Plan")+(x.tarjeta?' · '+esc(x.tarjeta):'')+'</span></div>'+
-      '<div class="apoyo__m">'+pesos(x.monto)+'<span>/mes</span></div>'+
-    '</div>';
-  }).join("");
-}
-
-
-
-
-
-
-
-
 /* ==================== render: segmento izquierdo ==================== */
 function rankingDe(fid){
   var mapa = {};
@@ -6965,8 +6201,8 @@ function pintarPanelFundacion(){
        '<span>Contá lo que están haciendo</span></span>'+
        '<span class="fila-op__chev">&#8250;</span></button>'+
      '<button class="fila-op" id="masEventos">'+
-       '<span class="fila-op__t"><b>Eventos</b>'+
-       '<span>Agenda de tu fundación</span></span>'+
+       '<span class="fila-op__t"><b>Publicar un evento</b>'+
+       '<span>Nombre, fecha, lugar e imagen</span></span>'+
        '<span class="fila-op__chev">&#8250;</span></button>'+
    '</div>'+
 
@@ -7365,7 +6601,6 @@ function ajustarTarjetasFundacion(pista){
     recortarCampanas();
   });
 }
-function acomodarDeseos(){ acomodarPlaca("screen-deseos"); }
 function acomodarCarruseles(){
   ["screen-deseos","screen-subastas","screen-eventos","screen-fundaciones"].forEach(acomodarPlaca);
 }
@@ -7527,6 +6762,9 @@ function abrirModal(cfg){
   $("#modalSub").textContent = cfg.sub || "";
   $("#modalBody").innerHTML = cfg.body || "";
   $("#modalOk").textContent = cfg.ok || "Confirmar";
+  // ok:false para los modales que sólo muestran información: sin acción que
+  // confirmar, un botón "Confirmar" invita a hacer algo que no existe.
+  $("#modalOk").style.display = cfg.ok === false ? "none" : "";
   $(".modal__box").classList.toggle("modal__box--grande", cfg.ancho === "grande");
   $(".modal__box").classList.toggle("modal__box--pleno", cfg.clase === "modal--pleno");
   $("#modalCancel").textContent = cfg.cancelar || "Cancelar";
@@ -7797,45 +7035,6 @@ function modalFotoSuelta(foto, titulo){
     v.classList.remove("is-on");
     setTimeout(function(){ v.remove(); }, 220);
   });
-}
-
-function modalFoto(aid){
-  var a = DB.aportes.filter(function(x){ return x.id===aid; })[0];
-  if(!a) return;
-  var foto = a.imagenGeneral || (a.productos && a.productos[0] && a.productos[0].imagen);
-  if(!foto) return;
-  var v = document.createElement("div");
-  v.className = "visor";
-  v.innerHTML = '<button class="visor__cerrar" aria-label="Cerrar">&times;</button>'+
-    '<figure class="visor__marco"><img src="'+foto+'" alt=""></figure>'+
-    '<p class="visor__pie">'+esc(a.titulo||"")+'</p>';
-  document.body.appendChild(v);
-  requestAnimationFrame(function(){ v.classList.add("is-on"); });
-  v.addEventListener("click", function(){
-    v.classList.remove("is-on");
-    setTimeout(function(){ v.remove(); }, 220);
-  });
-}
-
-function modalPujar(aid){
-  if(!puedeAportar()){ toast("Las fundaciones no participan de las subastas."); return; }
-  var a = DB.aportes.filter(function(x){ return x.id===aid; })[0];
-  if(!a) return;
-  var minimo = Math.max(a.base, a.puja + 1000);
-  abrirModal({eyebrow:"Subasta solidaria", titulo:a.titulo,
-    body: campoPesos("pMonto","Mi oferta", minimo.toLocaleString("es-AR")),
-    ok:"Ofertar",
-    onOk:function(){
-      if(!exigirSesion("ofertar")) return;
-      var m = valPesos("pMonto");
-      if(!(m>=minimo)){
-        if(!DEMO){ toast("La oferta tiene que ser de "+pesos(minimo)+" o más."); return; }
-        m = minimo;   // beta: ofertamos el mínimo y seguimos
-      }
-      a.puja = m; a.pujador = sesion.nombre;
-      cerrarModal(); pintarTodo();
-      toast("Ofertaste "+pesos(m)+" por "+a.titulo+".");
-    }});
 }
 
 /* ---- helpers de presentación reutilizables ---- */
@@ -8144,79 +7343,6 @@ function pintarFundacionAbierta(){
 var PAISES = ["Argentina","Uruguay","Chile","Paraguay","Bolivia","Perú","México","Colombia","España","Otro"];
 
 // Datos legales que se piden una vez abierta la sesión, para dejar de ser provisional.
-function modalDatosFundacion(){
-  var f = miFundacion(); if(!f) return;
-  var L = f.legales || {};
-  abrirModal({eyebrow:"Verificación institucional", titulo:"Datos de la fundación",
-    sub:"Con esto la cuenta deja de ser provisional y la fundación queda publicada.",
-    ancho:"grande",
-    body:
-      campo("lgRazon","Razón social","text","", '<p class="field__hint">Nombre legal registrado.</p>')+
-      '<div class="grid2">'+
-        campo("lgFiscal","Identificación fiscal","text","CUIT, RUT, RFC, NIF o Tax ID")+
-        '<div class="field"><label for="lgTipo">Tipo de organización</label><select id="lgTipo">'+
-        ["Fundación","Asociación Civil","Cooperativa","Organización Comunitaria","Otra"].map(function(x){
-          return '<option'+(L.tipo===x?" selected":"")+'>'+x+'</option>'; }).join("")+'</select></div>'+
-      '</div>'+
-      campo("lgPersoneria","Número de personería jurídica","text","Registro o matrícula otorgada por el Estado")+
-      campo("lgBanco","Cuenta bancaria a nombre de la fundación","text","CBU, CVU o IBAN")+
-      campo("lgConstancia","Constancia de inscripción fiscal","file","",
-        '<p class="field__hint">Comprobante del organismo de impuestos.</p>')+
-      '<div class="grid2">'+
-        '<div class="field"><label for="lgPais">País</label><select id="lgPais">'+
-        PAISES.map(function(x){ return '<option'+(L.pais===x?" selected":"")+'>'+x+'</option>'; }).join("")+'</select></div>'+
-        campo("lgDomicilio","Domicilio fiscal","text","Dirección legal registrada")+
-      '</div>'+
-      '<div class="paso-sep">Contacto</div>'+
-      campo("lgRep","Representante o contacto principal","text","Nombre completo")+
-      campo("lgMail","Correo corporativo","email","nombre@tufundacion.org",
-        '<p class="field__hint">Tiene que ser de dominio propio para validar autenticidad.</p>')+
-      campo("lgTel","Teléfono de contacto","text","+54 9 11 ...",
-        '<p class="field__hint">Institucional o celular de verificación.</p>')+
-      '<div class="paso-sep">Identidad pública</div>'+
-      campo("lgLogo","Logo y marca","file","")+
-      campo("lgWeb","Sitio web o redes","text","https://…"),
-    ok:"Enviar datos",
-    after:function(){
-      $("#lgRazon").value = L.razon || f.nombre;
-      $("#lgFiscal").value = L.fiscal || "";
-      $("#lgPersoneria").value = L.personeria || "";
-      $("#lgBanco").value = L.banco || "";
-      $("#lgDomicilio").value = L.domicilio || f.direccion || "";
-      $("#lgRep").value = L.representante || "";
-      $("#lgMail").value = L.mail || f.mail || "";
-      $("#lgTel").value = L.tel || "";
-      $("#lgWeb").value = L.web || f.web || "";
-    },
-    onOk:function(){
-      var falta = ["lgRazon","lgFiscal","lgPersoneria","lgBanco","lgDomicilio","lgRep","lgMail","lgTel"]
-        .filter(function(id){ return !val(id); });
-      if(falta.length){ toast("Faltan datos obligatorios: revisá el formulario."); return; }
-      if(!esMailCorporativo(val("lgMail"))){ toast("El correo tiene que ser de dominio propio."); return; }
-      f.legales = {
-        razon:val("lgRazon"), fiscal:val("lgFiscal"), tipo:$("#lgTipo").value,
-        personeria:val("lgPersoneria"), banco:val("lgBanco"), pais:$("#lgPais").value,
-        domicilio:val("lgDomicilio"), representante:val("lgRep"), mail:val("lgMail"),
-        tel:val("lgTel"), web:val("lgWeb"), constancia:null
-      };
-      f.direccion = f.direccion || val("lgDomicilio");
-      f.web = f.web || val("lgWeb");
-      f.lugar = (f.lugar === "A completar") ? val("lgDomicilio") : f.lugar;
-      leerArchivo($("#lgConstancia"), function(doc){
-        f.legales.constancia = doc;
-        leerArchivo($("#lgLogo"), function(logo){
-          if(logo) f.foto = logo;
-          f.provisional = false;
-          sesion.foto = f.foto;
-          cerrarModal(); pintarTodo();
-          toast("Datos enviados. La fundación quedó publicada.");
-        });
-      });
-    }});
-}
-
-
-
 function modalEditarFundacion(){
   var f = miFundacion(); if(!f) return;
   abrirModal({eyebrow:"Editar", titulo:"Datos de la fundación",
@@ -8417,32 +7543,6 @@ function modalEditarPerfil(){
     }});
 }
 
-function modalContactar(mail, quien){
-  var f = miFundacion();
-  abrirModal({eyebrow:"Contacto", titulo:"Escribirle a "+quien,
-    sub:"Se abre en tu programa de correo con el mensaje ya cargado.",
-    ancho:"grande",
-    body:'<div class="field"><label>Correo</label><input type="text" value="'+esc(mail)+'" readonly></div>'+
-         campo("ctAsunto","Asunto","text","Gracias por tu aporte")+
-         '<div class="field"><label for="ctCuerpo">Mensaje</label>'+
-         '<textarea id="ctCuerpo" class="caja-grande"></textarea></div>',
-    ok:"Abrir en mi correo",
-    after:function(){
-      $("#ctAsunto").value = "Gracias por tu aporte a "+(f?f.nombre:"nuestra fundación");
-      $("#ctCuerpo").value = "Hola "+quien+",\n\nGracias por tu donación. Queríamos contarte en qué se está usando y invitarte a lo que viene.\n\nUn abrazo,\n"+(f?f.nombre:"");
-    },
-    onOk:function(){
-      var url = "mailto:"+encodeURIComponent(mail)+
-        "?subject="+encodeURIComponent(val("ctAsunto"))+
-        "&body="+encodeURIComponent($("#ctCuerpo").value);
-      window.open(url, "_blank");
-      cerrarModal();
-      toast("Abrimos el borrador en tu correo.");
-    }});
-}
-
-
-
 function filaStat(label, valor, extra){
   return '<div class="row"><div><div class="row__main">'+esc(label)+'</div>'+
     (extra ? '<div class="row__sub">'+esc(extra)+'</div>' : '')+'</div>'+
@@ -8626,34 +7726,6 @@ function modalEstadisticas(tipo){
 
 // ---- estadísticas de fundación: pantalla propia ----
 // Bloque plegable de deseos, reutilizado en los perfiles.
-function bloqueDeseos(id, titulo, lista, conAcciones){
-  return '<div class="desplegable" id="'+id+'">'+
-    '<button class="desplegable__cab" data-toggle="'+id+'">'+
-      '<span>'+esc(titulo)+'</span>'+
-      '<span class="desplegable__meta">'+lista.length+(lista.length===1?' deseo':' deseos')+
-      '<span class="desplegable__flecha">&#9662;</span></span></button>'+
-    '<div class="desplegable__cuerpo">'+
-      (lista.length
-        ? lista.slice().reverse().map(function(d){
-            var ff = d.fid ? fundacionPorId(d.fid) : null;
-            var quien = DB.perfilesAnonimos[d.quien] ? "Donante anónimo" : d.quien;
-            return '<div class="row"><div><div class="row__main">'+esc(d.titulo||"Deseo")+'</div>'+
-              '<div class="row__sub">Lo pide '+esc(quien)+(d.valor?' · vale '+pesos(d.valor):'')+
-              (ff?' · '+esc(ff.nombre):'')+(d.destino?' · '+esc(d.destino):'')+'</div>'+
-              '<div class="row__sub" style="margin-top:5px">'+esc(d.aCambio||"")+'</div></div>'+
-              '<div class="acciones">'+
-                '<button class="btn btn--ghost btn--xs" data-ver-deseo="'+d.id+'">Abrir</button>'+
-                (conAcciones && d.estado==="pendiente"
-                  ? '<button class="btn btn--primary btn--xs" data-sol-ok="'+d.id+'">Aceptar</button>'+
-                    '<button class="btn btn--ghost btn--xs" data-sol-no="'+d.id+'">Rechazar</button>'
-                  : '<span class="estado estado--'+(d.estado==="pendiente"?"pend":d.estado==="aceptada"?"ok":"no")+'">'+
-                    esc(d.estado)+'</span>')+
-              '</div></div>';
-          }).join("")
-        : '<div class="empty">Todavía no hay deseos acá.</div>')+
-    '</div></div>';
-}
-
 // Cada entrada del menú abre su propia pantalla.
 // La barra refleja dónde estás: quedaba encendida la sección anterior.
 // En modo fundación las pestañas se llaman distinto ("fAvisos" en vez de
@@ -8711,32 +7783,6 @@ function abrirEventos(){
 
 /* ==================== publicaciones, muro y avisos ==================== */
 // Las fundaciones publican actividades; quien las apoya las ve en su muro.
-function fundacionesQueApoyo(){
-  if(!sesion) return [];
-  var ids = {};
-  DB.donaciones.forEach(function(d){ if(d.quien === sesion.nombre) ids[d.fid] = true; });
-  DB.suscripciones.forEach(function(x){ if(x.quien === sesion.nombre) ids[x.fid] = true; });
-  return Object.keys(ids).map(fundacionPorId).filter(Boolean);
-}
-
-function tarjetaPost(po){
-  var f = fundacionPorId(po.fid);
-  var fotos = (po.fotos||[]).slice(0,5);
-  return '<article class="post">'+
-    '<div class="post__cab">'+
-      '<span class="avatar" style="'+(f?avatarCSS(f):"")+'">'+(f&&f.foto?"":esc(iniciales(f?f.nombre:"?")))+'</span>'+
-      '<div><b data-ir-fundacion="'+(f?f.id:'')+'">'+esc(f?f.nombre:"—")+'</b>'+
-      '<span>'+esc(po.fecha||"")+'</span></div>'+
-    '</div>'+
-    '<h3 class="post__titulo">'+esc(po.titulo||"")+'</h3>'+
-    (fotos.length
-      ? '<div class="post__fotos'+(fotos.length>1?' es-varias':'')+'">'+
-        fotos.map(function(src){ return '<span style="background-image:url('+src+')"></span>'; }).join("")+'</div>'
-      : '')+
-    '<p class="post__texto">'+esc(po.texto||"")+'</p>'+
-  '</article>';
-}
-
 // "2026-03-01" → "marzo". Si no hay fecha, decimos que es reciente.
 // Fecha corta y exacta, como 3/7/26. El historial la prefiere al mes suelto:
 // para reconocer una donación propia, el día importa.
@@ -8878,6 +7924,17 @@ function avisarFundacion(fid, titulo, texto, destino, clase){
     destino:destino || "recaudacion", clase:clase || "actividad", leido:false});
 }
 
+// Para la fundación, en lugar de un ícono de color va una etiqueta que nombra
+// el tipo de movimiento. Se lee, se entiende sin aprender los colores y sirve
+// para comparar filas entre sí.
+var ETIQUETA_AVISO = {
+  superado:"Sueño dirigido",
+  donacion:"Donación",
+  aporte:"Transferencia",
+  actividad:"Actividad",
+  evento:"Evento"
+};
+
 function pintarAvisos(){
   var caja = $("#listaAvisos"); if(!caja) return;
   // Los avisos llevan "para": los que no lo dicen son del donante, que es como
@@ -8920,6 +7977,26 @@ function pintarAvisos(){
           // "Volver a ofertar" sólo tiene sentido para quien perdió una puja.
           // La fundación comparte el estilo de aviso, no esa acción.
           var urgente = cl === "superado" && a.para !== "fundacion";
+
+          // La fundación ve una ficha, no una notificación: sin ícono de color,
+          // con una etiqueta que dice de qué se trata y el dato importante
+          // separado del relato. Es información de gestión, se lee de un
+          // vistazo y se compara entre filas.
+          if(a.para === "fundacion"){
+            return '<button class="favi'+(a.leido?'':' es-nuevo')+'" '+
+              'data-aviso="'+esc(a.destino||"")+'">'+
+              '<span class="favi__marca" aria-hidden="true"></span>'+
+              '<span class="favi__cuerpo">'+
+                '<span class="favi__top">'+
+                  '<span class="favi__tipo">'+esc(ETIQUETA_AVISO[cl] || "Novedad")+'</span>'+
+                  '<span class="favi__h">'+esc(a.hora || a.fecha || "")+'</span>'+
+                '</span>'+
+                '<b class="favi__t">'+esc(a.titulo)+'</b>'+
+                '<span class="favi__d">'+esc(a.texto)+'</span>'+
+              '</span>'+
+            '</button>';
+          }
+
           return '<button class="aviso av--'+cl+(a.leido?'':' es-nuevo')+(urgente?' es-urge':'')+'" '+
             'data-aviso="'+esc(a.destino||"")+'">'+
             '<span class="aviso__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" '+
@@ -8956,6 +8033,67 @@ function abrirAvisos(){
   // Después de abrirPantalla, no antes: abrirPantalla llama a marcarTab("") y
   // borraba la marca que se acababa de poner.
   marcarTab("avisos");
+}
+
+// Publicar un evento de la fundación: nombre, descripción, fecha e imagen.
+// El botón "Eventos" del panel abría la pantalla de eventos del donante, que es
+// la agenda de todas las fundaciones vista desde afuera: no servía para cargar
+// uno propio.
+function modalNuevoEventoFund(){
+  var f = miFundacion(); if(!f) return;
+  var imagen = null;
+
+  abrirModal({eyebrow:"Evento", titulo:"Publicar un evento",
+    sub:"Aparece en tu perfil y en la agenda de actividades.",
+    ancho:"grande",
+    body:
+      campo("evNombre","Nombre del evento","text","")+
+      '<div class="field"><label for="evDesc">Descripción</label>'+
+      '<textarea id="evDesc" class="caja-grande"></textarea></div>'+
+      campo("evFecha","Fecha","date","")+
+      campo("evLugar","Lugar","text","Dónde se hace")+
+      '<div class="field"><label for="evImagen">Imagen</label>'+
+      '<input type="file" id="evImagen" accept="image/*">'+
+      '<p class="field__hint">Opcional. Se ve en la tarjeta del evento.</p></div>'+
+      '<div class="post__previas" id="evPrevia"></div>',
+    ok:"Publicar evento",
+    after:function(){
+      var ent = $("#evImagen");
+      if(ent) ent.addEventListener("change", function(e){
+        var ar = (e.target.files || [])[0];
+        if(!ar) return;
+        var lector = new FileReader();
+        lector.onload = function(ev){
+          imagen = ev.target.result;
+          $("#evPrevia").innerHTML = '<span style="background-image:url('+imagen+')"></span>';
+        };
+        lector.readAsDataURL(ar);
+      });
+    },
+    onOk:function(){
+      var n = val("evNombre"), d = val("evDesc"), fe = val("evFecha"), lu = val("evLugar");
+      if(!n || !fe){ toast("Poné al menos el nombre y la fecha."); return; }
+
+      // La ficha guarda la fecha ya escrita en palabras, que es como la muestran
+      // las tarjetas, y también la original por si después hay que ordenarlas.
+      var partes = fe.split("-");
+      var texto = fe;
+      if(partes.length === 3){
+        texto = Number(partes[2]) + " de " + MESES_NOM[Number(partes[1]) - 1];
+      }
+
+      f.eventos = f.eventos || [];
+      f.eventos.push({id:nid("ev"), f:texto, fISO:fe, n:n,
+        lugar:lu || "", desc:d || "", imagen:imagen, link:"", asistentes:[]});
+
+      // Quienes apoyan a la fundación se enteran, como con las actividades.
+      DB.avisos.push({id:nid("av"), titulo:f.nombre+" publicó un evento",
+        texto:n+" · "+texto, hora:"ahora", cuando:new Date().toISOString(),
+        destino:"eventos", clase:"evento", leido:false});
+
+      cerrarModal(); pintarTodo();
+      toast("Evento publicado.");
+    }});
 }
 
 // Publicar una actividad: hasta cinco fotos, título y texto.
@@ -9295,6 +8433,32 @@ function historialSueno(x){
 function modalDeseo(did){
   var x = DB.solicitudes.filter(function(y){ return y.id===did; })[0];
   if(!x) return;
+
+  // La fundación mira, no oferta ni saca a subasta: abrir una subasta es una
+  // decisión de la administración. Acá sólo ve la ficha del sueño que la eligió.
+  if(typeof miFundacion === "function" && miFundacion()){
+    var mejorF = mejorOferta(x);
+    var ESTADOS = {"pendiente":"Esperando aprobación", "por subastar":"Aprobado, a la espera de salir",
+                   "en subasta":"En subasta", "cumplido":"Cumplido", "rechazado":"Rechazado"};
+    abrirModal({eyebrow:"Sueño dirigido a tu fundación", titulo:x.titulo||"Sueño", sub:"",
+      ancho:"grande",
+      body:
+        '<div class="ficha">'+
+          '<div class="ficha__f"><span>Estado</span><b>'+
+            esc(ESTADOS[x.estado] || x.estado || "—")+'</b></div>'+
+          '<div class="ficha__f"><span>Precio base</span><b>'+pesos(x.valor||0)+'</b></div>'+
+          '<div class="ficha__f"><span>Mejor oferta</span><b>'+
+            (mejorF ? pesos(mejorF.monto) : "Sin ofertas")+'</b></div>'+
+          '<div class="ficha__f"><span>Destino</span><b>'+
+            esc(x.destino || "Aporte general")+'</b></div>'+
+        '</div>'+
+        (x.aCambio ? '<p class="deseo-texto">'+esc(x.aCambio)+'</p>' : '')+
+        '<p class="field__hint">La plataforma decide cuándo sale a subasta. '+
+          'Te avisamos en cuanto se abra.</p>',
+      ok:false, cancelar:"Cerrar"});
+    return;
+  }
+
   var quien = DB.perfilesAnonimos[x.quien] ? "Donante anónimo" : x.quien;
 
   abrirModal({eyebrow:"Sueño de "+quien, titulo:x.titulo||"Sueño", sub:"",
@@ -9483,26 +8647,6 @@ function pintarComunidad(){
     '</div>';
 }
 
-function exportarContactos(){
-  var f = miFundacion(); if(!f) return;
-  var gente = gentePorFundacion(f).filter(function(g){ return !g.anon; });
-  var filas = [["Nombre","Mail","Total donado","Donaciones","Aporte mensual","Última donación"]]
-    .concat(gente.map(function(g){
-      return [g.nombre, g.mail||"", g.total, g.veces, g.mensual||0,
-              g.ultima ? g.ultima.toLocaleDateString("es-AR") : ""];
-    }));
-  var csv = filas.map(function(r){
-    return r.map(function(c){ return '"'+String(c).replace(/"/g,'""')+'"'; }).join(",");
-  }).join("\n");
-
-  var blob = new Blob(["\ufeff"+csv], {type:"text/csv;charset=utf-8;"});
-  var a = document.createElement("a");
-  a.href = URL.createObjectURL(blob);
-  a.download = "contactos-"+f.nombre.toLowerCase().replace(/[^a-z0-9]+/g,"-")+".csv";
-  document.body.appendChild(a); a.click(); a.remove();
-  toast("Descargamos "+gente.length+" contactos.");
-}
-
 function modalPersona(nombre){
   var f = miFundacion(); if(!f) return;
   var g = gentePorFundacion(f).filter(function(x){ return x.nombre === nombre; })[0];
@@ -9537,26 +8681,6 @@ function modalPersona(nombre){
 }
 
 // Agradecer de verdad: mensaje sugerido y registro de lo enviado.
-function modalGracias(nombre){
-  var f = miFundacion(); if(!f) return;
-  var texto = "¡Hola "+nombre+"! Desde "+f.nombre+" queremos agradecerte por tu aporte. "+
-    "Gracias a personas como vos podemos sostener nuestro trabajo. ¡Gracias de corazón!";
-  abrirModal({eyebrow:"Agradecer", titulo:"Mensaje para "+nombre, sub:"",
-    ancho:"grande",
-    body:'<div class="field"><label for="grTexto">Mensaje</label>'+
-         '<textarea id="grTexto" class="caja-grande">'+esc(texto)+'</textarea></div>'+
-         '<p class="fnota">Se envía como notificación dentro de la app.</p>',
-    ok:"Enviar",
-    onOk:function(){
-      DB.gracias[f.id+"|"+nombre] = true;
-      DB.avisos.push({id:nid("av"), titulo:f.nombre+" te agradeció",
-        texto:(val("grTexto")||texto).slice(0,120), hora:"ahora",
-        cuando:new Date().toISOString(), destino:"apoyo", clase:"donacion", leido:false});
-      cerrarModal(); pintarComunidad();
-      toast("Mensaje enviado a "+nombre+".");
-    }});
-}
-
 function abrirFSubastas(){
   abrirPantalla("screen-fsubastas", pintarFSubastas);
   marcarTab("fRecauda");   // abrirPantalla la borra: se repone después
@@ -9721,18 +8845,7 @@ function pintarFSubastas(){
                     '<b>'+Math.round(x.v/suma*100)+'%</b></div>';
                 }).join("")+
               '</div>'
-            : '<div class="empty">Todavía no hubo movimientos.</div>')+
-
-          '<p class="frotulo">Campañas abiertas</p>'+
-          ((f.causas||[]).length
-            ? f.causas.map(function(c){
-                var pc = c.meta ? Math.min(100, Math.round(c.r / c.meta * 100)) : 0;
-                return '<div class="fcampana">'+
-                  '<div class="fcampana__t"><b>'+esc(c.t)+'</b><span>'+pc+'%</span></div>'+
-                  '<div class="fbarra"><i style="width:'+pc+'%"></i></div>'+
-                  '<div class="fcampana__p">'+pesos(c.r)+' de '+pesos(c.meta)+'</div></div>';
-              }).join("")
-            : '<div class="empty">Todavía no abriste ninguna campaña.</div>');
+            : '<div class="empty">Todavía no hubo movimientos.</div>');
       }
 
       // ---------- SUEÑOS: los que eligieron a esta fundación ----------
@@ -9861,162 +8974,9 @@ function filaSuenoFund(x){
     '<span class="lotef__chev">&#8250;</span></button>';
 }
 
-function modalLoteFund(aid){
-  var a = DB.aportes.filter(function(x){ return x.id===aid; })[0];
-  if(!a) return;
-  var e = estadoLote(a);
-  var monto = a.puja || a.base || 0;
-  var ofertas = (a.ofertas||[]).slice().reverse();
-
-  abrirModal({eyebrow:e.t, titulo:a.titulo, sub:"",
-    ancho:"grande",
-    body:
-      '<div class="lote-detalle">'+
-        '<div class="lote-detalle__c"><span>Oferta más alta</span><b>'+pesos(monto)+'</b></div>'+
-        (a.pujador
-          ? '<div class="lote-detalle__g"><span>Va ganando</span><b>'+esc(a.pujador)+'</b></div>'
-          : '<div class="lote-detalle__g"><span>Todavía sin ofertas</span></div>')+
-        (a.cierre ? '<p class="lote-detalle__f">Cierra el '+esc(a.cierre)+'</p>' : '')+
-      '</div>'+
-      (ofertas.length
-        ? '<p class="frotulo">Historial de ofertas</p><div class="hist-lista">'+
-          ofertas.map(function(o){
-            return '<div class="hist-fila"><span class="hist-fila__f">'+esc(o.fecha||"")+'</span>'+
-              '<span class="hist-fila__d">'+esc(o.quien)+'</span>'+
-              '<span class="hist-fila__m">'+pesos(o.monto)+'</span></div>';
-          }).join("")+'</div>'
-        : '')+
-      (e.id === "porcobrar"
-        ? '<button class="btn btn--primary btn--block" style="margin-top:14px" data-cobrar="'+a.id+'">'+
-          'Marcar como cobrada</button>'
-        : '')+
-      (e.id === "cobrado"
-        ? '<button class="btn btn--primary btn--block" style="margin-top:14px" data-entregar="'+a.id+'">'+
-          'Marcar como entregada</button>'
-        : ''),
-    ok:"Cerrar", onOk:function(){ cerrarModal(); }});
-}
-
 // El formulario para publicar un lote nuevo.
 // Abrir una campaña: es la forma en que una fundación pide para algo puntual.
-function modalNuevaCampana(){
-  var f = miFundacion(); if(!f) return;
-  abrirModal({eyebrow:"Nueva campaña", titulo:"Abrir una campaña",
-    sub:"Contá para qué juntás y cuánto necesitás.",
-    ancho:"grande", clase:"modal--pleno", cancelar:"Volver",
-    body: campo("ncTitulo","¿Cómo se llama?","text","")+
-      '<div class="field"><label for="ncDesc">¿Para qué es?</label>'+
-      '<textarea id="ncDesc" class="caja-grande"></textarea></div>'+
-      campoPesos("ncMeta","¿Cuánto necesitás juntar?",""),
-    ok:"Abrir campaña",
-    onOk:function(){
-      var t = val("ncTitulo"), d = val("ncDesc"), meta = valPesos("ncMeta");
-      if(DEMO){
-        if(!t) t = "Campaña solidaria";
-        if(!d) d = "Publicada desde la versión beta.";
-        if(!meta) meta = 1000000;
-      } else if(!t || !meta){ toast("Poné el nombre y la meta."); return; }
-      f.causas = f.causas || [];
-      f.causas.push({id:nid("ca"), t:t, desc:d, meta:meta, r:0, imagen:null});
-      cerrarModal(); pintarTodo();
-      toast("Campaña abierta.");
-    }});
-}
-
 // Rendir cuentas: en qué se usó lo recaudado. Es lo que sostiene la confianza.
-function modalRendicion(){
-  var f = miFundacion(); if(!f) return;
-  var opciones = (f.causas||[]).map(function(c){
-    return '<option value="'+c.id+'">'+esc(c.t)+'</option>'; }).join("");
-  abrirModal({eyebrow:"Transparencia", titulo:"Rendir cuentas",
-    sub:"Contá en qué se usó lo que recaudaste. Se publica en tu perfil.",
-    ancho:"grande", clase:"modal--pleno", cancelar:"Volver",
-    body: (opciones ? '<div class="field"><label for="rdCausa">¿De qué campaña?</label>'+
-            '<select id="rdCausa"><option value="">Aporte general</option>'+opciones+'</select></div>' : '')+
-      campo("rdTitulo","¿En qué se usó?","text","")+
-      campoPesos("rdMonto","¿Cuánto se destinó?","")+
-      '<div class="field"><label for="rdDetalle">Contalo en detalle</label>'+
-      '<textarea id="rdDetalle" class="caja-grande"></textarea></div>'+
-      '<div class="field"><label for="rdFoto">Foto del resultado</label>'+
-      '<input type="file" id="rdFoto" accept="image/*"></div>',
-    ok:"Publicar rendición",
-    onOk:function(){
-      var t = val("rdTitulo"), m = valPesos("rdMonto"), d = val("rdDetalle");
-      if(DEMO){
-        if(!t) t = "Compra de equipamiento";
-        if(!d) d = "Detalle cargado desde la versión beta.";
-        if(!m) m = 250000;
-      } else if(!t || !m){ toast("Poné en qué se usó y cuánto."); return; }
-      DB.posts.push({id:nid("po"), fid:f.id, tipo:"rendicion",
-        titulo:"Rendición · "+t, texto:d+" Se destinaron "+pesos(m)+".",
-        fotos:[], fecha:"hoy", fechaISO:hoyISO()});
-      DB.avisos.push({id:nid("av"), titulo:f.nombre+" rindió cuentas",
-        texto:t+" · "+pesos(m), hora:"ahora", cuando:new Date().toISOString(),
-        destino:"apoyo", clase:"donacion", leido:false});
-      cerrarModal(); pintarTodo();
-      toast("Rendición publicada.");
-    }});
-}
-
-function modalCrearSubasta(){
-  var f = miFundacion(); if(!f) return;
-  var foto = null;
-  abrirModal({eyebrow:"Nueva subasta", titulo:"Crear subasta",
-    sub:"Publicá un lote donado. Lo recaudado va a tu fundación.",
-    ancho:"grande", clase:"modal--pleno", cancelar:"Volver",
-    body:
-      campo("csTitulo","¿Qué se subasta?","text","")+
-      '<div class="field"><label for="csDetalle">Contalo en pocas líneas</label>'+
-      '<textarea id="csDetalle" class="caja-grande"></textarea></div>'+
-      campoPesos("csBase","Precio base","")+
-      campo("csCierre","¿Qué día cierra?","date","")+
-      '<div class="field"><label for="csFoto">Foto del lote</label>'+
-      '<input type="file" id="csFoto" accept="image/*"></div>'+
-      '<div class="post__previas" id="csPrevia"></div>'+
-      selectorCampanaFund(f),
-    ok:"Publicar subasta",
-    after:function(){
-      $("#csFoto").addEventListener("change", function(e){
-        leerArchivo(e.target, function(src){
-          if(!src) return;
-          foto = src;
-          $("#csPrevia").innerHTML = '<span style="background-image:url('+src+')"></span>';
-        });
-      });
-    },
-    onOk:function(){
-      var t = val("csTitulo"), det = val("csDetalle"), base = valPesos("csBase");
-      if(DEMO){
-        if(!t) t = "Lote solidario";
-        if(!det) det = "Publicado desde la versión beta.";
-        if(!base) base = 50000;
-      } else if(!t || !base){ toast("Poné al menos el título y el precio base."); return; }
-
-      var cierreISO = val("csCierre") || "";
-      var texto = cierreISO
-        ? new Date(cierreISO+"T21:00").toLocaleDateString("es-AR", {day:"numeric", month:"long"})
-        : "a definir";
-      var cid = $("#csCausa") ? $("#csCausa").value : "";
-      var causa = cid ? (f.causas.filter(function(c){ return c.id===cid; })[0]||{}).t : "Aporte general";
-
-      DB.aportes.push({id:nid("a"), quien:f.nombre, fid:f.id, titulo:t, detalle:det,
-        imagenGeneral:foto, productos:[], base:base, puja:0, pujador:null,
-        estado:"en subasta", cierre:texto, cierreISO:(cierreISO?cierreISO+"T21:00":""),
-        siguiendo:0, causa:causa, ofertas:[]});
-
-      cerrarModal(); pintarTodo(); pintarFSubastas();
-      toast("Subasta publicada.");
-    }});
-}
-
-function selectorCampanaFund(f){
-  if(!f.causas || !f.causas.length) return "";
-  return '<div class="field"><label for="csCausa">¿A qué campaña va?</label><select id="csCausa">'+
-    '<option value="">Aporte general</option>'+
-    f.causas.map(function(c){ return '<option value="'+c.id+'">'+esc(c.t)+'</option>'; }).join("")+
-    '</select></div>';
-}
-
 // Un menú con lo que no entra en la barra.
 // El menú "Más" se retiró: sus dos accesos pasaron al panel de Inicio y su
 // "Cerrar sesión" ya estaba al final de esa misma pantalla. El lugar que
@@ -10863,27 +9823,6 @@ function abrirGmailComplementario(f, tipo, titulo, texto, titulacion, cantFotos)
 }
 
 // Arma el borrador en Gmail con el deseo ya redactado.
-function abrirGmailDeseo(f, titulo, destino, valor, texto){
-  var para = (f.legales && f.legales.mail) || f.mail ||
-    ("contacto@"+f.nombre.toLowerCase().replace(/[^a-z0-9]+/g,"")+".org");
-  var asunto = "Deseo · "+titulo;
-  var cuerpo =
-    "Hola "+f.nombre+",\n\n"+
-    "Quiero contarles un sueño.\n\n"+
-    "Título: "+titulo+"\n"+
-    (destino ? "Destino: "+destino+"\n" : "")+
-    (valor ? "Precio base: "+pesos(valor)+"\n" : "")+
-    "\nMi sueño:\n"+texto+"\n\n"+
-    "Quedo a la espera de su respuesta.\n\n"+
-    sesion.nombre+"\n"+sesion.mail+"\n\n"+
-    "— Enviado desde Cumplí tu Deseo";
-  var url = "https://mail.google.com/mail/?view=cm&fs=1"+
-    "&to="+encodeURIComponent(para)+
-    "&su="+encodeURIComponent(asunto)+
-    "&body="+encodeURIComponent(cuerpo);
-  window.open(url, "_blank", "noopener");
-}
-
 $("#apEnviar").addEventListener("click", avanzarAporte);
 $("#apSalir").addEventListener("click", cerrarAporte);
 $("#apAtras").addEventListener("click", function(){
@@ -10902,26 +9841,6 @@ $("#apExtra").addEventListener("click", function(e){
 });
 
 
-
-function modalNuevaCausa(){
-  var f = miFundacion(); if(!f) return;
-  abrirModal({eyebrow:"Campaña", titulo:"Agregar campaña abierta",
-    sub:"La meta define la barra de crowdfunding que ve la gente.",
-    body: campo("ncT","Nombre de la campaña","text","Becas secundarias 2026")+
-          campo("ncDesc","Presentación breve","textarea","Para qué es y a quién llega.")+
-          campo("ncImg","Imagen de la campaña","file","")+
-          '<div class="grid2">'+campo("ncMeta","Meta a recaudar","number","1500000")+
-          campo("ncR","Ya recaudado (opcional)","number","0")+'</div>',
-    ok:"Agregar campaña",
-    onOk:function(){
-      var t=val("ncT"), meta=Number(val("ncMeta")), r=Number(val("ncR"))||0, d=val("ncDesc");
-      if(!t||!(meta>0)){ toast("Poné nombre y meta."); return; }
-      leerArchivo($("#ncImg"), function(img){
-        f.causas.push({id:nid("ca"), t:t, meta:meta, r:Math.min(r,meta), desc:d, imagen:img});
-        cerrarModal(); pintarTodo(); toast("Campaña agregada.");
-      });
-    }});
-}
 
 function modalEditarCausa(cid){
   var f = miFundacion(); if(!f) return;
@@ -10968,26 +9887,6 @@ function modalCausaMas(cid, fid){
     }});
 }
 
-function modalNuevoEvento(){
-  var f = miFundacion(); if(!f) return;
-  abrirModal({eyebrow:"Evento", titulo:"Agregar próximo evento",
-    sub:"El primero de la lista es el que se muestra en tu tarjeta pública.",
-    body: campo("neF","Fecha","text","12 de septiembre")+
-          campo("neN","Nombre del evento","text","Feria de becas")+
-          campo("neL","Dónde","text","Club Náutico San Isidro")+
-          campo("neDesc","Presentación breve","textarea","Qué va a pasar y quién puede ir.")+
-          campo("neImg","Imagen del evento","file",""),
-    ok:"Agregar evento",
-    onOk:function(){
-      var fe=val("neF"), n=val("neN"), l=val("neL"), d=val("neDesc");
-      if(!fe||!n){ toast("Poné fecha y nombre del evento."); return; }
-      leerArchivo($("#neImg"), function(img){
-        f.eventos.push({id:nid("ev"), f:fe, n:n, lugar:l||"A confirmar", desc:d, imagen:img, asistentes:[]});
-        cerrarModal(); pintarTodo(); toast("Evento agregado.");
-      });
-    }});
-}
-
 function modalEditarEvento(eid){
   var f = miFundacion(); if(!f) return;
   var e = f.eventos.filter(function(x){ return x.id===eid; })[0]; if(!e) return;
@@ -11027,27 +9926,6 @@ function modalEventoMas(eid, fid){
 }
 
 // Al confirmar asistencia se abre el mail de aviso a la fundación.
-function mailAsistencia(f, e){
-  var para = (f.legales && f.legales.mail) || f.mail ||
-    ("contacto@"+f.nombre.toLowerCase().replace(/[^a-z0-9]+/g,"")+".org");
-  var asunto = "Confirmo asistencia · "+e.n+" ("+e.f+")";
-  var cuerpo =
-    "Hola "+f.nombre+",\n\n"+
-    "Confirmo mi asistencia al evento.\n\n"+
-    "Evento: "+e.n+"\n"+
-    "Fecha: "+e.f+"\n"+
-    "Lugar: "+e.lugar+"\n"+
-    (e.link ? "Más información: "+e.link+"\n" : "")+
-    "\nNos vemos ahí.\n\n"+
-    sesion.nombre+"\n"+sesion.mail+"\n\n"+
-    "— Enviado desde Cumplí tu Deseo";
-  var url = "https://mail.google.com/mail/?view=cm&fs=1"+
-    "&to="+encodeURIComponent(para)+
-    "&su="+encodeURIComponent(asunto)+
-    "&body="+encodeURIComponent(cuerpo);
-  window.open(url, "_blank", "noopener");
-}
-
 function modalLinkEvento(e, f){
   abrirModal({eyebrow:"Evento", titulo:"Link de "+e.n,
     sub:"Sumá una página de inscripción, entradas o más información. Se muestra a quien abra el evento.",
@@ -11078,83 +9956,6 @@ function alternarAsistencia(eid, fid){
     toast("Asistencia confirmada a "+e.n+".");
   }
   pintarTodo();
-}
-
-function modalPresentacion(){
-  var f = miFundacion(); if(!f) return;
-  var p = f.presentacion || (f.presentacion = {texto:"", imagenes:[], video:""});
-  abrirModal({eyebrow:"Presentación", titulo:"Quiénes somos",
-    sub:"Contá la historia de la fundación. Podés sumar texto, imágenes y un video.",
-    body: campo("prTexto","Texto de presentación","textarea","")+
-          campo("prImgs","Agregar imágenes","file","", '<p class="field__hint">Podés elegir varias a la vez. Se suman a las que ya tenés.</p>')+
-          campo("prVideo","Link de video","text","https://youtube.com/watch?v=…", '<p class="field__hint">Funciona con YouTube y Vimeo.</p>')+
-          (p.imagenes.length ? '<p class="field__hint" style="margin-top:14px">'+p.imagenes.length+' imagen(es) cargada(s). '+
-            '<button type="button" class="linkish" id="prLimpiar">Quitar todas</button></p>' : ''),
-    ok:"Guardar presentación",
-    after:function(){
-      $("#prTexto").value = p.texto || "";
-      $("#prVideo").value = p.video || "";
-      $("#prImgs").setAttribute("multiple","multiple");
-      var lim = $("#prLimpiar");
-      if(lim) lim.addEventListener("click", function(){ p.imagenes = []; toast("Imágenes quitadas."); cerrarModal(); pintarTodo(); });
-    },
-    onOk:function(){
-      p.texto = val("prTexto"); p.video = val("prVideo");
-      var files = $("#prImgs").files;
-      if(!files || !files.length){ cerrarModal(); pintarTodo(); toast("Presentación actualizada."); return; }
-      var pendientes = Array.prototype.slice.call(files);
-      Promise.all(pendientes.map(function(file){
-        return new Promise(function(res){
-          var r = new FileReader(); r.onload = function(){ res(r.result); }; r.readAsDataURL(file);
-        });
-      })).then(function(srcs){
-        p.imagenes = p.imagenes.concat(srcs);
-        cerrarModal(); pintarTodo(); toast("Presentación actualizada.");
-      });
-    }});
-}
-
-
-
-
-function responderInvitacion(inid, acepta){
-  var inv = DB.invitaciones.filter(function(i){ return i.id===inid; })[0];
-  if(!inv) return;
-  inv.estado = acepta ? "aceptada" : "rechazada";
-  var f = fundacionPorId(inv.fid);
-  if(acepta && f && f.colabs.indexOf(inv.cid) === -1) f.colabs.push(inv.cid);
-  pintarTodo();
-  toast(acepta ? "Te asociaste a "+(f?f.nombre:"la fundación")+"." : "Invitación rechazada.");
-}
-
-function desasociar(fid, cid){
-  var f = fundacionPorId(fid); if(!f) return;
-  f.colabs = f.colabs.filter(function(x){ return x !== cid; });
-  DB.invitaciones = DB.invitaciones.filter(function(i){ return !(i.fid===fid && i.cid===cid); });
-  pintarTodo();
-  toast("Se deshizo la asociación.");
-}
-
-
-function resolverSolicitud(sid, aceptar){
-  var s = DB.solicitudes.filter(function(x){ return x.id===sid; })[0];
-  if(!s) return;
-  s.estado = aceptar ? "aceptada" : "rechazada";
-  pintarTodo();
-  toast(aceptar ? "Deseo aceptado. Ahora podés ponerte en contacto." : "Deseo rechazado.");
-}
-
-function cerrarSubasta(aid){
-  var a = DB.aportes.filter(function(x){ return x.id===aid; })[0];
-  if(!a) return;
-  if(!a.puja){ toast("Todavía nadie ofertó por ese objeto."); return; }
-  var f = fundacionPorId(a.fid);
-  var c = f.causas.filter(function(x){ return x.t===a.causa; })[0] || f.causas[0];
-  if(c) c.r += a.puja;
-  DB.donaciones.push({id:nid("d"), quien:a.pujador, quienPublico:a.pujador, anonimo:false, fid:f.id, causa:c?c.t:"Subasta", monto:a.puja, tipo:"subasta", fecha:"hoy", fechaISO:"2026-08-17"});
-  a.estado = "adjudicado";
-  pintarTodo();
-  toast("Subasta cerrada: "+a.titulo+" para "+a.pujador+" por "+pesos(a.puja)+".");
 }
 
 /* ==================== pantallas de alta ==================== */
@@ -11447,13 +10248,6 @@ function volverHome(){
 }
 
 document.addEventListener("click", function(e){
-  if(e.target.closest("#atajoUsuario")){ entrarUsuario(MAIL_DONANTE, "Demo"); return; }
-  if(e.target.closest("#atajoFundacion")){
-    var fav = fundacionPorId(ID_FUNDACION_DEMO) || fundacionPorId("fFav") || DB.fundaciones[0];
-    entrarComoFundacion(fav.id);
-    toast("Entraste como "+fav.nombre+".");
-    return;
-  }
 });
 
 // Deslizar el campo alterna entre entrar como usuario o como fundación.
@@ -11551,17 +10345,8 @@ document.addEventListener("click", function(e){
     else abrirPantallaAlta(t.dataset.pantalla);
     return;
   }
-  if((t = e.target.closest("[data-sub-pag]"))){
-    var abiertas = DB.aportes.filter(function(a){ return a.estado==="en subasta"; });
-    var paginas = Math.max(1, Math.ceil(abiertas.length / 3));
-    subPag = (subPag + (t.dataset.subPag === "next" ? 1 : -1) + paginas) % paginas;
-    pintarSubastas();
-    return;
-  }
-  if((t = e.target.closest("[data-ver-eventos]"))) return abrirFundacion(t.dataset.verEventos, "eventos");
   if((t = e.target.closest("[data-donar-campana]"))) return modalDonarDirecto(t.dataset.fid, t.dataset.donarCampana);
   if((t = e.target.closest("[data-donar]"))) return modalDonarDirecto(t.dataset.donar, null);
-  if((t = e.target.closest("[data-deseo]"))) return abrirPantallaAporte("propuesta", t.dataset.deseo);
   if((t = e.target.closest("[data-apoyo-mensual]"))){
     var fa = fundacionPorId(t.dataset.apoyoMensual);
     if(fa){
@@ -11571,26 +10356,19 @@ document.addEventListener("click", function(e){
     return;
   }
   if((t = e.target.closest("[data-complementario]"))) return abrirPantallaAporte("complementario", t.dataset.complementario);
-  if((t = e.target.closest("[data-ver-foto]"))) return modalFoto(t.dataset.verFoto);
   // La foto de un sueño, en grande. Reusa el mismo visor que los lotes.
   if((t = e.target.closest("[data-ver-foto-sueno]"))){
     var sx = DB.solicitudes.filter(function(q){ return q.id === t.dataset.verFotoSueno; })[0];
     if(sx && sx.foto) modalFotoSuelta(sx.foto, sx.titulo);
     return;
   }
-  if((t = e.target.closest("[data-pujar]"))) return modalGarantia(t.dataset.pujar, "lote");
   if((t = e.target.closest("[data-toggle]"))){
     var caja = document.getElementById(t.dataset.toggle);
     if(caja) caja.classList.toggle("is-open");
     return;
   }
   if(e.target.closest("#btnVolverLista")) return cerrarFundacion();
-  if(e.target.closest("#btnDatosFund")) return modalDatosFundacion();
-  if(e.target.closest("#btnDatosOrg")) return modalDatosOrganizacion();
   // Dentro de la tarjeta hay etiquetas que llevan a la fundación: tienen prioridad.
-  if((t = e.target.closest("[data-ver-colab]")) && !e.target.closest("[data-ir-fundacion]")){
-    return;
-  }
   if((t = e.target.closest("[data-editar]"))){
     if(t.dataset.editar === "fundacion") modalEditarFundacion();
     else if(t.dataset.editar === "asociado") modalEditarColaborador();
@@ -11607,14 +10385,6 @@ document.addEventListener("click", function(e){
     return;
   }
   if(!e.target.closest(".buscador-cuentas")) cerrarSugCuentas();
-  if(e.target.closest("#btnInicio")){ irA(1); return; }
-  if(e.target.closest("#btnVolverCentro")){ irA(1); return; }
-  if(e.target.closest("#btnMiPerfil")){
-    // Sin cuenta, el botón de perfil lleva a iniciar sesión.
-    if(!sesion) abrirLogin(); else irA(0);
-    return;
-  }
-  if(e.target.closest("#btnSeguirSinCuenta")){ volverHome(); return; }
   if(e.target.closest("#btnCumpliSueno")) return abrirPantallaAporte("propuesta");
   if((t = e.target.closest("[data-tab]"))){
     var cual = t.dataset.tab;
@@ -11688,24 +10458,6 @@ document.addEventListener("click", function(e){
     pintarGarantia();
     return;
   }
-  if((t = e.target.closest("[data-pend]"))){
-    var dp = t.dataset.pend;
-    if(dp === "publicar") modalPublicarActividad();
-    else abrirFSubastas();
-    return;
-  }
-  if((t = e.target.closest("[data-seguir]"))){
-    e.stopPropagation();
-    DB.sigo = DB.sigo || {};
-    var fid = t.dataset.seguir;
-    DB.sigo[fid] = !DB.sigo[fid];
-    var fs = fundacionPorId(fid);
-    t.classList.toggle("es-on", DB.sigo[fid]);
-    var sv = t.querySelector("svg"); if(sv) sv.setAttribute("fill", DB.sigo[fid] ? "currentColor" : "none");
-    var tx = t.querySelector("span"); if(tx) tx.textContent = DB.sigo[fid] ? "Siguiendo" : "Seguir";
-    toast(DB.sigo[fid] ? "Seguís a "+(fs?fs.nombre:"la fundación")+"." : "Dejaste de seguirla.");
-    return;
-  }
   if((t = e.target.closest("[data-megusta]"))){
     var pid = t.dataset.megusta;
     if(DB.miMeGusta[pid]){
@@ -11719,11 +10471,8 @@ document.addEventListener("click", function(e){
     return;
   }
   if(e.target.closest("#btnPublicarSueno")) return modalPublicarSueno();
-  if((t = e.target.closest("[data-gracias]"))) return modalGracias(t.dataset.gracias);
   if((t = e.target.closest("[data-persona]"))) return modalPersona(t.dataset.persona);
-  if(e.target.closest("#btnExportar")) return exportarContactos();
   if((t = e.target.closest("[data-solapa]"))){ solapaFSub = t.dataset.solapa; pintarFSubastas(); return; }
-  if((t = e.target.closest("[data-lote]"))) return modalLoteFund(t.dataset.lote);
   if((t = e.target.closest("[data-cobrar]"))){
     var lc = DB.aportes.filter(function(x){ return x.id===t.dataset.cobrar; })[0];
     if(lc){ lc.cobrado = true; }
@@ -11808,12 +10557,6 @@ document.addEventListener("click", function(e){
   // Las fundaciones ya no publican subastas: las subastas nacen del sueño de
   // una persona, no de la organización. Se deja el aviso por si quedó algún
   // acceso viejo en pantalla.
-  if(e.target.closest("#btnCrearSubasta")){
-    toast("Las subastas las abren las personas con su sueño.");
-    return;
-  }
-  if(e.target.closest("#btnNuevaCampana")) return modalNuevaCampana();
-  if(e.target.closest("#btnRendicion")) return modalRendicion();
   if(e.target.closest("#btnNuevoPlan")) return modalPlan(null);
   if((t = e.target.closest("[data-editar-plan]"))) return modalPlan(t.dataset.editarPlan);
   if((t = e.target.closest("[data-borrar-plan]"))){
@@ -11835,10 +10578,10 @@ document.addEventListener("click", function(e){
   }
   // Los dos accesos de gestión de la fundación. Antes vivían dentro de un modal
   // y por eso cerraban primero; ahora están en el panel de Inicio, así que van
-  // directo. (#masSalir se fue con el menú: "Cerrar sesión" ya está en Inicio.)
+  // directo. "Eventos" abría la agenda del donante, que es la de todas las
+  // fundaciones vista desde afuera: ahora abre el alta de un evento propio.
   if(e.target.closest("#masPublicar")) return modalPublicarActividad();
-  if(e.target.closest("#masEventos")) return abrirEventos();
-  if(e.target.closest("#btnPublicarActividad")) return modalPublicarActividad();
+  if(e.target.closest("#masEventos")) return modalNuevoEventoFund();
   if(e.target.closest("#btnVerSubastas")) return abrirSubastas();
   if(e.target.closest("#btnVerEventos")) return abrirEventos();
   if(e.target.closest("#btnIrPorSubastar")) return abrirSubastas();
@@ -11849,25 +10592,11 @@ document.addEventListener("click", function(e){
     return;
   }
   if(e.target.closest("#btnVerFundaciones")) return abrirFundaciones();
-  if(e.target.closest("[data-volver-inicio]")) return volverHome();
   if(e.target.closest("#btnVerDeseos")) return abrirDeseos();
-  if((t = e.target.closest("[data-deseo-mail]"))) return contactarDeseoMail(t.dataset.deseoMail);
-  if((t = e.target.closest("[data-deseo-wsp]"))) return contactarDeseoWsp(t.dataset.deseoWsp);
   if((t = e.target.closest("[data-borrar-sueno]"))) return borrarSueno(t.dataset.borrarSueno);
   if((t = e.target.closest("[data-ofertar-sueno]"))){
     var did = t.dataset.ofertarSueno;
     return garantiaPaga[did] ? modalOfertarSueno(did) : modalGarantia(did);
-  }
-  if((t = e.target.closest("[data-ver-perfil]"))){
-    var nom = t.dataset.verPerfil;
-    var suyos = DB.solicitudes.filter(function(y){ return y.quien === nom; });
-    abrirModal({eyebrow:"Perfil", titulo:nom,
-      sub:suyos.length+(suyos.length===1?" sueño publicado":" sueños publicados"),
-      body: suyos.length
-        ? '<div class="stack" style="gap:9px">'+suyos.map(filaSueno).join("")+'</div>'
-        : '<div class="empty">Sin sueños publicados.</div>',
-      ok:"Cerrar", onOk:function(){ cerrarModal(); }});
-    return;
   }
   if((t = e.target.closest("[data-ver-deseo]"))) return modalDeseo(t.dataset.verDeseo);
   if(e.target.closest("#btnAnonimo")) return alternarAnonimo();
@@ -11884,14 +10613,7 @@ document.addEventListener("click", function(e){
     toast("Cerraste sesión.");
     return;
   }
-  if(e.target.closest("#btnPropuesta")) return abrirPantallaAporte("propuesta");
   if(e.target.closest("#btnComplementario")) return abrirPantallaAporte("complementario");
-  if((t = e.target.closest("[data-compl-ok]"))){
-    var x = DB.complementarios.filter(function(y){ return y.id===t.dataset.complOk; })[0];
-    if(x){ x.estado = "visto"; pintarTodo(); toast("Marcado como visto."); }
-    return;
-  }
-  if(e.target.closest("#btnPresentacion")) return modalPresentacion();
   if(e.target.closest("#btnNuevoPlan")) return modalNuevoPlan();
   if((t = e.target.closest("[data-editar-plan]"))) return modalEditarPlan(t.dataset.editarPlan);
   if((t = e.target.closest("[data-borrar-plan]"))){
@@ -11902,17 +10624,11 @@ document.addEventListener("click", function(e){
     return;
   }
   if((t = e.target.closest("[data-suscribir]"))) return alternarSuscripcion(t.dataset.suscribir, t.dataset.fid);
-  if((t = e.target.closest("[data-contactar]"))) return modalContactar(t.dataset.contactar, t.dataset.quien);
-  if(e.target.closest("#btnNuevaCausa")) return modalNuevaCausa();
-  if(e.target.closest("#btnNuevoEvento")) return modalNuevoEvento();
   if((t = e.target.closest("[data-causa-mas]"))) return modalCausaMas(t.dataset.causaMas, t.dataset.fid);
   if((t = e.target.closest("[data-editar-causa]"))) return modalEditarCausa(t.dataset.editarCausa);
   if((t = e.target.closest("[data-evento-mas]"))) return modalEventoMas(t.dataset.eventoMas, t.dataset.fid);
   if((t = e.target.closest("[data-editar-evento]"))) return modalEditarEvento(t.dataset.editarEvento);
   if((t = e.target.closest("[data-asistir]"))) return alternarAsistencia(t.dataset.asistir, t.dataset.fid);
-  if((t = e.target.closest("[data-sol-ok]"))) return resolverSolicitud(t.dataset.solOk, true);
-  if((t = e.target.closest("[data-sol-no]"))) return resolverSolicitud(t.dataset.solNo, false);
-  if((t = e.target.closest("[data-cerrar-sub]"))) return cerrarSubasta(t.dataset.cerrarSub);
   if((t = e.target.closest("[data-borrar-ev]"))){
     var f = miFundacion(); if(!f) return;
     f.eventos = f.eventos.filter(function(x){ return x.id !== t.dataset.borrarEv; });
@@ -11965,8 +10681,6 @@ function anotarAuditoria(accion, sobre, detalle){
     cuando:new Date().toISOString()
   });
 }
-
-function esAdmin(){ return !!(sesion && sesion.tipo === "admin"); }
 
 function entrarComoAdmin(){
   sesion = {tipo:"admin", nombre:"Administración general", mail:MAIL_ADMIN,
