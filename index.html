@@ -3014,6 +3014,105 @@ body.perfil-quieto .panels,body.perfil-quieto .panel{
   .intro.se-va{animation:none}
 }
 
+/* ==================== PERFIL PÚBLICO DE UNA FUNDACIÓN ====================
+   Lo primero es saber de quién es el perfil, así que la foto y el nombre van
+   arriba de todo y centrados. Antes había un banner de 150px que empujaba el
+   nombre hacia abajo y no aportaba información: quien llega acá ya eligió a
+   esta fundación en una lista, no necesita que se la vuelvan a vender. */
+.fperfil{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+  gap:6px;
+  padding:26px 16px 20px}
+.fperfil__foto{
+  width:112px;height:112px;
+  border-radius:50%;
+  display:grid;place-items:center;
+  font-size:32px;font-weight:700;color:#fff;
+  background-size:cover;background-position:center;
+  border:1px solid var(--canto);
+  box-shadow:0 10px 34px rgba(0,0,0,.45)}
+.fperfil__nombre{
+  display:flex;align-items:center;justify-content:center;
+  flex-wrap:wrap;gap:10px;
+  margin:10px 0 0;
+  font-size:26px;line-height:1.2;font-weight:700;color:#fff;
+  letter-spacing:-.01em}
+.fperfil__dato{margin:0;font-size:13.5px;color:rgba(159,196,216,.85)}
+.fperfil__lema{margin:2px 0 0;font-size:15px;color:rgba(226,240,255,.75);max-width:52ch}
+
+.fperfil__acciones{display:flex;flex-direction:column;gap:10px;padding:0 16px 6px}
+
+/* Nota corta que explica una sección antes de la lista. */
+.fperfil__nota{
+  margin:0 0 12px;
+  font-size:13px;line-height:1.5;
+  color:rgba(159,196,216,.85)}
+
+/* El sitio web es un destino, no una acción de la app: por eso va como fila
+   aparte, con el dominio a la vista para saber adónde lleva antes de tocar. */
+.fperfil__web{
+  display:flex;align-items:center;gap:12px;
+  margin:14px 0 4px;
+  padding:14px 16px;
+  border:1px solid var(--canto);
+  border-radius:14px;
+  background:rgba(255,255,255,.035);
+  color:#fff;text-decoration:none;
+  transition:background .15s, border-color .15s}
+.fperfil__web:hover{background:rgba(255,255,255,.07);border-color:var(--canto-vivo)}
+.fperfil__web svg{width:20px;height:20px;flex:none;color:var(--turq)}
+.fperfil__web span{font-size:14.5px;font-weight:600}
+.fperfil__web-dom{
+  margin-left:auto;
+  font-size:12.5px !important;font-weight:400 !important;
+  color:rgba(159,196,216,.7)}
+
+/* ---- niveles de apoyo mensual ----
+   Se muestran uno al lado del otro para poder compararlos: el monto grande, y
+   debajo qué recibe quien se suma y cuánta gente ya lo hace, que son los dos
+   datos con los que se elige entre un nivel y otro. */
+.fplanes{display:grid;grid-template-columns:1fr;gap:10px}
+.fplan{
+  display:flex;flex-direction:column;gap:6px;
+  padding:16px 18px;
+  border:1px solid var(--canto);
+  border-radius:16px;
+  background:rgba(255,255,255,.035)}
+.fplan.es-mio{border-color:var(--turq);background:rgba(45,212,191,.10)}
+.fplan__nivel{
+  font-size:11px;letter-spacing:.13em;text-transform:uppercase;
+  font-weight:600;color:rgba(159,196,216,.85)}
+.fplan__monto{font-size:24px;font-weight:700;color:#fff;letter-spacing:-.02em}
+.fplan__monto i{font-size:13px;font-weight:500;font-style:normal;
+  color:rgba(159,196,216,.8);margin-left:2px}
+.fplan__que{margin:2px 0 0;font-size:13.5px;line-height:1.45;color:rgba(226,240,255,.8)}
+.fplan__que--vacio{color:rgba(159,196,216,.6)}
+.fplan__gente{
+  margin-top:auto;padding-top:8px;
+  font-size:12px;color:rgba(159,196,216,.7)}
+.fplan .btn{margin-top:10px}
+
+/* Las solapas del perfil llevan aire propio: quedan entre las acciones y el
+   contenido, y sin separación se leían como parte de los botones. */
+.solapas--perfil{margin:16px 0 18px}
+
+/* ==================== PERFIL: QUE SE PUEDA DESPLAZAR ====================
+   El perfil se congelaba con overflow:hidden sobre el body, heredado del modo
+   aplicación: en un teléfono el contenido entra justo y no hay nada que
+   desplazar. Pero #screen-app declara height:100dvh sin !important y
+   .screen{height:auto !important} le gana, así que la pantalla crece con su
+   contenido (939px) mientras el body sigue midiendo lo que la ventana. Todo lo
+   que pasaba de ahí quedaba recortado y fuera de alcance: en una ventana de
+   700px de alto, "Cerrar sesión" no se podía ni ver ni tocar.
+
+   Con overflow-y:auto el body pasa a ser el que desplaza. Cuando el contenido
+   entra —que es el caso del teléfono— no aparece ninguna barra y no cambia
+   nada; cuando no entra, se llega al final. */
+body.perfil-quieto{overflow-y:auto !important}
+
 /* ==================== FICHA DE DATOS ====================
    Filas de etiqueta y valor para los modales que sólo informan. Cada dato en su
    renglón, con el valor alineado a la derecha: así se leen en vertical y se
@@ -3177,6 +3276,33 @@ body.perfil-quieto .panels,body.perfil-quieto .panel{
 
    El !important aparece sólo donde hay que ganarle a un !important previo
    (las reglas de "app móvil" fuerzan width:100% y padding fijo). */
+/* Cuenta de destino y confirmación de giro, dentro del bloque de saldo de la
+   fundación. Nuevo: va al final para no pelear con la cascada. */
+.rec-cuenta{display:flex;align-items:center;gap:10px;margin-top:12px;
+  padding-top:12px;border-top:1px solid var(--canto)}
+.rec-cuenta__t{flex:1;min-width:0}
+.rec-cuenta__r{display:block;font-size:12px;color:rgba(255,255,255,.6)}
+.rec-cuenta__v{display:block;margin-top:2px;font-size:14px;font-weight:700;color:#fff;
+  font-variant-numeric:tabular-nums;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.rec-cuenta__v.es-falta{color:#f6c453}
+.rec-cuenta .btn{flex:none}
+.rec-saldo>.btn--block{margin-top:12px}
+.rec-saldo__ult{display:block;margin-top:10px;font-size:12.5px;color:rgba(255,255,255,.6)}
+.rec-saldo__ult.es-falta{color:#f6c453}
+.rec-saldo__p.es-falta{color:#f6c453}
+.rec-confirma{padding:12px 14px;border-radius:14px;background:var(--vidrio);
+  box-shadow:0 0 0 1px var(--canto);margin-bottom:10px}
+.rec-confirma span{display:block;font-size:12px;color:rgba(255,255,255,.6)}
+.rec-confirma b{display:block;margin-top:2px;font-size:22px;font-weight:800;color:#fff}
+.rec-confirma--cuenta b{font-size:14px;font-variant-numeric:tabular-nums}
+.rec-confirma i{display:block;margin-top:4px;font-style:normal;font-size:12.5px;color:var(--turq)}
+/* El extracto: la columna de concepto es 1fr y sin min-width:0 empujaba al
+   monto hasta partirlo letra por letra en celular. */
+.mov__c{min-width:0}
+.mov__m{white-space:nowrap}
+/* Piezas que existen sólo para la composición de escritorio del menú. */
+.solo-esc{display:none !important}
+
 @media (min-width:940px){
 
   /* Ancho útil del contenido y aire contra los bordes. Se definen una vez
@@ -3272,10 +3398,6 @@ body.perfil-quieto .panels,body.perfil-quieto .panel{
   .suenos-lista > .sueno{flex:0 0 320px}
   .subastas-grid > .lote{flex:0 0 360px}
   #screen-fundaciones .carrusel__slide{flex:0 0 400px}
-  /* Eventos y fundaciones traen su propio ancho escrito con el id de la
-     pantalla, que le gana a la clase suelta de arriba: hay que repetirlas con
-     la misma especificidad o siguen ocupando el 92% del carril. */
-  #screen-eventos .carrusel__slide{flex:0 0 360px;flex-basis:360px}
 
   /* Sin tarjeta "apagada": si se ven todas, atenuar las de los costados sólo
      ensucia. La activa se sigue marcando, pero con el contorno. */
@@ -3360,13 +3482,44 @@ body.perfil-quieto .panels,body.perfil-quieto .panel{
   #screen-deseos .stats-pantalla:has(.esperando) > *,
   #screen-subastas .stats-pantalla:has(.esperando) > *{flex:0 0 auto}
 
-  /* ---- 3c. el carril de eventos se centra en el alto disponible ----
-     La tarjeta se mide por su contenido, así que en una pantalla alta quedaba
-     arriba con medio pantallazo vacío abajo. Estirarla no sirve: la foto es un
-     fondo con background-size:contain y al agrandar la caja sólo crecen las
-     bandas grises de arriba y abajo. Lo que se centra es el carril entero, que
-     reparte el aire sobrante entre las dos puntas. */
-  #screen-eventos .carrusel__viewport{display:flex;align-items:center}
+  /* ---- 3c. eventos: grilla, no carrusel ----
+     En el teléfono los eventos van de a uno y se pasan con el dedo. En
+     escritorio ese gesto no existe y un carril horizontal obliga a empujar
+     tarjetas para ver lo que ya cabría en pantalla: con cuatro actividades
+     siempre quedaba una cortada al borde.
+
+     Acá se muestran todas en una grilla que se acomoda al ancho (tres columnas
+     en 1440, dos en pantallas más justas). El carril sigue existiendo por
+     debajo, sólo que sin nada que desplazar: el motor del carrusel escribe
+     scrollLeft sobre una caja que ya no desborda, y no pasa nada.
+
+     La caja pasa a desplazarse en vertical, que es lo que hace falta cuando la
+     grilla ocupa más de una fila. */
+  #screen-eventos .stats-pantalla{overflow-y:auto}
+  /* El !important no es capricho: crearCarrusel() escribe display:flex en línea
+     y acomodarPlaca() le pone un alto en píxeles, y un estilo en línea le gana a
+     cualquier regla salvo a un !important. */
+  #screen-eventos .carrusel{
+    display:block !important;
+    height:auto !important;
+    flex:none;
+    min-height:0}
+  #screen-eventos .carrusel__flecha{display:none}
+  #screen-eventos .carrusel__viewport{
+    overflow:visible;
+    height:auto !important}
+  #screen-eventos .carrusel__track{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(330px, 1fr));
+    gap:18px;
+    width:auto;
+    transform:none !important}
+  #screen-eventos .carrusel__slide{
+    flex:none;
+    width:auto;
+    max-width:none;
+    padding:0;
+    margin:0}
 
   /* ---- 3d. el listado de novedades se lee en columna, no en franja ----
      A todo lo ancho, el texto queda a la izquierda y la hora al otro extremo:
@@ -3553,6 +3706,16 @@ body.perfil-quieto .panels,body.perfil-quieto .panel{
   body.es-fundacion .screen.is-active{padding-left:var(--nav-lado)}
   body.es-fundacion .nav5{padding-left:12px}
 
+  /* ---- 3g. el perfil público de una fundación ----
+     Los niveles de apoyo se comparan de un vistazo puestos lado a lado, y las
+     dos acciones entran en una fila. */
+  .fplanes{grid-template-columns:repeat(auto-fit, minmax(240px, 1fr))}
+  .fperfil__acciones{flex-direction:row;justify-content:center}
+  .fperfil__acciones .btn{width:auto;min-width:260px}
+  .fperfil__foto{width:132px;height:132px;font-size:38px}
+  .fperfil__nombre{font-size:32px}
+  .fperfil__web{max-width:560px}
+
   /* ---- 4. la barra inferior ----
      Estirada a 1440px los tres íconos quedan desparramados y lejos del
      contenido. La fila se acota y se centra; la barra sigue siendo del ancho
@@ -3561,6 +3724,71 @@ body.perfil-quieto .panels,body.perfil-quieto .panel{
     max-width:620px;
     margin-left:auto;
     margin-right:auto}
+
+  /* ---- inicio del donante: composición de escritorio ----
+     La grilla ya existía; acá el héroe pasa a contar la propuesta (título en
+     dos líneas, bajada, botón e ilustración del portal) y las cuatro
+     tarjetas muestran el número grande con su enlace. Todo lo que aparece
+     acá lleva .solo-esc y está oculto en el teléfono. */
+  /* La píldora sube 18px del borde: lo que reserva el resto de la pantalla
+     para la barra crece lo mismo, así nada queda tapado. */
+  body:not(.es-fundacion):not(.es-admin){--nav-alto:calc(var(--nav-fila) + 18px)}
+  body.menu-fijo .menu-principal{grid-template-rows:repeat(2, minmax(0, 330px));gap:clamp(12px,2.2vh,20px)}
+  body.menu-fijo .menu-principal .entrada{padding:clamp(16px,2.8vh,26px) 28px;justify-content:flex-start;gap:0}
+  body.menu-fijo .menu-principal .entrada .entrada__col{justify-content:flex-start;margin-top:clamp(8px,2.4vh,22px)}
+  body.menu-fijo .menu-principal .entrada .entrada__ico{width:clamp(44px,6vh,56px);height:clamp(44px,6vh,56px)}
+
+  body.menu-fijo .menu-principal .entrada .entrada__t{font-size:clamp(18px,2.6vh,22px);line-height:1.2;font-weight:600}
+
+  /* héroe */
+  body.menu-fijo .menu-principal .es-principal{position:relative;overflow:hidden;padding:34px 36px}
+  body.menu-fijo .menu-principal .es-principal .entrada__ico{width:64px;height:64px}
+  body.menu-fijo .menu-principal .es-principal .entrada__col{margin-top:clamp(14px,4.2vh,38px);max-width:360px}
+  body.menu-fijo .menu-principal .es-principal .entrada__t{
+    font-size:clamp(40px,min(5.6vw,7.4vh),64px);line-height:1.02;font-weight:700;letter-spacing:-.02em;
+    max-width:4.3em}
+  body.menu-fijo .menu-principal .es-principal .solo-esc{display:inline !important}
+  body.menu-fijo .menu-principal .es-principal #datoSuenos{display:none}
+  body.menu-fijo .menu-principal .es-principal .entrada__bajada{
+    display:block !important;margin-top:clamp(10px,2.2vh,20px);font-size:clamp(16px,2.2vh,19px);line-height:1.45;color:rgba(255,255,255,.72)}
+  body.menu-fijo .menu-principal .es-principal .entrada__cta{
+    display:inline-flex !important;align-items:center;gap:14px;align-self:flex-start;margin-top:clamp(16px,3.2vh,30px);
+    padding:clamp(13px,1.9vh,17px) 30px;border-radius:14px;font-size:17px;font-weight:600;color:#06202a;
+    background:linear-gradient(90deg,#22b8cf,#2dd4bf 70%,#34d399);
+    box-shadow:0 10px 30px rgba(45,212,191,.28)}
+  body.menu-fijo .menu-principal .es-principal .entrada__cta i{font-style:normal;font-size:24px;line-height:1;transform:translateY(-1px)}
+  body.menu-fijo .menu-principal .es-principal .entrada__arte{
+    display:block !important;position:absolute;right:-4%;bottom:-2%;width:84%;max-width:540px;
+    aspect-ratio:420/340;pointer-events:none;z-index:0}
+  body.menu-fijo .menu-principal .es-principal .entrada__arte svg{width:100%;height:100%;display:block;overflow:visible}
+  body.menu-fijo .menu-principal .es-principal .entrada__col{position:relative;z-index:1}
+
+  /* tarjetas */
+  body.menu-fijo .menu-principal .entrada .entrada__t--esc{display:block !important;min-height:0}
+  body.menu-fijo .menu-principal .entrada .entrada__t--esc + .entrada__dato{margin-top:4px}
+  body.menu-fijo .menu-principal .entrada .entrada__t:has(+ .entrada__t--esc){display:none}
+  body.menu-fijo .menu-principal .entrada .dato__n{display:block;font-size:clamp(38px,6vh,54px);line-height:1;font-weight:600;
+    letter-spacing:-.02em;margin-top:clamp(6px,1.3vh,12px);color:#6ea8ff}
+  body.menu-fijo .menu-principal .entrada .dato__t{display:block;margin-top:clamp(4px,.9vh,8px);font-size:clamp(14px,1.8vh,16px);color:rgba(255,255,255,.72)}
+  body.menu-fijo .menu-principal .entrada .entrada__ir{display:block !important;margin-top:auto;padding-top:clamp(8px,1.5vh,14px);
+    border-top:1px solid rgba(255,255,255,.1);font-size:15px;font-weight:500;color:#6ea8ff}
+  body.menu-fijo .menu-principal .entrada .entrada__ir i{font-style:normal;margin-left:14px;font-size:20px;line-height:1;vertical-align:-2px}
+  body.menu-fijo .menu-principal .entrada .entrada__col{flex:1 1 auto}
+  body.menu-fijo .menu-principal #btnVerSubastas .dato__n,
+  body.menu-fijo .menu-principal #btnVerSubastas .entrada__ir{color:#2dd4bf}
+  body.menu-fijo .menu-principal #btnVerFundaciones .dato__n,
+  body.menu-fijo .menu-principal #btnVerFundaciones .entrada__ir{color:#86efac}
+
+  /* barra inferior: una píldora integrada al diseño, con el indicador como
+     subrayado en vez de punto. Las reglas de la fundación (más específicas)
+     siguen mandando en su barra lateral. */
+  body:not(.es-fundacion) .nav5{left:50%;right:auto;transform:translateX(-50%);bottom:18px;
+    width:min(var(--ancho-max) - 2*var(--aire-lat), calc(100% - 48px));
+    height:var(--nav-fila);padding-bottom:0;border-radius:22px;
+    background:rgba(8,20,36,.82);box-shadow:0 0 0 1px var(--canto),0 18px 50px rgba(0,0,0,.45);
+    backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);overflow:hidden}
+  body:not(.es-fundacion) .nav5__b.is-on::after{bottom:0;width:120px;height:2px;border-radius:2px;background:#2dd4bf;
+    box-shadow:0 0 12px rgba(45,212,191,.9)}
 }</style>
 </head>
 <body class="menu-fijo">
@@ -3589,9 +3817,37 @@ body.perfil-quieto .panels,body.perfil-quieto .panel{
           <rect class="entrada__chispa" x="0" y="0" width="100%" height="100%" rx="22" ry="22" pathLength="100"></rect>
         </svg>
         <span class="entrada__ico entrada__ico--arte" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M20.4 4.2l1.55 4.3 4.3 1.55-4.3 1.55-1.55 4.3-1.55-4.3-4.3-1.55 4.3-1.55z" fill="currentColor" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M14.6 15.6L5.2 26.4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M17.2 20.6l-4.2 4.6M10.4 17.4l-3.6 3.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" opacity=".65"/><path d="M26.6 17.4l.7 1.9 1.9.7-1.9.7-.7 1.9-.7-1.9-1.9-.7 1.9-.7z" fill="currentColor"/></svg></span>
+<span class="entrada__arte solo-esc" aria-hidden="true"><svg viewBox="0 0 420 340" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="pgArco" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a5f3fc"/><stop offset=".6" stop-color="#2dd4bf"/><stop offset="1" stop-color="#2dd4bf" stop-opacity=".2"/></linearGradient>
+            <radialGradient id="pgLuz" cx=".5" cy=".55" r=".55"><stop offset="0" stop-color="#5eead4" stop-opacity=".55"/><stop offset=".5" stop-color="#22a4c4" stop-opacity=".18"/><stop offset="1" stop-color="#22a4c4" stop-opacity="0"/></radialGradient>
+            <linearGradient id="pgCamino" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a5f3fc" stop-opacity=".95"/><stop offset=".55" stop-color="#2dd4bf" stop-opacity=".55"/><stop offset="1" stop-color="#2dd4bf" stop-opacity="0"/></linearGradient>
+            <linearGradient id="pgNube" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3f7fb3"/><stop offset="1" stop-color="#132c4a"/></linearGradient>
+            <filter id="pgBlur" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="9"/></filter>
+            <filter id="pgBlur2" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="3"/></filter>
+          </defs>
+          <ellipse cx="300" cy="150" rx="150" ry="140" fill="url(#pgLuz)"/>
+          <g fill="url(#pgNube)" opacity="1" filter="url(#pgBlur)">
+            <ellipse cx="150" cy="235" rx="95" ry="42"/><ellipse cx="225" cy="255" rx="80" ry="34"/>
+            <ellipse cx="80" cy="280" rx="90" ry="40"/><ellipse cx="365" cy="245" rx="85" ry="38"/>
+          </g>
+          <g fill="url(#pgNube)" opacity=".95" filter="url(#pgBlur2)">
+            <ellipse cx="140" cy="248" rx="70" ry="26"/><ellipse cx="240" cy="266" rx="60" ry="22"/><ellipse cx="350" cy="258" rx="66" ry="24"/>
+          </g>
+          <path d="M255 250V120a45 45 0 0 1 90 0v130" stroke="url(#pgArco)" stroke-width="7" stroke-linecap="round" opacity=".55" filter="url(#pgBlur2)"/>
+          <path d="M262 246V120a38 38 0 0 1 76 0v126" fill="#0f2f4d" fill-opacity=".55" stroke="url(#pgArco)" stroke-width="3"/>
+          <path d="M300 130l4 12 12 4-12 4-4 12-4-12-12-4 12-4z" fill="#e6fffb" filter="url(#pgBlur2)" opacity=".9"/>
+          <path d="M300 130l4 12 12 4-12 4-4 12-4-12-12-4 12-4z" fill="#ffffff"/>
+          <path d="M300 250c-40 24-120 6-160 34S110 312 30 322" stroke="url(#pgCamino)" stroke-width="26" stroke-linecap="round" opacity=".55" filter="url(#pgBlur)"/>
+          <path d="M300 250c-40 24-120 6-160 34S110 312 30 322" stroke="url(#pgCamino)" stroke-width="9" stroke-linecap="round" opacity=".9"/>
+          <g fill="#ffffff"><circle cx="60" cy="70" r="1.6" opacity=".7"/><circle cx="120" cy="40" r="1.2" opacity=".55"/><circle cx="200" cy="60" r="1.8" opacity=".8"/><circle cx="380" cy="50" r="1.4" opacity=".6"/><circle cx="345" cy="95" r="1.2" opacity=".5"/><circle cx="30" cy="150" r="1.3" opacity=".5"/></g>
+          <path d="M180 20l2.5 7 7 2.5-7 2.5-2.5 7-2.5-7-7-2.5 7-2.5z" fill="#ffffff" opacity=".9"/>
+        </svg></span>
         <span class="entrada__col"><span class="fugaz fugaz--btn" id="fugazA"></span>
         <span class="entrada__t">Cumplí tu sueño</span>
-        <span class="entrada__dato" id="datoSuenos"></span></span>
+        <span class="entrada__dato" id="datoSuenos"></span>
+        <span class="entrada__bajada solo-esc">Contanos tu sueño<br>y ayudanos a hacerlo realidad.</span>
+        <span class="entrada__cta solo-esc">Contar mi sueño <i>&#8594;</i></span></span>
         <span class="entrada__chev" aria-hidden="true">&#8250;</span>
       </button>
 
@@ -3606,7 +3862,9 @@ body.perfil-quieto .panels,body.perfil-quieto .panel{
         <span class="entrada__ico entrada__ico--arte" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="18.6" width="12.4" height="2.4" rx="1.2"/><path d="M13.6 2.6l6.2 6.2-2.8 2.8-6.2-6.2z"/><path d="M11.4 7.6l2.2 2.2-6.8 6.8-2.2-2.2z"/></svg></span>
         <span class="entrada__col"><span class="fugaz fugaz--btn" id="fugazB"></span>
         <span class="entrada__t">Sueños en subasta activa</span>
-        <span class="entrada__dato" id="datoSubastas"></span></span>
+        <span class="entrada__t entrada__t--esc solo-esc">Subastas activas</span>
+        <span class="entrada__dato" id="datoSubastas"></span>
+        <span class="entrada__ir solo-esc">Ver subastas <i>&#8594;</i></span></span>
         <span class="entrada__chev" aria-hidden="true">&#8250;</span>
       </button>
 
@@ -3618,7 +3876,9 @@ body.perfil-quieto .panels,body.perfil-quieto .panel{
         <span class="entrada__ico entrada__ico--arte" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.4" y="18.6" width="11" height="2.4" rx="1.2"/><path d="M12.4 2.6l5.4 5.4-2.6 2.6-5.4-5.4z"/><path d="M10.4 7.2l2 2-6.2 6.2-2-2z"/><circle cx="18.4" cy="17.6" r="4.4" fill="#04101d"/><path d="M18.4 15.2v2.6l1.8 1.1"/></svg></span>
         <span class="entrada__col"><span class="fugaz fugaz--btn" id="fugazC"></span>
         <span class="entrada__t">Sueños por subastar</span>
-        <span class="entrada__dato" id="datoLotes"></span></span>
+        <span class="entrada__t entrada__t--esc solo-esc">Próximos a subastar</span>
+        <span class="entrada__dato" id="datoLotes"></span>
+        <span class="entrada__ir solo-esc">Ver próximos <i>&#8594;</i></span></span>
         <span class="entrada__chev" aria-hidden="true">&#8250;</span>
       </button>
       </div>
@@ -3627,7 +3887,8 @@ body.perfil-quieto .panels,body.perfil-quieto .panel{
         <span class="entrada__ico entrada__ico--arte" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"> <path d="M16 3.6c-4.75 0-8.6 3.8-8.6 8.5 0 6.2 8.6 16.3 8.6 16.3s8.6-10.1 8.6-16.3c0-4.7-3.85-8.5-8.6-8.5z"       fill="currentColor" fill-opacity=".18" stroke="currentColor" stroke-width="1.8"       stroke-linejoin="round"/> <circle cx="16" cy="12.2" r="3.4" fill="#04101d" stroke="currentColor" stroke-width="1.8"/> </svg></span>
         <span class="entrada__col">
           <span class="entrada__t">Actividades y eventos</span>
-          <span class="entrada__dato" id="datoEventos"></span></span>
+          <span class="entrada__dato" id="datoEventos"></span>
+          <span class="entrada__ir solo-esc">Ver calendario <i>&#8594;</i></span></span>
         <span class="entrada__chev">&#8250;</span>
       </button>
 
@@ -3635,7 +3896,8 @@ body.perfil-quieto .panels,body.perfil-quieto .panel{
         <span class="entrada__ico entrada__ico--arte" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"> <path d="M4.4 27.6V12.4L16 5.4l11.6 7v15.2z" fill="currentColor" fill-opacity=".16"       stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/> <path d="M2.6 27.6h26.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/> <path d="M16 23.4s-4.2-2.55-4.2-5.45a2.45 2.45 0 0 1 4.2-1.5 2.45 2.45 0 0 1 4.2 1.5c0 2.9-4.2 5.45-4.2 5.45z"       fill="currentColor" fill-opacity=".3" stroke="currentColor" stroke-width="1.8"       stroke-linejoin="round"/> </svg></span>
         <span class="entrada__col">
           <span class="entrada__t">Conocé las fundaciones</span>
-          <span class="entrada__dato" id="datoFund"></span></span>
+          <span class="entrada__dato" id="datoFund"></span>
+          <span class="entrada__ir solo-esc">Ver fundaciones <i>&#8594;</i></span></span>
         <span class="entrada__chev">&#8250;</span>
       </button>
     </nav>
@@ -4173,19 +4435,6 @@ function armarHandle(nombre, usados){
   return h;
 }
 // Todas las cuentas de la plataforma, con su arroba, para el buscador.
-function directorio(){
-  var out = [];
-  DB.usuarios.forEach(function(u){
-    if(u.tipo !== "usuario") return;
-    out.push({tipo:"usuario", nombre:u.nombre, handle:u.handle, ref:u.id,
-      color:"#87CEEB", foto:u.foto || null});
-  });
-  DB.fundaciones.forEach(function(f){
-    out.push({tipo:"fundacion", nombre:f.nombre, handle:f.handle, ref:f.id,
-      color:f.color, foto:f.foto, detalle:f.lugar});
-  });
-  return out;
-}
 // Reparte el avance de todas las campañas entre el 30% y el 60% de su meta.
 function normalizarAvances(){
   var n = 0;
@@ -4262,6 +4511,8 @@ function semilla(){
   DB.invitaciones = [];
 
   DB.complementarios = [];
+  // Transferencias que la fundación confirmó recibidas en su cuenta.
+  DB.transferencias = [];
   DB.usuarios = [];
   DB.vistas = {fund:{}, camp:{}};
   DB.bajas = [];
@@ -4736,10 +4987,18 @@ function semilla(){
   (function(){
     var escalas = {fUni:[20000,60000,160000], fAle:[5000,14000,38000], fFav:[9000,25000,70000],
                    fGar:[6000,18000,50000],  fTem:[8000,22000,60000]};
+    // Qué recibe quien se suma a cada nivel. Sin esto los tres niveles se
+    // distinguían sólo por el monto, y elegir entre ellos era adivinar.
+    var beneficios = [
+      "Novedades mensuales por mail con lo que se hizo con tu aporte.",
+      "Todo lo anterior, más el informe trimestral de cuentas y prioridad en las actividades abiertas.",
+      "Todo lo anterior, más una reunión anual con el equipo y mención en la memoria si querés."
+    ];
     DB.fundaciones.forEach(function(f){
       var m = escalas[f.id] || [7000,20000,55000];
       f.planes = m.map(function(monto, i){
-        return {id:nid("pl"), nivel:i+1, nombre:"Nivel "+(i+1), monto:monto, beneficio:""};
+        return {id:nid("pl"), nivel:i+1, nombre:"Nivel "+(i+1), monto:monto,
+                beneficio:beneficios[i] || ""};
       });
     });
   })();
@@ -5813,10 +6072,8 @@ document.addEventListener("click", function(e){
   if(!e.target.closest(".buscador-wrap")) cerrarSugerencias();
 });
 document.addEventListener("input", function(e){
-  if(e.target.id === "buscaCuentas") pintarSugCuentas();
 });
 document.addEventListener("focusin", function(e){
-  if(e.target.id === "buscaCuentas" && e.target.value.trim().length >= 3) pintarSugCuentas();
 });
 
 /* ---- carrusel de próximos eventos ---- */
@@ -6093,17 +6350,6 @@ function pintarPanelUsuario(){
      '<span class="fila-op__chev">&#8250;</span>'+
    '</button>'+
 
-   '<div class="buscador-wrap buscador-cuentas">'+
-     '<div class="buscador">'+
-       '<svg class="buscador__icono" viewBox="0 0 20 20" fill="none" aria-hidden="true">'+
-         '<circle cx="8.5" cy="8.5" r="6" stroke="currentColor" stroke-width="1.6"/>'+
-         '<path d="M13.3 13.3 18 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>'+
-       '</svg>'+
-       '<input type="text" id="buscaCuentas" placeholder="Buscar cuentas…" autocomplete="off">'+
-     '</div>'+
-     '<div class="sugerencias" id="sugCuentas" hidden></div>'+
-   '</div>'+
-
 
    '<p class="pista-edicion">Tocá tu foto o cualquiera de tus datos para editarlos.</p>'+
 
@@ -6177,7 +6423,9 @@ function pintarPanelFundacion(){
        esperando + (esperando===1 ? ' sueño esperando' : ' sueños esperando'),
        'Aprobados, a la espera de salir']);
      if(porGirar) filas.push(['fRecauda', pesos(porGirar)+' por acreditarse',
-       'Se transfiere el 5 de cada mes']);
+       cuentaBanco(f) ? 'Se transfiere el 5 de cada mes' : 'Falta la cuenta de destino']);
+     if(!cuentaBanco(f)) filas.push(['fRecauda', 'Falta cargar el CBU',
+       'Sin cuenta no se puede acreditar lo recaudado']);
 
      if(!filas.length){
        return '<p class="frotulo">Para hoy</p>'+
@@ -6641,6 +6889,10 @@ setTimeout(pedirAcomodar, 900);
 function pintarDatosMenu(){
 
   function poner(id, txt){ var e = $("#"+id); if(e) e.textContent = txt; }
+  // Número y texto en dos spans sin estilo propio: en el teléfono se leen igual
+  // que antes, en escritorio el número se agranda solo.
+  function ponerN(id, n, txt){ var e = $("#"+id); if(!e) return;
+    e.innerHTML = '<span class="dato__n">'+n+'</span><span class="dato__t"> '+txt+'</span>'; }
   // Cada entrada cuenta lo suyo: en subasta son los sueños con reloj corriendo,
   // por subastar los que la administración ya aprobó y todavía no abrió.
   var subastas = DB.solicitudes.filter(function(x){ return x.estado === "en subasta"; }).length;
@@ -6648,11 +6900,11 @@ function pintarDatosMenu(){
   var eventos = DB.fundaciones.reduce(function(n,f){ return n + ((f.eventos||[]).length); }, 0);
 
   poner("datoSuenos", "Contanos tu sueño");
-  poner("datoSubastas", subastas + (subastas===1 ? " sueño en juego" : " sueños en juego"));
-  poner("datoLotes", lotes + (lotes===1 ? " sueño esperando" : " sueños esperando"));
+  ponerN("datoSubastas", subastas, subastas===1 ? "sueño en juego" : "sueños en juego");
+  ponerN("datoLotes", lotes, lotes===1 ? "sueño esperando" : "sueños esperando");
   var eventos = DB.fundaciones.reduce(function(n,f){ return n + ((f.eventos||[]).length); }, 0);
-  poner("datoEventos", eventos + (eventos===1 ? " actividad próxima" : " actividades próximas"));
-  poner("datoFund", DB.fundaciones.length + " fundaciones verificadas");
+  ponerN("datoEventos", eventos, eventos===1 ? "actividad próxima" : "actividades próximas");
+  ponerN("datoFund", DB.fundaciones.length, "fundaciones verificadas");
 }
 
 function revisarMenuFijo(){
@@ -7193,6 +7445,10 @@ function alternarSuscripcion(plid, fid){
 // Adhesión al débito automático. Es una demostración: se elige el medio,
 // no se piden ni se guardan los datos de la tarjeta.
 function modalDebito(f, pl){
+  // Adherirse a un plan es un compromiso mensual: hace falta cuenta. Sin este
+  // guardián, quien navegaba sin sesión llegaba al formulario y after() reventaba
+  // al leer sesion.nombre para completar el titular.
+  if(!exigirSesion("apoyar todos los meses")) return;
   var marcas = ["Visa","Mastercard","American Express","Cabal","Naranja X"];
   abrirModal({eyebrow:"Débito automático", titulo:"Apoyar a "+f.nombre,
     sub:pl.nombre+" · "+pesos(pl.monto)+" por mes",
@@ -7227,7 +7483,7 @@ function modalDebito(f, pl){
       '<div class="pago-total"><span>Débito mensual</span><b>'+pesos(pl.monto)+'</b></div>',
     ok:"Confirmar adhesión",
     after:function(){
-      $("#dbTitular").value = sesion.nombre;
+      $("#dbTitular").value = sesion ? sesion.nombre : "";
       // Formato cómodo mientras se escribe: grupos de cuatro y MM/AA.
       // El número de tarjeta viene fijo: en una beta nadie debería poder cargar uno real.
       $("#dbVto").addEventListener("input", function(){
@@ -7294,49 +7550,141 @@ function cerrarFundacion(){
   actualizarCarrusel(false);
   window.scrollTo({top:0, behavior:"smooth"});
 }
+// Qué solapa del perfil público está abierta. Se guarda fuera de la función
+// porque el perfil se vuelve a pintar en cada cambio y no queremos que salte
+// sola a la primera cada vez.
+var solapaFundPub = "info";
+
 function pintarFundacionAbierta(){
   if(!fundacionAbierta) return;
   var f = fundacionPorId(fundacionAbierta); if(!f) return cerrarFundacion();
-  var rank = rankingDe(f.id);
-  var colabs = "";
+
+  // Los posteos de esta fundación, del más nuevo al más viejo.
+  var posts = DB.posts.filter(function(po){ return po.fid === f.id; })
+    .sort(function(a,b){ return String(b.fechaISO||"").localeCompare(String(a.fechaISO||"")); });
+
+  function solapa(id, texto, cuenta){
+    return '<button class="solapa'+(solapaFundPub===id?' is-on':'')+'" data-solapa-fund="'+id+'">'+
+      texto + (cuenta ? ' <i>'+cuenta+'</i>' : '') + '</button>';
+  }
+
+  // ---- lo que se ve primero: quién es ----
+  // Sin banner: una foto grande y el nombre alcanzan para saber dónde estás, y
+  // el banner empujaba todo lo demás fuera de la primera pantalla.
+  var cabecera =
+    '<header class="fperfil">'+
+      '<span class="fperfil__foto" style="'+avatarCSS(f)+'">'+
+        (f.foto ? '' : esc(iniciales(f.nombre)))+'</span>'+
+      '<h1 class="fperfil__nombre">'+esc(f.nombre)+
+        (f.verificada
+          ? '<span class="fverif" title="Fundación verificada">'+
+            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" '+
+            'stroke-linecap="round" stroke-linejoin="round"><path d="M6 12.4l4 4 8-8.4"/></svg>'+
+            'Verificada</span>'
+          : '')+
+      '</h1>'+
+      '<p class="fperfil__dato">'+esc(f.lugar||"")+
+        (f.desde ? ' · desde '+esc(String(f.desde)) : '')+'</p>'+
+      (f.lema ? '<p class="fperfil__lema">'+esc(f.lema)+'</p>' : '')+
+    '</header>';
+
+  // ---- lo que se puede hacer ----
+  // Donar y aportar valor complementario van juntos y arriba: son las dos
+  // formas de ayudar de una vez. El apoyo mensual tiene su propia sección
+  // porque es una decisión distinta, con niveles que hay que comparar.
+  var acciones = puedeAportar()
+    ? '<div class="fperfil__acciones">'+
+        '<button class="btn btn--primary" data-donar="'+f.id+'">Donar</button>'+
+        '<button class="btn btn--cielo" data-complementario="'+f.id+'">'+
+          'Aportar valor complementario</button>'+
+      '</div>'
+    : '';
+
+  var web = f.web
+    ? '<a class="fperfil__web" href="'+esc(f.web)+'" target="_blank" rel="noopener">'+
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" '+
+        'stroke-linecap="round" stroke-linejoin="round">'+
+        '<circle cx="12" cy="12" r="8.4"/><path d="M3.6 12h16.8"/>'+
+        '<path d="M12 3.6a13 13 0 0 1 0 16.8a13 13 0 0 1 0-16.8z"/></svg>'+
+        '<span>Visitar el sitio web</span>'+
+        '<span class="fperfil__web-dom">'+esc(f.web.replace(/^https?:\/\//,"").replace(/\/$/,""))+'</span>'+
+      '</a>'
+    : '';
+
+  // ---- apoyo mensual, presentado para poder comparar ----
+  // Antes eran tres tarjetas con el monto y poco más. Acá cada nivel dice qué
+  // recibe quien se suma y cuánta gente ya lo hace: son los dos datos con los
+  // que alguien decide entre un nivel y otro.
+  function bloqueApoyo(){
+    var planes = f.planes || [];
+    if(!planes.length){
+      return '<div class="empty">Esta fundación todavía no tiene apoyo mensual.</div>';
+    }
+    return '<p class="fperfil__nota">Un monto fijo por mes, que podés dar de baja '+
+        'cuando quieras. Es lo que le permite a la fundación planificar.</p>'+
+      '<div class="fplanes">'+ planes.map(function(pl){
+        var gente = DB.suscripciones.filter(function(x){
+          return x.fid === f.id && x.planId === pl.id; }).length;
+        var yoEstoy = sesion && DB.suscripciones.some(function(x){
+          return x.planId === pl.id && x.quien === sesion.nombre; });
+        return '<article class="fplan'+(yoEstoy?' es-mio':'')+'">'+
+          '<span class="fplan__nivel">'+esc(pl.nombre)+'</span>'+
+          '<span class="fplan__monto">'+pesos(pl.monto)+'<i>/mes</i></span>'+
+          (pl.beneficio
+            ? '<p class="fplan__que">'+esc(pl.beneficio)+'</p>'
+            : '<p class="fplan__que fplan__que--vacio">Aporte libre, sin contrapartida.</p>')+
+          '<span class="fplan__gente">'+
+            (gente ? gente+(gente===1?' persona apoyando':' personas apoyando')
+                   : 'Todavía nadie')+'</span>'+
+          (puedeAportar()
+            ? '<button class="btn '+(yoEstoy?'btn--ghost':'btn--primary')+' btn--sm" '+
+                'data-suscribir="'+pl.id+'" data-fid="'+f.id+'">'+
+                (yoEstoy?'Dar de baja':'Apoyar todos los meses')+'</button>'
+            : '')+
+        '</article>';
+      }).join("") +'</div>';
+  }
+
+  // ---- contenido de cada solapa ----
+  var info =
+    '<p class="subhead"><span>Quiénes somos</span></p>'+
+    bloquePresentacion(f)+
+    web+
+
+    '<p class="subhead" id="anclaPlanes"><span>Apoyo mensual</span></p>'+
+    bloqueApoyo()+
+
+    '<div class="titulazo"><h3>Campañas <b>abiertas</b></h3>'+
+      '<span class="titulazo__nota">'+(f.causas||[]).length+' en curso · cada una con su meta</span></div>'+
+    ((f.causas||[]).length
+      ? '<div class="stack">'+f.causas.map(function(c){ return bloqueCausa(c, f.id, false); }).join("")+'</div>'
+      : '<div class="empty">Sin campañas cargadas.</div>')+
+
+    '<p class="subhead" id="anclaEventos"><span>Próximos eventos</span></p>'+
+    ((f.eventos||[]).length
+      ? '<div class="stack">'+f.eventos.map(function(e){ return bloqueEvento(e, f.id, false); }).join("")+'</div>'
+      : '<div class="empty">Sin eventos cargados.</div>')+
+
+    bloqueContacto(f);
+
+  var comunidad =
+    '<p class="fperfil__nota">Lo que la fundación fue contando: sueños cumplidos, '+
+      'actividades y rendiciones de lo recaudado.</p>'+
+    '<div class="feed">'+
+      (posts.length
+        ? posts.map(bloquePost).join("")
+        : '<div class="empty">Esta fundación todavía no publicó nada.</div>')+
+    '</div>';
 
   $("#vistaDetalle").innerHTML =
     '<button class="volver" id="btnVolverLista">&#8592; Volver a fundaciones</button>'+
-    '<div class="ficha"><div class="banner" style="height:150px;'+bannerCSS(f)+'"></div>'+
-      '<div class="ficha__id"><span class="avatar avatar--lg" style="'+avatarCSS(f)+'">'+(f.foto?"":esc(iniciales(f.nombre)))+'</span>'+
-      '<div style="padding-bottom:4px;flex:1"><div class="ficha__nombre">'+esc(f.nombre)+'</div>'+
-      '<div class="ficha__lugar">'+esc(f.lugar)+' · '+esc(f.lema)+'</div></div>'+
-      '</div></div>'+
-    (puedeAportar()
-      ? '<div class="ficha__acciones">'+
-          '<button class="btn btn--primary" data-donar="'+f.id+'">Donar</button>'+
-          '<button class="btn btn--cielo" data-complementario="'+f.id+'">Aportar valor complementario</button>'+
-          '<button class="btn btn--primary" data-apoyo-mensual="'+f.id+'">Sumarme al apoyo mensual</button>'+
-        '</div>'
-      : '')+
-
-    bloqueContacto(f)+
-
-    '<p class="subhead"><span>Quiénes somos</span></p>'+
-    bloquePresentacion(f)+
-
-    '<div class="titulazo"><h3>Campañas <b>abiertas</b></h3>'+
-      '<span class="titulazo__nota">'+f.causas.length+' en curso · cada una con su meta</span></div>'+
-    (f.causas.length ? '<div class="stack">'+f.causas.map(function(c){ return bloqueCausa(c, f.id, false); }).join("")+'</div>'
-      : '<div class="empty">Sin campañas cargadas.</div>')+
-    (f.aporteGeneral>0 ? '<div class="aporte-general" style="margin-top:16px"><span class="eyebrow">Aporte general recibido</span>'+
-      '<div style="font-size:16px;font-weight:600;margin-top:4px">'+pesos(f.aporteGeneral)+'</div></div>' : '')+
-
-
-    '<p class="subhead" id="anclaPlanes"><span>Plan de aportes mensual</span></p>'+
-    bloquePlanes(f, false)+
-
-    '<p class="subhead" id="anclaEventos"><span>Próximos eventos</span></p>'+
-    (f.eventos.length ? '<div class="stack">'+f.eventos.map(function(e){ return bloqueEvento(e, f.id, false); }).join("")+'</div>'
-      : '<div class="empty">Sin eventos cargados.</div>')+
-
-
-    '';
+    cabecera +
+    acciones +
+    '<div class="solapas solapas--perfil">'+
+      solapa("info", "La fundación")+
+      solapa("comunidad", "Comunidad", posts.length)+
+    '</div>'+
+    (solapaFundPub === "comunidad" ? comunidad : info);
 }
 
 /* ==================== flujos: fundación ==================== */
@@ -7379,36 +7727,6 @@ function modalEditarFundacion(){
 
 // Interruptor rápido del perfil anónimo, sin pasar por editar perfil.
 // Buscador de cuentas del perfil: se abre con el foco y filtra por nombre o @.
-function pintarSugCuentas(){
-  var input = $("#buscaCuentas"), caja = $("#sugCuentas");
-  if(!input || !caja) return;
-  var q = input.value.trim().toLowerCase().replace(/^@/,"");
-  // Recién con tres letras vale la pena mostrar algo.
-  if(q.length < 3){
-    caja.innerHTML = '<div class="sug__vacio">Escribí al menos 3 letras para buscar.</div>';
-    caja.hidden = !input.value.length;
-    return;
-  }
-  var lista = directorio().filter(function(x){
-    return (x.nombre||"").toLowerCase().indexOf(q) > -1 || (x.handle||"").indexOf(q) > -1;
-  }).slice(0, 8);
-
-  caja.innerHTML = lista.length ? lista.map(function(x){
-    var etiqueta = x.tipo === "fundacion" ? "Fundación" : x.tipo === "asociado" ? "Asociado" : "Usuario";
-    return '<button class="sug" data-cuenta="'+x.tipo+'" data-ref="'+esc(x.ref)+'" role="option">'+
-      '<span class="avatar" style="'+avatarCSS(x)+'">'+(x.foto?"":esc(iniciales(x.nombre)))+'</span>'+
-      '<span><span class="sug__n">'+esc(x.nombre)+'</span>'+
-      '<span class="sug__m"><span class="sug__handle">@'+esc(x.handle||"")+'</span>'+
-      (x.detalle ? ' · '+esc(x.detalle) : '')+'</span></span>'+
-      '<span class="sug__tipo">'+etiqueta+'</span></button>';
-  }).join("") : '<div class="sug__vacio">No encontramos cuentas con ese nombre.</div>';
-  caja.hidden = false;
-}
-function cerrarSugCuentas(){
-  var caja = $("#sugCuentas");
-  if(caja) caja.hidden = true;
-}
-
 function modalCuentaUsuario(uid){
   var u = usuarioPorId(uid); if(!u) return;
   var oculto = !!DB.perfilesAnonimos[u.nombre];
@@ -7922,6 +8240,99 @@ function avisarFundacion(fid, titulo, texto, destino, clase){
     titulo:titulo, texto:texto, hora:"ahora",
     cuando:new Date().toISOString(),
     destino:destino || "recaudacion", clase:clase || "actividad", leido:false});
+}
+
+// Cuenta de destino de la fundación. Vive en legales.banco como texto
+// ("CBU 0110…" o un alias). Se limpia al guardar y se muestra agrupada.
+function cuentaBanco(f){
+  var b = f && f.legales && f.legales.banco ? String(f.legales.banco).trim() : "";
+  return b.replace(/^cbu\s*/i, "").replace(/\s+/g, "");
+}
+function cuentaBancoBonita(f){
+  var c = cuentaBanco(f);
+  if(!c) return "";
+  if(/^\d{22}$/.test(c)) return "CBU " + c.replace(/(\d{4})(?=\d)/g, "$1 ");
+  return "Alias " + c;
+}
+// Devuelve el error de validación, o "" si la cuenta sirve.
+function validarCuentaBanco(txt){
+  var c = String(txt || "").trim().replace(/^cbu\s*/i, "").replace(/\s+/g, "");
+  if(!c) return "Escribí el CBU o el alias de la cuenta.";
+  if(/^\d+$/.test(c)) return c.length === 22 ? "" : "El CBU tiene 22 dígitos; este tiene "+c.length+".";
+  if(/^[a-z0-9.\-]{6,20}$/i.test(c)) return "";
+  return "Un alias tiene entre 6 y 20 letras, números, puntos o guiones.";
+}
+function modalCuentaBancaria(){
+  var f = miFundacion(); if(!f) return;
+  var actual = cuentaBanco(f);
+  abrirModal({eyebrow:"Recaudación", titulo: actual ? "Cambiar cuenta de destino" : "Cargar cuenta de destino",
+    sub:"Acá se acredita el saldo pendiente el 5 de cada mes. Tiene que estar a nombre de la fundación.",
+    body: campo("cbCuenta","CBU o alias","text","0110599520000012437851",
+            '<p class="field__hint">22 dígitos, o el alias de la cuenta. Sin espacios.</p>')+
+          campo("cbTitular","Titular","text","",
+            '<p class="field__hint">Como figura en el banco. Se controla contra la razón social.</p>'),
+    ok: actual ? "Guardar cuenta" : "Cargar cuenta",
+    after:function(){
+      $("#cbCuenta").value = actual;
+      $("#cbTitular").value = (f.legales && (f.legales.titular || f.legales.razon)) || f.nombre || "";
+    },
+    onOk:function(){
+      var err = validarCuentaBanco(val("cbCuenta"));
+      if(err){ toast(err); return; }
+      var c = val("cbCuenta").replace(/^cbu\s*/i, "").replace(/\s+/g, "");
+      if(!f.legales) f.legales = {};
+      f.legales.banco = /^\d{22}$/.test(c) ? "CBU " + c : c;
+      f.legales.titular = val("cbTitular");
+      cerrarModal(); pintarTodo(); pintarFSubastas();
+      toast(actual ? "Cuenta actualizada." : "Cuenta cargada. El próximo giro va ahí.");
+    }});
+}
+// Lo cobrado que todavía no se giró, para la fundación en sesión.
+function pendienteDeGiro(f){
+  var lotes = DB.aportes.filter(function(a){ return a.fid === f.id; });
+  var monto = 0, items = 0;
+  lotes.forEach(function(a){
+    var e = estadoLote(a);
+    if(["porcobrar","cobrado"].indexOf(e.id) > -1 && !a.transferido){
+      monto += (a.puja || a.base || 0); items++;
+    }
+  });
+  DB.donaciones.forEach(function(d){
+    if(d.fid === f.id && d.transferido === false){ monto += (d.monto || 0); items++; }
+  });
+  return {monto:monto, items:items};
+}
+function modalTransferenciaRecibida(){
+  var f = miFundacion(); if(!f) return;
+  var p = pendienteDeGiro(f);
+  if(!p.monto){ toast("No hay saldo pendiente de transferencia."); return; }
+  abrirModal({eyebrow:"Recaudación", titulo:"Confirmar transferencia recibida",
+    sub:"Marcá el giro como acreditado sólo cuando lo veas en el extracto del banco.",
+    body:'<div class="rec-confirma">'+
+           '<span>Monto del giro</span><b>'+pesos(p.monto)+'</b>'+
+           '<i>'+p.items+(p.items===1?' movimiento pasa':' movimientos pasan')+' a “Transferido”.</i>'+
+         '</div>'+
+         '<div class="rec-confirma rec-confirma--cuenta">'+
+           '<span>Cuenta de destino</span><b>'+esc(cuentaBancoBonita(f))+'</b>'+
+         '</div>',
+    ok:"Sí, la recibí",
+    onOk:function(){
+      DB.aportes.forEach(function(a){
+        if(a.fid !== f.id || a.transferido) return;
+        var e = estadoLote(a);
+        if(["porcobrar","cobrado"].indexOf(e.id) > -1) a.transferido = true;
+      });
+      DB.donaciones.forEach(function(d){
+        if(d.fid === f.id && d.transferido === false) d.transferido = true;
+      });
+      DB.transferencias.push({id:nid("tr"), fid:f.id, monto:p.monto, items:p.items,
+        cuando:new Date().toISOString()});
+      avisarFundacion(f.id, "Transferencia recibida",
+        pesos(p.monto)+" acreditados en tu cuenta. El extracto ya figura como transferido.",
+        "recaudacion", "aporte");
+      cerrarModal(); pintarTodo(); pintarFSubastas();
+      toast("Transferencia registrada.");
+    }});
 }
 
 // Para la fundación, en lugar de un ícono de color va una etiqueta que nombra
@@ -8574,6 +8985,56 @@ function gentePorFundacion(f){
   return Object.keys(mapa).map(function(k){ return mapa[k]; });
 }
 
+// Un posteo, tal como se ve tanto en el muro de la fundación como en el perfil
+// que mira el donante: una sola definición para que no se separen con el tiempo.
+function bloquePost(po){
+  var fu = fundacionPorId(po.fid);
+  if(!fu) return "";
+  var mg = DB.megusta[po.id] || 0;
+  var lodi = DB.miMeGusta[po.id];
+  var sueno = po.suenoDe
+    ? '<div class="post__sueno">'+
+        '<svg viewBox="0 0 32 32" fill="none" aria-hidden="true">'+
+        '<path d="M15.2 3.4l2.6 5.7 6.2.75-4.6 4.3 1.25 6.15-5.45-3.1-5.45 3.1 1.25-6.15-4.6-4.3 6.2-.75z" '+
+        'fill="currentColor" fill-opacity=".22" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>'+
+        '<span>Sueño cumplido de <b>'+esc(po.suenoDe)+'</b></span>'+
+      '</div>'
+    : '';
+
+  return '<article class="post">'+
+    '<header class="post__cab">'+
+      '<span class="post__av"'+(fu.foto?' style="background-image:url('+fu.foto+')"':'')+'>'+
+        (fu.foto ? '' : esc(iniciales(fu.nombre)))+'</span>'+
+      '<span class="post__quien"><b>'+esc(fu.nombre)+'</b>'+
+        '<span>'+esc(po.fecha || "")+'</span></span>'+
+    '</header>'+
+
+    (po.foto
+      ? '<div class="post__foto" style="background-image:url('+po.foto+')"></div>'
+      : '')+
+
+    '<div class="post__cuerpo">'+
+      sueno+
+      '<h3 class="post__t">'+esc(po.titulo || "")+'</h3>'+
+      (po.texto ? '<p class="post__d">'+esc(po.texto)+'</p>' : '')+
+      (po.monto ? '<p class="post__monto">'+pesos(po.monto)+' recaudados</p>' : '')+
+    '</div>'+
+
+    '<footer class="post__pie">'+
+      '<button class="post__mg'+(lodi?' es-on':'')+'" data-megusta="'+po.id+'">'+
+        '<svg viewBox="0 0 24 24" fill="'+(lodi?'currentColor':'none')+'" stroke="currentColor" '+
+        'stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">'+
+        '<path d="M12 20.4s-7.3-4.6-7.3-9.6a4.2 4.2 0 0 1 7.3-2.7 4.2 4.2 0 0 1 7.3 2.7c0 5-7.3 9.6-7.3 9.6z"/></svg>'+
+        (mg ? '<i>'+mg+'</i>' : '')+
+      '</button>'+
+      '<span class="post__tipo">'+
+        (po.tipo === "rendicion" ? "Rendición" : (po.suenoDe ? "Sueño cumplido" : "Actividad"))+
+      '</span>'+
+    '</footer>'+
+  '</article>';
+  }
+
+
 function pintarComunidad(){
   var f = miFundacion(); if(!f) return;
   var caja = $("#comunidadCuerpo"); if(!caja) return;
@@ -8584,51 +9045,7 @@ function pintarComunidad(){
       return String(b.fechaISO||"").localeCompare(String(a.fechaISO||""));
     });
 
-  function tarjeta(po){
-    var fu = fundacionPorId(po.fid) || f;
-    var mg = DB.megusta[po.id] || 0;
-    var lodi = DB.miMeGusta[po.id];
-    var sueno = po.suenoDe
-      ? '<div class="post__sueno">'+
-          '<svg viewBox="0 0 32 32" fill="none" aria-hidden="true">'+
-          '<path d="M15.2 3.4l2.6 5.7 6.2.75-4.6 4.3 1.25 6.15-5.45-3.1-5.45 3.1 1.25-6.15-4.6-4.3 6.2-.75z" '+
-          'fill="currentColor" fill-opacity=".22" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>'+
-          '<span>Sueño cumplido de <b>'+esc(po.suenoDe)+'</b></span>'+
-        '</div>'
-      : '';
-
-    return '<article class="post">'+
-      '<header class="post__cab">'+
-        '<span class="post__av"'+(fu.foto?' style="background-image:url('+fu.foto+')"':'')+'>'+
-          (fu.foto ? '' : esc(iniciales(fu.nombre)))+'</span>'+
-        '<span class="post__quien"><b>'+esc(fu.nombre)+'</b>'+
-          '<span>'+esc(po.fecha || "")+'</span></span>'+
-      '</header>'+
-
-      (po.foto
-        ? '<div class="post__foto" style="background-image:url('+po.foto+')"></div>'
-        : '')+
-
-      '<div class="post__cuerpo">'+
-        sueno+
-        '<h3 class="post__t">'+esc(po.titulo || "")+'</h3>'+
-        (po.texto ? '<p class="post__d">'+esc(po.texto)+'</p>' : '')+
-        (po.monto ? '<p class="post__monto">'+pesos(po.monto)+' recaudados</p>' : '')+
-      '</div>'+
-
-      '<footer class="post__pie">'+
-        '<button class="post__mg'+(lodi?' es-on':'')+'" data-megusta="'+po.id+'">'+
-          '<svg viewBox="0 0 24 24" fill="'+(lodi?'currentColor':'none')+'" stroke="currentColor" '+
-          'stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">'+
-          '<path d="M12 20.4s-7.3-4.6-7.3-9.6a4.2 4.2 0 0 1 7.3-2.7 4.2 4.2 0 0 1 7.3 2.7c0 5-7.3 9.6-7.3 9.6z"/></svg>'+
-          (mg ? '<i>'+mg+'</i>' : '')+
-        '</button>'+
-        '<span class="post__tipo">'+
-          (po.tipo === "rendicion" ? "Rendición" : (po.suenoDe ? "Sueño cumplido" : "Actividad"))+
-        '</span>'+
-      '</footer>'+
-    '</article>';
-  }
+  var tarjeta = bloquePost;
 
   caja.innerHTML =
     '<button class="post-nuevo" id="btnPublicarSueno">'+
@@ -8784,15 +9201,46 @@ function pintarFSubastas(){
     '<div class="rec-saldo">'+
       '<span class="rec-saldo__r">Saldo pendiente de transferencia</span>'+
       '<b class="rec-saldo__v">'+pesos(pendiente)+'</b>'+
-      '<span class="rec-saldo__p">'+
+      '<span class="rec-saldo__p'+(pendiente && !cuentaBanco(f) ? ' es-falta' : '')+'">'+
         (pendiente
-          ? 'Se acredita el '+prox.getDate()+'/'+("0"+(prox.getMonth()+1)).slice(-2)+'/'+prox.getFullYear()
+          ? (cuentaBanco(f)
+              ? 'Se acredita el '+prox.getDate()+'/'+("0"+(prox.getMonth()+1)).slice(-2)+'/'+prox.getFullYear()
+              : 'Sin cuenta de destino: no se puede girar')
           : 'No hay fondos en tránsito')+
       '</span>'+
       '<div class="rec-saldo__tot">'+
         '<div><span>Total recibido</span><b>'+pesos(total)+'</b></div>'+
         '<div><span>Apoyos mensuales</span><b>'+pesos(porMes)+'</b></div>'+
       '</div>'+
+
+      // A dónde va la plata. Sin cuenta cargada no hay giro posible, así que
+      // esa falta se ve en el mismo bloque que promete la fecha.
+      (function(){
+        var cta = cuentaBancoBonita(f);
+        var ult = DB.transferencias.filter(function(t){ return t.fid === f.id; })
+          .sort(function(a,b){ return a.cuando < b.cuando ? 1 : -1; })[0];
+        var fUlt = ult ? new Date(ult.cuando) : null;
+        return '<div class="rec-cuenta">'+
+            '<span class="rec-cuenta__t">'+
+              '<span class="rec-cuenta__r">Cuenta de destino</span>'+
+              (cta ? '<b class="rec-cuenta__v">'+esc(cta)+'</b>'
+                   : '<b class="rec-cuenta__v es-falta">Sin cuenta cargada</b>')+
+            '</span>'+
+            '<button class="btn btn--ghost btn--xs" id="btnCuentaBanco">'+
+              (cta ? 'Cambiar' : 'Cargar CBU')+'</button>'+
+          '</div>'+
+          (pendiente && cta
+            ? '<button class="btn btn--ghost btn--block" id="btnTransferRecibida">'+
+                'Marcar transferencia como recibida</button>'
+            : '')+
+          (pendiente && !cta
+            ? '<span class="rec-saldo__ult es-falta">Cargá el CBU para que el saldo se pueda acreditar.</span>'
+            : '')+
+          (!pendiente && ult
+            ? '<span class="rec-saldo__ult">Última transferencia recibida: '+pesos(ult.monto)+
+              ' el '+("0"+fUlt.getDate()).slice(-2)+"/"+("0"+(fUlt.getMonth()+1)).slice(-2)+'</span>'
+            : '');
+      })()+
     '</div>'+
 
     '<div class="solapas">'+
@@ -10367,7 +10815,17 @@ document.addEventListener("click", function(e){
     if(caja) caja.classList.toggle("is-open");
     return;
   }
+  // Los siete botones de volver de las cabeceras. El atributo se escribe sin
+  // valor (data-volver-inicio, no data-volver-inicio="algo"), y por eso una
+  // limpieza anterior lo dio por muerto y se llevó esta línea: buscaba el
+  // atributo seguido de "=". Sin ella, ninguna cabecera volvía a ningún lado.
+  if(e.target.closest("[data-volver-inicio]")) return volverHome();
   if(e.target.closest("#btnVolverLista")) return cerrarFundacion();
+  if((t = e.target.closest("[data-solapa-fund]"))){
+    solapaFundPub = t.dataset.solapaFund;
+    pintarFundacionAbierta();
+    return;
+  }
   // Dentro de la tarjeta hay etiquetas que llevan a la fundación: tienen prioridad.
   if((t = e.target.closest("[data-editar]"))){
     if(t.dataset.editar === "fundacion") modalEditarFundacion();
@@ -10377,14 +10835,10 @@ document.addEventListener("click", function(e){
   }
   if((t = e.target.closest("[data-stats]"))) return modalEstadisticas(t.dataset.stats);
   if((t = e.target.closest("[data-cuenta]"))){
-    var input = $("#buscaCuentas");
-    if(input) input.value = "";
-    cerrarSugCuentas();
     if(t.dataset.cuenta === "fundacion") abrirFundacion(t.dataset.ref);
     else modalCuentaUsuario(t.dataset.ref);
     return;
   }
-  if(!e.target.closest(".buscador-cuentas")) cerrarSugCuentas();
   if(e.target.closest("#btnCumpliSueno")) return abrirPantallaAporte("propuesta");
   if((t = e.target.closest("[data-tab]"))){
     var cual = t.dataset.tab;
@@ -10527,6 +10981,9 @@ document.addEventListener("click", function(e){
     return;
   }
 
+  if(e.target.closest("#btnCuentaBanco")) return modalCuentaBancaria();
+  if(e.target.closest("#btnTransferRecibida")) return modalTransferenciaRecibida();
+
   // El comprobante del extracto: el mismo archivo que ve la fundación, para
   // adjuntar a su contabilidad.
   if(e.target.closest("#btnComprobante")){
@@ -10638,10 +11095,9 @@ document.addEventListener("click", function(e){
   if((t = e.target.closest("[data-ir-fundacion]"))) return abrirFundacion(t.dataset.irFundacion);
   if((t = e.target.closest("[data-fundacion]")) && !e.target.closest("[data-donar-campana]")
      && !e.target.closest("[data-ver-eventos]")){
-    // Tocar la ficha lleva al sitio de la organización. El perfil interno
-    // sigue accesible desde "Ver el perfil completo".
-    var fx = fundacionPorId(t.dataset.fundacion);
-    if(fx && fx.web){ window.open(fx.web, "_blank", "noopener"); return; }
+    // Tocar la ficha abre el perfil de la fundación. Salir a su sitio es cosa
+    // del botón "Sitio web": sacar a la persona de la app de un toque, sin
+    // avisar, no es lo que espera quien toca una tarjeta.
     return abrirFundacion(t.dataset.fundacion);
   }
 });
