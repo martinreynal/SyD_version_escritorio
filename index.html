@@ -3161,7 +3161,9 @@ body.perfil-quieto{overflow-y:auto !important}
    pie debajo de la barra inferior. */
 /* .screen.is-active fuerza height:auto, así que la pantalla necesita
    redeclarar su alto con !important para que el hijo pueda desplazarse. */
-#screen-aporte.sn-modo,#screen-aporte.ap3-modo{
+/* Sin .is-active, este display:flex !important dejaba la pantalla visible
+   detrás del inicio después de salir. La visibilidad la manda .is-active. */
+#screen-aporte.sn-modo.is-active,#screen-aporte.ap3-modo.is-active{
   height:100dvh !important;display:flex !important;flex-direction:column;overflow:hidden}
 #screen-aporte.sn-modo .alta,#screen-aporte.ap3-modo .alta{
   flex:1 1 auto;min-height:0;
@@ -4414,12 +4416,20 @@ body:not(.es-fundacion) #screen-avisos .aviso__cta{margin-top:8px}
   #screen-aporte.sn-modo .alta{max-width:1240px !important;margin:0 auto;padding:0 24px}
   .sn-grid{grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:28px;align-items:start}
   .sn-funds{grid-template-columns:1fr 1fr}
-  #screen-aporte.sn-modo .alta__intro{display:flex !important;align-items:flex-start;
-    justify-content:space-between;gap:40px;margin-bottom:20px}
-  #screen-aporte.sn-modo .alta__titulo{text-align:left;font-size:clamp(30px,3vw,42px)}
-  #screen-aporte.sn-modo .alta__lede{display:flex;flex-direction:column;max-width:none}
-  .sn-nota{max-width:280px;margin-top:0}
-  #screen-aporte.sn-modo .alta__acciones{max-width:calc(61% - 14px);margin-top:6px}
+  #screen-aporte.sn-modo .alta__intro{display:grid !important;
+    grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);align-items:end;
+    gap:28px;margin-bottom:18px}
+  /* El antetítulo va vacío en este flujo y ocupaba la primera celda de la
+     grilla, corriendo el título a la segunda columna. */
+  #screen-aporte.sn-modo #apEyebrow{display:none}
+  #screen-aporte.sn-modo .alta__titulo{text-align:left !important;font-size:clamp(30px,3vw,42px);margin:0}
+  #screen-aporte.sn-modo .alta__lede{text-align:left;max-width:none;margin:0}
+  .sn-nota{max-width:34ch;margin-top:8px}
+  /* El botón acompaña al formulario, no al centro de la pantalla. */
+  #screen-aporte.sn-modo .alta__acciones{display:block;
+    width:calc(61.2% - 9px) !important;max-width:none !important;
+    margin:10px 0 0 !important;padding:0}
+  #screen-aporte.sn-modo .alta__acciones .btn{max-width:none;margin:0}
   .sn-previa{position:sticky;top:8px}
 
   /* Otras formas de ayudar: dos por fila y la quinta centrada, como el plano. */
@@ -11102,7 +11112,9 @@ var ICONO_FORMA = {
 // Los tres pasos del flujo, arriba de todo. El paso actual va encendido y los
 // anteriores quedan marcados como cumplidos.
 function pasosAporte(actual){
-  var pasos = ["Forma de ayudar", "Detalles", "Confirmación"];
+  // Dos pasos: la confirmación ocurre en un modal, así que como tercer paso
+  // nunca se encendía y el indicador prometía un tramo que no existe.
+  var pasos = ["Forma de ayudar", "Detalles"];
   return '<div class="ap3-pasos">'+pasos.map(function(p, k){
     var estado = k === actual ? " is-on" : (k < actual ? " es-hecho" : "");
     return '<span class="ap3-paso'+estado+'">'+
@@ -11222,7 +11234,8 @@ function abrirPantallaAporte(modo, fidPre){
   window.scrollTo({top:0});
 }
 function cerrarAporte(){
-  $("#screen-aporte").classList.remove("is-active");
+  var sc = $("#screen-aporte");
+  sc.classList.remove("is-active", "sn-modo", "ap3-modo");
   if(sesion) $("#screen-app").classList.add("is-active");
   else $("#screen-app").classList.add("is-active");
   aporte = null;
