@@ -3156,6 +3156,36 @@ body.perfil-quieto{overflow-y:auto !important}
 .entrada__t b{font-weight:inherit;color:var(--turq)}
 .dato__pie{display:block;margin-top:6px;font-size:13px;color:rgba(159,196,216,.7)}
 
+/* Las pantallas del flujo se leen de arriba abajo y se desplazan si no entran:
+   el centrado vertical dejaba un hueco grande arriba y empujaba el botón y el
+   pie debajo de la barra inferior. */
+/* .screen.is-active fuerza height:auto, así que la pantalla necesita
+   redeclarar su alto con !important para que el hijo pueda desplazarse. */
+#screen-aporte.sn-modo,#screen-aporte.ap3-modo{
+  height:100dvh !important;display:flex !important;flex-direction:column;overflow:hidden}
+#screen-aporte.sn-modo .alta,#screen-aporte.ap3-modo .alta{
+  flex:1 1 auto;min-height:0;
+  /* height:100% es lo que hace que el desplazamiento funcione: sin tope, el
+     bloque crece y el botón queda fuera de la pantalla sin forma de llegar. */
+  height:100% !important;max-height:100% !important;
+  /* safe center reparte el aire cuando el contenido entra, y no recorta
+     cuando no entra: ahí manda el desplazamiento. */
+  justify-content:safe center !important;overflow-y:auto !important;
+  padding-bottom:calc(var(--nav-alto) + 20px) !important;
+  scrollbar-width:none}
+#screen-aporte.sn-modo .alta::-webkit-scrollbar,
+#screen-aporte.ap3-modo .alta::-webkit-scrollbar{width:0;display:none}
+#screen-aporte.ap3-modo .ap3-ops{margin-top:6px}
+#screen-aporte.ap3-modo .alta__intro{margin-bottom:2px}
+/* El formulario traía aire propio pensado para pantallas centradas. */
+#screen-aporte.sn-modo .alta__form,#screen-aporte.ap3-modo .alta__form{padding-top:0 !important;margin-top:0 !important}
+#screen-aporte.sn-modo #apCampos,#screen-aporte.ap3-modo #apCampos{margin-top:0 !important;padding-top:0 !important}
+/* El indicador vive fuera de .alta, que se centra: sin alto propio el título
+   se le montaba encima. */
+#screen-aporte.sn-modo #apPasos,#screen-aporte.ap3-modo #apPasos{flex:none;position:relative;z-index:2}
+#screen-aporte.ap3-modo .ap3-pasos{padding-top:12px;padding-bottom:14px}
+#screen-aporte.sn-modo .ap3-pasos{padding-top:12px;padding-bottom:12px}
+
 /* ==================== CONTANOS TU SUEÑO ====================
    Dos pasos: el sueño (formulario + vista previa en vivo) y el aporte (datos
    de pago + resumen). En el teléfono va todo en una columna. */
@@ -3165,7 +3195,7 @@ body.perfil-quieto{overflow-y:auto !important}
    en este flujo la composición la maneja .sn-grid, así que se aplana. */
 #screen-aporte.sn-modo .alta{display:block !important}
 #screen-aporte.sn-modo .campo-neon{margin-bottom:0}
-.campo-neon textarea{width:100%;min-height:140px;resize:vertical;
+.campo-neon textarea{width:100%;min-height:104px;resize:vertical;
   background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);border-radius:14px;color:#fff;
   font-size:16px;font-family:inherit;padding:14px 16px 32px;transition:border-color .18s}
 .campo-neon textarea:focus{outline:0;border-color:rgba(94,234,212,.7)}
@@ -3176,15 +3206,15 @@ body.perfil-quieto{overflow-y:auto !important}
 .sn-pasos .ap3-paso{flex:0 0 auto;flex-direction:row;gap:10px;font-size:14px}
 .sn-pasos .ap3-paso + .ap3-paso{margin-left:52px}
 .sn-pasos .ap3-paso + .ap3-paso::before{top:15px;left:-46px;right:auto;width:40px}
-.sn-grid{display:grid;gap:20px}
-.sn-form{display:grid;gap:16px;min-width:0;width:100%}
+.sn-grid{display:grid;gap:18px}
+.sn-form{display:grid;gap:14px;min-width:0;width:100%}
 .sn-grid > *{min-width:0;max-width:100%}
 #screen-aporte.sn-modo .alta__form > *,#screen-aporte.sn-modo #apCampos > *{max-width:none !important;width:100% !important;margin:0 !important}
 .sn-fila2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .sn-cuenta{position:relative}
 .sn-cuenta__n{position:absolute;right:14px;bottom:12px;font-size:12.5px;color:rgba(159,196,216,.6);
   pointer-events:none}
-.sn-cuenta textarea{min-height:120px;padding-bottom:32px !important}
+.sn-cuenta textarea{min-height:104px;padding-bottom:30px !important}
 .sn-cuenta input{padding-right:64px !important}
 .sn-monto{position:relative;display:flex;align-items:center;gap:10px;padding:0 14px;border-radius:12px;
   border:1px solid var(--canto);background:rgba(8,20,36,.5)}
@@ -3234,16 +3264,16 @@ body.perfil-quieto{overflow-y:auto !important}
 .sn-previa__cab b{display:block;font-size:15.5px;color:#fff}
 .sn-previa__cab span span{display:block;margin-top:2px;font-size:13px;color:rgba(159,196,216,.78)}
 .sn-card{border-radius:16px;overflow:hidden;border:1px solid var(--canto);background:rgba(8,20,36,.5)}
-.sn-card__foto{position:relative;height:180px;background:#0d2038 center/cover no-repeat}
+.sn-card__foto{position:relative;height:150px;background:#0d2038 center/cover no-repeat}
 .sn-card__foto.tiene-foto .sn-foto-b{background:rgba(8,20,36,.75)}
 .sn-foto-b{position:absolute;top:12px;right:12px;padding:8px 14px;border-radius:10px;cursor:pointer;
   font-family:inherit;font-size:13px;font-weight:600;color:#fff;
   border:1px solid rgba(255,255,255,.25);background:rgba(8,20,36,.6)}
-.sn-card__c{padding:16px}
+.sn-card__c{padding:14px 16px}
 .sn-card__c h3{margin:0;font-size:18px;font-weight:700;color:#fff}
 .sn-card__c > p{margin:8px 0 0;font-size:13.5px;line-height:1.5;color:rgba(226,240,255,.75)}
 .sn-card__fila{display:flex;align-items:center;justify-content:space-between;gap:12px;
-  margin-top:14px;padding-top:14px;border-top:1px solid var(--canto);font-size:13px;
+  margin-top:12px;padding-top:12px;border-top:1px solid var(--canto);font-size:13px;
   color:rgba(159,196,216,.78)}
 .sn-card__fila > div{display:flex;align-items:center;gap:10px}
 .sn-card__fila b{font-size:20px;font-weight:700;color:var(--turq)}
@@ -3763,6 +3793,33 @@ body:not(.es-fundacion) #screen-avisos .aviso__cta{margin-top:8px}
     width:100%;
     max-width:var(--ancho-max);
     margin:auto}
+  /* ---- proporción fija del menú ----
+     El bloque se dibuja siempre a 1280x680 y después se escala entero para
+     llenar el espacio disponible. Así la relación entre héroe, tarjetas y
+     tipografía es la misma en cualquier ventana o nivel de zoom. */
+  body.menu-fijo .menu-principal{
+    position:absolute;left:50%;top:50%;
+    width:var(--menu-w) !important;height:var(--menu-h) !important;
+    max-width:none !important;max-height:none !important;
+    grid-template-rows:repeat(2,1fr) !important;
+    margin:0 !important;transform-origin:center center;
+    transform:translate(-50%,-50%) scale(var(--menu-k,1))}
+  body.menu-fijo .placa{position:fixed}
+  /* Dentro del bloque escalado nada puede depender del alto de la ventana:
+     si no, el mismo bloque cambiaría de proporción al cambiar la pantalla. */
+  body.menu-fijo .menu-principal .entrada{padding:26px 28px !important}
+  body.menu-fijo .menu-principal .entrada .entrada__col{margin-top:0 !important}
+  body.menu-fijo .menu-principal .entrada .entrada__t{font-size:23px !important}
+  body.menu-fijo .menu-principal .es-principal{padding:34px 36px !important}
+  body.menu-fijo .menu-principal .es-principal .entrada__t{font-size:60px !important;max-width:none}
+  body.menu-fijo .menu-principal .es-principal .entrada__bajada{font-size:19px !important;margin-top:20px !important}
+  body.menu-fijo .menu-principal .es-principal .entrada__cta{
+    font-size:17px !important;padding:17px 34px !important;margin-top:30px !important}
+  body.menu-fijo .menu-principal .dato__n{font-size:54px !important;margin-top:12px !important}
+  body.menu-fijo .menu-principal .dato__t{font-size:16px !important;margin-top:8px !important}
+  body.menu-fijo .menu-principal .dato__pie{font-size:13px !important}
+  body.menu-fijo .menu-principal .entrada__ir{font-size:15px !important;padding-top:14px !important}
+
   body.menu-fijo .menu-par{display:contents}
   body.menu-fijo .menu-principal > .es-principal{grid-column:1;grid-row:1 / span 2}
 
@@ -4362,7 +4419,8 @@ body:not(.es-fundacion) #screen-avisos .aviso__cta{margin-top:8px}
   #screen-aporte.sn-modo .alta__titulo{text-align:left;font-size:clamp(30px,3vw,42px)}
   #screen-aporte.sn-modo .alta__lede{display:flex;flex-direction:column;max-width:none}
   .sn-nota{max-width:280px;margin-top:0}
-  #screen-aporte.sn-modo .alta__acciones{max-width:calc(61% - 14px)}
+  #screen-aporte.sn-modo .alta__acciones{max-width:calc(61% - 14px);margin-top:6px}
+  .sn-previa{position:sticky;top:8px}
 
   /* Otras formas de ayudar: dos por fila y la quinta centrada, como el plano. */
   #screen-aporte .ap3-ops{grid-template-columns:1fr 1fr;gap:16px}
@@ -4458,7 +4516,6 @@ body:not(.es-fundacion) #screen-avisos .aviso__cta{margin-top:8px}
         <span class="entrada__ico entrada__ico--arte" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="18.6" width="12.4" height="2.4" rx="1.2"/><path d="M13.6 2.6l6.2 6.2-2.8 2.8-6.2-6.2z"/><path d="M11.4 7.6l2.2 2.2-6.8 6.8-2.2-2.2z"/></svg></span>
         <span class="entrada__col"><span class="fugaz fugaz--btn" id="fugazB"></span>
         <span class="entrada__t">Sueños en subasta activa</span>
-        <span class="entrada__t entrada__t--esc solo-esc">Subastas activas</span>
         <span class="entrada__dato" id="datoSubastas"></span>
         <span class="entrada__ir solo-esc">Ver subastas <i>&#8594;</i></span></span>
         <span class="entrada__chev" aria-hidden="true">&#8250;</span>
@@ -4472,7 +4529,6 @@ body:not(.es-fundacion) #screen-avisos .aviso__cta{margin-top:8px}
         <span class="entrada__ico entrada__ico--arte" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.4" y="18.6" width="11" height="2.4" rx="1.2"/><path d="M12.4 2.6l5.4 5.4-2.6 2.6-5.4-5.4z"/><path d="M10.4 7.2l2 2-6.2 6.2-2-2z"/><circle cx="18.4" cy="17.6" r="4.4" fill="#04101d"/><path d="M18.4 15.2v2.6l1.8 1.1"/></svg></span>
         <span class="entrada__col"><span class="fugaz fugaz--btn" id="fugazC"></span>
         <span class="entrada__t">Sueños por subastar</span>
-        <span class="entrada__t entrada__t--esc solo-esc">Próximos a subastar</span>
         <span class="entrada__dato" id="datoLotes"></span>
         <span class="entrada__ir solo-esc">Ver próximos <i>&#8594;</i></span></span>
         <span class="entrada__chev" aria-hidden="true">&#8250;</span>
@@ -7492,8 +7548,35 @@ function limpiarAltosMenu(menu){
   menu.style.removeProperty("gap");
 }
 
+// Tamaño de diseño del menú: el bloque se arma siempre así y después se
+// escala. Cambiar estos dos números cambia la proporción de toda la pantalla.
+var MENU_W = 1280, MENU_H = 680;
+
+// Escala el menú para que llene el espacio libre sin deformarse.
+function escalarMenu(){
+  var placa = document.getElementById("placa");
+  var menu = placa && placa.querySelector(".menu-principal");
+  if(!menu) return;
+  if(!document.body.classList.contains("menu-fijo") || window.innerWidth < 940){
+    menu.style.removeProperty("--menu-k");
+    menu.style.removeProperty("--menu-w");
+    menu.style.removeProperty("--menu-h");
+    return;
+  }
+  var cs = getComputedStyle(placa);
+  var libreW = placa.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+  var libreH = placa.clientHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom);
+  if(!(libreW > 0 && libreH > 0)) return;
+  var k = Math.min(libreW / MENU_W, libreH / MENU_H);
+  k = Math.max(0.5, Math.min(k, 1.6));
+  menu.style.setProperty("--menu-w", MENU_W + "px");
+  menu.style.setProperty("--menu-h", MENU_H + "px");
+  menu.style.setProperty("--menu-k", k.toFixed(4));
+}
+
 function acomodarMenu(){
   medirBarra();
+  escalarMenu();
   if(!document.body.classList.contains("menu-fijo")) return;
   var lista = document.getElementById("placa");
   var menu = lista && lista.querySelector(".menu-principal");
