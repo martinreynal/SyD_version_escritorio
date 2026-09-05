@@ -3191,7 +3191,14 @@ body.perfil-quieto{overflow-y:auto !important}
 /* ==================== CONTANOS TU SUEÑO ====================
    Dos pasos: el sueño (formulario + vista previa en vivo) y el aporte (datos
    de pago + resumen). En el teléfono va todo en una columna. */
-#screen-aporte.sn-modo .alta__intro{display:block !important;text-align:left;position:static;margin-bottom:14px}
+#screen-aporte.sn-modo .alta__intro{display:block !important;text-align:left;position:static;margin-bottom:16px}
+#screen-aporte.sn-modo .alta__lede:empty{display:none}
+/* El indicador de pasos vive en la barra de arriba, centrado. */
+#screen-aporte.sn-modo #apPasos{position:fixed;top:0;left:0;right:0;height:var(--alto-barra,66px);
+  display:grid;place-items:center;pointer-events:none;z-index:41}
+#screen-aporte.sn-modo #apPasos .ap3-pasos{margin:0;padding:0;pointer-events:auto}
+#screen-aporte.sn-modo .sn-previa .alta__acciones{width:100% !important;max-width:none !important;
+  margin:14px 0 0 !important;padding:0}
 #screen-aporte.sn-modo .alta__form{display:block !important}
 /* La pantalla de aporte es una grilla de dos columnas (intro | formulario);
    en este flujo la composición la maneja .sn-grid, así que se aplana. */
@@ -3203,7 +3210,7 @@ body.perfil-quieto{overflow-y:auto !important}
 .campo-neon textarea:focus{outline:0;border-color:rgba(94,234,212,.7)}
 .sn-modo .alta__titulo{text-align:left !important}
 #screen-aporte.sn-modo .alta__acciones{position:static;margin-top:18px}
-.sn-nota{display:block;margin-top:10px;font-size:13.5px;line-height:1.5;color:rgba(159,196,216,.78)}
+.sn-nota{display:none;margin-top:10px;font-size:13.5px;line-height:1.5;color:rgba(159,196,216,.78)}
 .sn-pasos{justify-content:flex-start;max-width:520px;margin:0 0 18px;padding:0}
 .sn-pasos .ap3-paso{flex:0 0 auto;flex-direction:row;gap:10px;font-size:14px}
 .sn-pasos .ap3-paso + .ap3-paso{margin-left:52px}
@@ -11207,6 +11214,11 @@ function prepararPasoSueno(){
     });
   }
 
+  // El botón vive con la vista previa: es el final de la lectura, después de
+  // ver cómo va a quedar el sueño publicado.
+  var acc = $("#screen-aporte .alta__acciones"), aside = $(".sn-previa");
+  if(acc && aside) aside.appendChild(acc);
+
   oculto.value = aporte.fid || "";
   if(aporte.titulo) tit.value = aporte.titulo;
   if(aporte.texto) txt.value = aporte.texto;
@@ -11250,6 +11262,13 @@ function etiquetaContinuar(){
 }
 function pintarAporte(){
   if(!aporte) return;
+  // El paso 1 muda el bloque de acciones dentro de la vista previa, que vive
+  // en #apCampos: si no se devuelve antes de repintar, el innerHTML lo borra
+  // y el botón desaparece al volver.
+  (function(){
+    var acc = $("#screen-aporte .alta__acciones"), form = $("#screen-aporte .alta__form");
+    if(acc && form && acc.parentElement !== form) form.appendChild(acc);
+  })();
   $("#apExtra").innerHTML = "";
 
   // El bloque de título va oculto por CSS (lo repetía y empujaba el formulario
@@ -11270,20 +11289,18 @@ function pintarAporte(){
     $("#screen-aporte").classList.add("sn-modo");
     $("#apEyebrow").textContent = "";
     $("#apTitulo").textContent = "Contanos tu sueño";
-    $("#apLede").innerHTML = 'Convertí una idea en una oportunidad de ayudar.'+
-      '<span class="sn-nota">Tu sueño se publicará en una subasta. '+
-      'Lo recaudado será destinado a la fundación que elijas.</span>';
+    $("#apLede").innerHTML = "";
     $("#apCampos").innerHTML =
       '<div class="sn-grid">'+
         '<div class="sn-form">'+
           '<div class="campo-neon">'+
             '<label for="ppTitulo">¿Cómo se llama tu sueño?</label>'+
-            '<div class="sn-cuenta"><input id="ppTitulo" type="text" maxlength="'+TOPE_TITULO+'" placeholder="">'+
+            '<div class="sn-cuenta"><input id="ppTitulo" type="text" maxlength="'+TOPE_TITULO+'" placeholder="Ej. Conocer Japón, tener un refugio de animales, etc.">'+
               '<span class="sn-cuenta__n" id="ppTituloCuenta">0/'+TOPE_TITULO+'</span></div>'+
           '</div>'+
           '<div class="campo-neon">'+
             '<label for="ppCambio">Contanos tu sueño</label>'+
-            '<div class="sn-cuenta"><textarea id="ppCambio" class="caja-deseo" maxlength="500" placeholder=""></textarea>'+
+            '<div class="sn-cuenta"><textarea id="ppCambio" class="caja-deseo" maxlength="500" placeholder="Contanos en detalle qué te gustaría vivir, conocer o hacer…"></textarea>'+
               '<span class="sn-cuenta__n" id="ppTextoCuenta">0/500</span></div>'+
           '</div>'+
           '<div class="campo-neon">'+
