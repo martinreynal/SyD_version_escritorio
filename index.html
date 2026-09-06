@@ -3188,6 +3188,114 @@ body.perfil-quieto{overflow-y:auto !important}
 #screen-aporte.ap3-modo .ap3-pasos{padding-top:12px;padding-bottom:14px}
 #screen-aporte.sn-modo .ap3-pasos{padding-top:12px;padding-bottom:12px}
 
+/* ==================== PERFIL PÚBLICO DE UNA FUNDACIÓN ====================
+   Portada con el banner, dos columnas y un panel de apoyo a la derecha.
+   El banner se sirve a 640px: la portada usa cover para que no se pixele. */
+.fp-portada{position:relative;margin:0 0 18px;padding:0;border-radius:0 0 20px 20px;overflow:hidden;
+  background:#0b1a2c center/cover no-repeat;min-height:300px;display:flex;align-items:flex-end}
+.fp-portada.es-sinbanner{background:radial-gradient(120% 120% at 20% 15%,
+  color-mix(in srgb, var(--tono-f,#22d3ee) 45%, transparent), #0b1a2c 70%)}
+.fp-portada__fondo{position:absolute;inset:-20%;background:center/contain no-repeat;
+  filter:blur(30px) saturate(1.3);opacity:.7}
+.fp-portada__velo{position:absolute;inset:0;
+  background:linear-gradient(90deg,rgba(5,12,23,.94) 0%,rgba(5,12,23,.78) 45%,rgba(5,12,23,.35) 100%),
+             linear-gradient(0deg,rgba(5,12,23,.85) 0%,rgba(5,12,23,0) 60%)}
+.fp-portada__c{position:relative;z-index:1;width:100%;padding:18px 18px 22px}
+.fp-volver{display:inline-flex;align-items:center;gap:9px;margin-bottom:18px;padding:6px 0;border:0;
+  background:none;cursor:pointer;font-family:inherit;font-size:14.5px;color:rgba(226,240,255,.9)}
+.fp-volver svg{width:18px;height:18px}
+.fp-id{display:flex;align-items:center;gap:16px}
+.fp-foto{flex:none;width:96px;height:96px;border-radius:50%;background-size:cover;background-position:center;
+  display:grid;place-items:center;font-size:30px;font-weight:800;color:#fff;
+  border:3px solid rgba(255,255,255,.9);box-shadow:0 10px 30px rgba(0,0,0,.5)}
+.fp-id__t{min-width:0}
+.fp-nombre{display:flex;align-items:center;gap:10px;margin:0;font-size:clamp(24px,4.4vw,38px);
+  font-weight:800;letter-spacing:-.01em;color:#fff}
+.fp-verif{flex:none;display:grid;place-items:center;width:26px;height:26px;border-radius:50%;
+  background:#22c55e;color:#04210f}
+.fp-verif svg{width:15px;height:15px}
+.fp-datos{display:flex;flex-wrap:wrap;gap:8px 20px;margin:8px 0 0;font-size:14px;color:rgba(226,240,255,.85)}
+.fp-datos span{display:inline-flex;align-items:center;gap:7px}
+.fp-datos svg{width:16px;height:16px;flex:none}
+.fp-lema{margin:8px 0 0;font-size:15px;color:rgba(226,240,255,.8)}
+.fp-acciones{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px}
+.fp-b{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:13px 26px;border-radius:12px;
+  cursor:pointer;font-family:inherit;font-size:15px;font-weight:700;color:#fff;
+  border:1px solid rgba(255,255,255,.25);background:rgba(8,20,36,.6)}
+.fp-b svg{width:18px;height:18px}
+.fp-b--don{color:#06202a;border-color:transparent;background:linear-gradient(90deg,#22d3ee,#34e0c8 60%,#4ade80)}
+
+.fp-grid{display:grid;gap:18px;padding:0 2px}
+.fp-col{min-width:0;display:grid;gap:16px;align-content:start}
+.fp-lado{min-width:0;display:grid;gap:16px;align-content:start}
+.fp-caja,.fp-panel{padding:18px;border-radius:18px;border:1px solid var(--canto);background:var(--vidrio)}
+.fp-caja__cab{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.fp-h2{margin:0 0 12px;font-size:19px;font-weight:700;color:#fff}
+.fp-caja__cab .fp-h2{margin:0}
+.fp-cifras{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:16px;
+  padding-top:16px;border-top:1px solid var(--canto)}
+.fp-cifra{display:flex;align-items:center;gap:10px;min-width:0}
+.fp-cifra__i{flex:none;width:34px;height:34px;display:grid;place-items:center;color:var(--turq)}
+.fp-cifra__i svg{width:100%;height:100%}
+.fp-cifra b{display:block;font-size:19px;font-weight:700;color:#fff}
+.fp-cifra span span{display:block;font-size:12.5px;color:rgba(159,196,216,.78)}
+.fp-web{display:inline-flex;align-items:center;gap:10px;margin-top:16px;padding:11px 18px;border-radius:11px;
+  font-size:14px;font-weight:600;color:var(--turq);text-decoration:none;
+  border:1px solid rgba(45,212,191,.4);background:rgba(45,212,191,.06)}
+.fp-web svg{width:17px;height:17px}
+
+.fp-eventos{display:grid;gap:14px}
+.fp-ev{display:grid;gap:0;border-radius:16px;overflow:hidden;border:1px solid var(--canto);
+  background:rgba(255,255,255,.03)}
+.fp-ev__foto{min-height:170px;background:#0d2038 center/cover no-repeat}
+.fp-ev__c{padding:16px}
+.fp-ev__f,.fp-ev__l{display:flex;align-items:center;gap:8px;margin:0;font-size:13px;color:rgba(159,196,216,.8)}
+.fp-ev__f svg,.fp-ev__l svg{width:15px;height:15px;flex:none}
+.fp-ev__c h3{margin:8px 0;font-size:17px;font-weight:700;color:#fff}
+.fp-ev__d{margin:10px 0 0;font-size:13.5px;line-height:1.5;color:rgba(226,240,255,.75)}
+.fp-ev__pie{display:flex;gap:10px;margin-top:14px}
+.fp-ev__pie .fx-b{flex:1}
+
+/* panel de apoyo */
+.fp-panel--apoyo{border-color:rgba(45,212,191,.35);background:rgba(45,212,191,.05)}
+.fp-panel__cab{display:flex;align-items:center;gap:12px}
+.fp-panel__i{flex:none;width:34px;height:34px;display:grid;place-items:center;color:var(--turq)}
+.fp-panel__i svg{width:100%;height:100%}
+.fp-panel__cab h2{margin:0;font-size:18px;font-weight:700;color:#fff}
+.fp-panel__h{margin:0 0 12px;font-size:17px;font-weight:700;color:#fff}
+.fp-panel__t{margin:12px 0 16px;font-size:13.5px;line-height:1.5;color:rgba(226,240,255,.78)}
+.fp-niveles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.fp-nivel{padding:12px 8px;border-radius:12px;cursor:pointer;text-align:center;font-family:inherit;
+  border:1px solid var(--canto);background:rgba(8,20,36,.5);color:inherit}
+.fp-nivel span{display:block;font-size:11.5px;line-height:1.3;color:rgba(159,196,216,.8)}
+.fp-nivel b{display:block;margin-top:6px;font-size:17px;font-weight:700;color:#fff}
+.fp-nivel.is-on{border-color:rgba(45,212,191,.75);background:rgba(45,212,191,.1)}
+.fp-nivel.is-on b{color:var(--turq)}
+.fp-otro{display:flex;align-items:center;gap:10px;margin-top:12px;padding:0 14px;border-radius:12px;
+  border:1px solid var(--canto);background:rgba(8,20,36,.5)}
+.fp-otro input{flex:1;min-width:0;padding:13px 0;border:0;background:none;color:#fff;
+  font-family:inherit;font-size:14.5px;outline:none}
+.fp-otro svg{width:17px;height:17px;flex:none;color:rgba(159,196,216,.7)}
+.fp-cta{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;margin-top:14px;
+  padding:15px 18px;border:0;border-radius:12px;cursor:pointer;font-family:inherit;
+  font-size:15px;font-weight:700;color:#06202a;
+  background:linear-gradient(90deg,#22d3ee,#34e0c8 60%,#4ade80)}
+.fp-cta i{font-style:normal}
+.fp-seguro{display:flex;align-items:center;gap:9px;margin:12px 0 0;font-size:12.5px;color:rgba(159,196,216,.8)}
+.fp-seguro svg{width:15px;height:15px;flex:none}
+.fp-otra{display:flex;align-items:center;gap:12px;width:100%;padding:12px 4px;cursor:pointer;
+  text-align:left;font-family:inherit;color:inherit;border:0;background:none}
+.fp-otra + .fp-otra{border-top:1px solid var(--canto)}
+.fp-otra__i{flex:none;width:34px;height:34px;display:grid;place-items:center;color:var(--turq)}
+.fp-otra__i svg{width:100%;height:100%}
+.fp-otra__t{flex:1;min-width:0}
+.fp-otra__t b{display:block;font-size:14.5px;color:#fff}
+.fp-otra__t span{display:block;margin-top:2px;font-size:12.5px;color:rgba(159,196,216,.78)}
+.fp-cita{display:grid;gap:10px}
+.fp-cita svg{width:26px;height:26px;color:rgba(45,212,191,.5)}
+.fp-cita p{margin:0;font-size:15.5px;line-height:1.5;color:#fff}
+.fp-cita span{font-size:13px;color:rgba(159,196,216,.8)}
+
 /* ==================== CONTANOS TU SUEÑO ====================
    Dos pasos: el sueño (formulario + vista previa en vivo) y el aporte (datos
    de pago + resumen). En el teléfono va todo en una columna. */
@@ -3410,9 +3518,18 @@ body.es-listado #screen-eventos .stats-pantalla{position:static !important;heigh
 .ev-card__pie{display:flex;align-items:center;gap:10px;margin-top:14px}
 .ev-card__pie .fx-b{flex:none;padding:10px 16px}
 .ev-card__precio{margin-left:auto;font-size:14px;color:rgba(226,240,255,.85)}
-.ev-lista.es-una .ev-card{flex-direction:row}
-.ev-lista.es-una .ev-card__img{width:38%;height:auto !important;min-height:200px}
-.ev-lista.es-una .ev-card__c{flex:1}
+/* De a una: la ficha se lee de izquierda a derecha, con la foto al costado
+   ocupando todo el alto. En el teléfono vuelve a ser una columna. */
+.ev-lista.es-una .ev-card{display:grid !important;
+  grid-template-columns:minmax(0,300px) minmax(0,1fr);align-items:stretch;gap:0}
+.ev-lista.es-una .ev-card__img{width:auto;height:100% !important;min-height:210px}
+.ev-lista.es-una .ev-card__c{display:flex;flex-direction:column;padding:18px 22px}
+.ev-lista.es-una .ev-card__l{margin-top:12px}
+.ev-lista.es-una .ev-card__pie{margin-top:auto;padding-top:16px}
+@media (max-width:939.98px){
+  .ev-lista.es-una .ev-card{grid-template-columns:minmax(0,1fr)}
+  .ev-lista.es-una .ev-card__img{height:170px !important;min-height:0}
+}
 
 /* ==================== CONOCÉ LAS FUNDACIONES ====================
 /* El listado se recorre como una página: sin barra inferior y sin el alto
@@ -4398,6 +4515,18 @@ body:not(.es-fundacion) #screen-avisos .aviso__cta{margin-top:8px}
   .pl-h{font-size:36px}
   .pl-links{justify-content:center}
 
+  /* Perfil de fundación: portada alta y dos columnas. */
+  .fp-portada{min-height:360px;border-radius:20px;margin-bottom:22px}
+  .fp-portada__c{padding:22px 34px 30px}
+  .fp-portada__velo{background:linear-gradient(90deg,rgba(5,12,23,.92) 0%,rgba(5,12,23,.6) 55%,rgba(5,12,23,.15) 100%),
+    linear-gradient(0deg,rgba(5,12,23,.8) 0%,rgba(5,12,23,0) 55%)}
+  .fp-foto{width:128px;height:128px;font-size:40px}
+  .fp-grid{grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:22px;padding:0 8px 8px}
+  .fp-caja,.fp-panel{padding:22px}
+  .fp-ev{grid-template-columns:minmax(0,300px) minmax(0,1fr)}
+  .fp-ev__foto{min-height:220px}
+  .fp-ev__c{padding:18px 20px}
+
   /* Eventos: misma grilla que fundaciones. */
   #screen-eventos .stats-pantalla{max-width:1240px}
   .ev-filtros{flex-direction:row;align-items:center;justify-content:space-between}
@@ -4831,7 +4960,7 @@ body:not(.es-fundacion) #screen-avisos .aviso__cta{margin-top:8px}
 <!-- ==================== FUNDACIONES QUE APOYO ==================== -->
 <section class="screen" id="screen-apoyo">
   <header class="alta__top">
-    <span class="cab-seccion"><b>Tus fundaciones</b></span>
+    <span class="cab-seccion"><b>Tu impacto</b></span>
     <button class="volver-ico" data-volver-inicio aria-label="Volver"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
   </header>
   <div class="stats-pantalla"><div id="muroApoyo"></div></div>
@@ -8573,127 +8702,228 @@ function cerrarFundacion(){
 // sola a la primera cada vez.
 var solapaFundPub = "info";
 
+// Nivel de apoyo elegido en el panel lateral del perfil. Vive fuera de la
+// función porque sobrevive a los repintados.
+var nivelElegido = null;
+
 function pintarFundacionAbierta(){
   if(!fundacionAbierta) return;
   var f = fundacionPorId(fundacionAbierta); if(!f) return cerrarFundacion();
 
-  // Los posteos de esta fundación, del más nuevo al más viejo.
   var posts = DB.posts.filter(function(po){ return po.fid === f.id; })
     .sort(function(a,b){ return String(b.fechaISO||"").localeCompare(String(a.fechaISO||"")); });
+  var eventos = f.eventos || [];
+  var planes = f.planes || [];
+  if(nivelElegido && !planes.some(function(p){ return p.id === nivelElegido; })) nivelElegido = null;
+  if(!nivelElegido && planes.length) nivelElegido = planes[Math.min(1, planes.length-1)].id;
+  var plan = planes.filter(function(p){ return p.id === nivelElegido; })[0];
 
   function solapa(id, texto, cuenta){
     return '<button class="solapa'+(solapaFundPub===id?' is-on':'')+'" data-solapa-fund="'+id+'">'+
       texto + (cuenta ? ' <i>'+cuenta+'</i>' : '') + '</button>';
   }
 
-  // ---- lo que se ve primero: quién es ----
-  // Sin banner: una foto grande y el nombre alcanzan para saber dónde estás, y
-  // el banner empujaba todo lo demás fuera de la primera pantalla.
+  // ---- portada: el banner con la identidad encima ----
   var cabecera =
-    '<header class="fperfil">'+
-      '<span class="fperfil__foto" style="'+avatarCSS(f)+'">'+
-        (f.foto ? '' : esc(iniciales(f.nombre)))+'</span>'+
-      '<h1 class="fperfil__nombre">'+esc(f.nombre)+
-        (f.verificada
-          ? '<span class="fverif" title="Fundación verificada">'+
-            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" '+
-            'stroke-linecap="round" stroke-linejoin="round"><path d="M6 12.4l4 4 8-8.4"/></svg>'+
-            'Verificada</span>'
+    '<header class="fp-portada'+(f.banner ? '' : ' es-sinbanner')+'"'+
+      (f.banner ? ' style="background-image:url('+f.banner+')"'
+                : ' style="--tono-f:'+esc(f.color||'#22d3ee')+'"')+'>'+
+      // Sin banner, la portada se arma con el color de la fundación y su logo
+      // muy ampliado, igual que las tarjetas del listado.
+      (f.banner ? '' : '<span class="fp-portada__fondo"'+
+        (f.foto ? ' style="background-image:url('+f.foto+')"' : '')+'></span>')+
+      '<div class="fp-portada__velo"></div>'+
+      '<div class="fp-portada__c">'+
+        '<button class="fp-volver" id="btnVolverLista">'+
+          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" '+
+          'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+
+          '<path d="M20 12H5"/><path d="M10.5 6.5 4.5 12l6 5.5"/></svg>Volver a fundaciones</button>'+
+        '<div class="fp-id">'+
+          '<span class="fp-foto" style="'+avatarCSS(f)+'">'+(f.foto ? '' : esc(iniciales(f.nombre)))+'</span>'+
+          '<div class="fp-id__t">'+
+            '<h1 class="fp-nombre">'+esc(f.nombre)+
+              (f.verificada
+                ? '<span class="fp-verif" title="Fundación verificada">'+
+                  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" '+
+                  'stroke-linecap="round" stroke-linejoin="round"><path d="M6 12.4l4 4 8-8.4"/></svg></span>'
+                : '')+
+            '</h1>'+
+            '<p class="fp-datos">'+
+              '<span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" '+
+              'stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s6.4-5.6 6.4-10.2A6.4 6.4 0 0 0 5.6 10.8C5.6 15.4 12 21 12 21z"/>'+
+              '<circle cx="12" cy="10.6" r="2.4"/></svg>'+esc(f.lugar||"")+'</span>'+
+              (f.desde
+                ? '<span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" '+
+                  'stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5.2" width="17" height="15" rx="3"/>'+
+                  '<path d="M3.5 10h17M8 3.4v3.4M16 3.4v3.4"/></svg>Desde '+esc(String(f.desde))+'</span>'
+                : '')+
+            '</p>'+
+            (f.lema ? '<p class="fp-lema">'+esc(f.lema)+'</p>' : '')+
+          '</div>'+
+        '</div>'+
+        (puedeAportar()
+          ? '<div class="fp-acciones">'+
+              '<button class="fp-b fp-b--don" data-donar="'+f.id+'">'+
+                '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" '+
+                'stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.6-7-9.2A4 4 0 0 1 12 8a4 4 0 0 1 7 2.8C19 15.4 12 20 12 20z"/></svg>'+
+                'Donar</button>'+
+              '<button class="fp-b" data-complementario="'+f.id+'">Otras formas de ayudar</button>'+
+            '</div>'
           : '')+
-      '</h1>'+
-      '<p class="fperfil__dato">'+esc(f.lugar||"")+
-        (f.desde ? ' · desde '+esc(String(f.desde)) : '')+'</p>'+
-      (f.lema ? '<p class="fperfil__lema">'+esc(f.lema)+'</p>' : '')+
+      '</div>'+
     '</header>';
 
-  // ---- lo que se puede hacer ----
-  // Donar y aportar valor complementario van juntos y arriba: son las dos
-  // formas de ayudar de una vez. El apoyo mensual tiene su propia sección
-  // porque es una decisión distinta, con niveles que hay que comparar.
-  var acciones = puedeAportar()
-    ? '<div class="fperfil__acciones">'+
-        '<button class="btn btn--primary" data-donar="'+f.id+'">Donar</button>'+
-        '<button class="btn btn--cielo" data-complementario="'+f.id+'">'+
-          'Otras formas de ayudar</button>'+
-      '</div>'
-    : '';
+  // ---- columna izquierda ----
+  var vols = DB.suscripciones.filter(function(x){ return x.fid === f.id; }).length;
+  var campanas = (f.causas || []).length;
+  var quienes =
+    '<section class="fp-caja">'+
+      '<h2 class="fp-h2">Quiénes somos</h2>'+
+      bloquePresentacion(f)+
+      '<div class="fp-cifras">'+
+        cifraPerfil("calendario", f.desde || "—", "Año de creación")+
+        cifraPerfil("gente", vols ? "+"+vols : "0", vols===1 ? "persona apoyando" : "personas apoyando")+
+        cifraPerfil("corazon", String(eventos.length + campanas), "programas activos")+
+      '</div>'+
+      (f.web
+        ? '<a class="fp-web" href="'+esc(f.web)+'" target="_blank" rel="noopener">'+
+          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" '+
+          'stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.4"/>'+
+          '<path d="M3.6 12h16.8"/><path d="M12 3.6a13 13 0 0 1 0 16.8a13 13 0 0 1 0-16.8z"/></svg>'+
+          'Visitar sitio web</a>'
+        : '')+
+    '</section>';
 
-  var web = f.web
-    ? '<a class="fperfil__web" href="'+esc(f.web)+'" target="_blank" rel="noopener">'+
-        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" '+
-        'stroke-linecap="round" stroke-linejoin="round">'+
-        '<circle cx="12" cy="12" r="8.4"/><path d="M3.6 12h16.8"/>'+
-        '<path d="M12 3.6a13 13 0 0 1 0 16.8a13 13 0 0 1 0-16.8z"/></svg>'+
-        '<span>Visitar el sitio web</span>'+
-        '<span class="fperfil__web-dom">'+esc(f.web.replace(/^https?:\/\//,"").replace(/\/$/,""))+'</span>'+
-      '</a>'
-    : '';
+  var bloqueEventos =
+    '<section class="fp-caja">'+
+      '<div class="fp-caja__cab"><h2 class="fp-h2">Próximos eventos</h2>'+
+        (eventos.length > 1 ? '<button class="ap2-link" data-solapa-fund="eventos">Ver todos <i>&#8594;</i></button>' : '')+
+      '</div>'+
+      (eventos.length
+        ? tarjetaEventoPerfil(eventos[0], f)
+        : '<div class="empty">Sin eventos cargados.</div>')+
+    '</section>';
 
-  // ---- apoyo mensual, presentado para poder comparar ----
-  // Antes eran tres tarjetas con el monto y poco más. Acá cada nivel dice qué
-  // recibe quien se suma y cuánta gente ya lo hace: son los dos datos con los
-  // que alguien decide entre un nivel y otro.
-  function bloqueApoyo(){
-    var planes = f.planes || [];
-    if(!planes.length){
-      return '<div class="empty">Esta fundación todavía no tiene apoyo mensual.</div>';
-    }
-    return '<p class="fperfil__nota">Un monto fijo por mes, que podés dar de baja '+
-        'cuando quieras. Es lo que le permite a la fundación planificar.</p>'+
-      '<div class="fplanes">'+ planes.map(function(pl){
-        var gente = DB.suscripciones.filter(function(x){
-          return x.fid === f.id && x.planId === pl.id; }).length;
-        var yoEstoy = sesion && DB.suscripciones.some(function(x){
-          return x.planId === pl.id && x.quien === sesion.nombre; });
-        return '<article class="fplan'+(yoEstoy?' es-mio':'')+'">'+
-          '<span class="fplan__nivel">'+esc(pl.nombre)+'</span>'+
-          '<span class="fplan__monto">'+pesos(pl.monto)+'<i>/mes</i></span>'+
-          '<span class="fplan__gente">'+
-            (gente ? gente+(gente===1?' persona apoyando':' personas apoyando')
-                   : 'Todavía nadie')+'</span>'+
-          (puedeAportar()
-            ? '<button class="btn '+(yoEstoy?'btn--ghost':'btn--primary')+' btn--sm" '+
-                'data-suscribir="'+pl.id+'" data-fid="'+f.id+'">'+
-                (yoEstoy?'Dar de baja':'Apoyar todos los meses')+'</button>'
-            : '')+
-        '</article>';
-      }).join("") +'</div>';
-  }
-
-  // ---- contenido de cada solapa ----
-  var info =
-    '<p class="subhead"><span>Quiénes somos</span></p>'+
-    bloquePresentacion(f)+
-    web+
-
-    '<p class="subhead" id="anclaPlanes"><span>Apoyo mensual</span></p>'+
-    bloqueApoyo()+
-
-    '<p class="subhead" id="anclaEventos"><span>Próximos eventos</span></p>'+
-    ((f.eventos||[]).length
-      ? '<div class="stack">'+f.eventos.map(function(e){ return bloqueEvento(e, f.id, false); }).join("")+'</div>'
-      : '<div class="empty">Sin eventos cargados.</div>')+
-
-    bloqueContacto(f);
+  var info = quienes + bloqueEventos + bloqueContacto(f);
 
   var comunidad =
-    '<p class="fperfil__nota">Lo que la fundación fue contando: sueños cumplidos, '+
-      'actividades y rendiciones de lo recaudado.</p>'+
-    '<div class="feed">'+
-      (posts.length
-        ? posts.map(bloquePost).join("")
-        : '<div class="empty">Esta fundación todavía no publicó nada.</div>')+
-    '</div>';
+    '<section class="fp-caja">'+
+      '<h2 class="fp-h2">Comunidad</h2>'+
+      '<p class="fperfil__nota">Lo que la fundación fue contando: sueños cumplidos, '+
+        'actividades y rendiciones de lo recaudado.</p>'+
+      '<div class="feed">'+
+        (posts.length ? posts.map(bloquePost).join("")
+                      : '<div class="empty">Esta fundación todavía no publicó nada.</div>')+
+      '</div>'+
+    '</section>';
+
+  var listaEventos =
+    '<section class="fp-caja">'+
+      '<h2 class="fp-h2">Eventos</h2>'+
+      (eventos.length
+        ? '<div class="fp-eventos">'+eventos.map(function(e){ return tarjetaEventoPerfil(e, f); }).join("")+'</div>'
+        : '<div class="empty">Sin eventos cargados.</div>')+
+    '</section>';
+
+  var cuerpo = solapaFundPub === "comunidad" ? comunidad
+             : solapaFundPub === "eventos" ? listaEventos : info;
+
+  // ---- columna derecha: apoyo mensual y otras formas ----
+  var panelApoyo = planes.length
+    ? '<section class="fp-panel fp-panel--apoyo">'+
+        '<div class="fp-panel__cab">'+
+          '<span class="fp-panel__i"><svg viewBox="0 0 24 24" fill="currentColor">'+
+          '<path d="M12 20s-7-4.6-7-9.2A4 4 0 0 1 12 8a4 4 0 0 1 7 2.8C19 15.4 12 20 12 20z"/></svg></span>'+
+          '<h2>Apoyá a '+esc(f.nombre)+'</h2>'+
+        '</div>'+
+        '<p class="fp-panel__t">Tu aporte mensual le permite a la fundación planificar '+
+          'a largo plazo. Podés darlo de baja cuando quieras.</p>'+
+        '<div class="fp-niveles">'+ planes.map(function(pl){
+          return '<button class="fp-nivel'+(pl.id===nivelElegido?' is-on':'')+'" data-nivel="'+pl.id+'">'+
+            '<span>'+esc(pl.nombre)+'</span><b>'+pesos(pl.monto)+'</b></button>';
+        }).join("") +'</div>'+
+        '<label class="fp-otro"><input type="text" id="fpOtro" inputmode="numeric" placeholder="Otro monto">'+
+          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" '+
+          'stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4l10-10-4-4L4 16z"/><path d="M13.5 6.5l4 4"/></svg>'+
+        '</label>'+
+        (puedeAportar()
+          ? '<button class="fp-cta" data-suscribir="'+(plan?plan.id:'')+'" data-fid="'+f.id+'">'+
+            'Continuar con '+pesos(plan?plan.monto:0)+' / mes <i>&#8594;</i></button>'
+          : '')+
+        '<p class="fp-seguro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" '+
+          'stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="10.5" width="15" height="9.5" rx="2.4"/>'+
+          '<path d="M8.2 10.5V8a3.8 3.8 0 0 1 7.6 0v2.5"/></svg>'+
+          'Donación segura y 100% destinada a la fundación</p>'+
+      '</section>'
+    : '';
+
+  var otras = puedeAportar()
+    ? '<section class="fp-panel">'+
+        '<h2 class="fp-panel__h">Otras formas de ayudar</h2>'+
+        [["proyecto","gente","Sumate como voluntario","Tu tiempo también transforma."],
+         ["subasta","regalo","Doná algo para subastar","Un objeto, una experiencia o un servicio."],
+         ["espacio","casa","Ofrecé un espacio","Un salón, oficina o terreno disponible."]].map(function(o){
+          return '<button class="fp-otra" data-complementario="'+f.id+'" data-tipo="'+o[0]+'">'+
+            '<span class="fp-otra__i">'+ICONO_APOYO[o[1]]+'</span>'+
+            '<span class="fp-otra__t"><b>'+o[2]+'</b><span>'+o[3]+'</span></span>'+
+            '<span class="ap2-chev" aria-hidden="true"></span></button>';
+        }).join("")+
+      '</section>'
+    : '';
+
+  var cita = f.lema
+    ? '<section class="fp-panel fp-cita">'+
+        '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">'+
+        '<path d="M7 7h4v4a4 4 0 0 1-4 4V7zm7 0h4v4a4 4 0 0 1-4 4V7z"/></svg>'+
+        '<p>'+esc(f.lema)+'</p><span>— '+esc(f.nombre)+'</span>'+
+      '</section>'
+    : '';
 
   $("#vistaDetalle").innerHTML =
-    '<button class="volver" id="btnVolverLista">&#8592; Volver a fundaciones</button>'+
     cabecera +
-    acciones +
-    '<div class="solapas solapas--perfil">'+
-      solapa("info", "La fundación")+
-      solapa("comunidad", "Comunidad", posts.length)+
-    '</div>'+
-    (solapaFundPub === "comunidad" ? comunidad : info);
+    '<div class="fp-grid">'+
+      '<div class="fp-col">'+
+        '<div class="solapas solapas--perfil">'+
+          solapa("info", "Información")+
+          solapa("comunidad", "Comunidad", posts.length)+
+          solapa("eventos", "Eventos", eventos.length)+
+        '</div>'+
+        cuerpo+
+      '</div>'+
+      '<aside class="fp-lado">'+ panelApoyo + otras + cita +'</aside>'+
+    '</div>';
+}
+
+// Un dato de la fundación, con su ícono.
+function cifraPerfil(ico, valor, rotulo){
+  return '<div class="fp-cifra"><span class="fp-cifra__i">'+ICONO_APOYO[ico]+'</span>'+
+    '<span><b>'+esc(String(valor))+'</b><span>'+esc(rotulo)+'</span></span></div>';
+}
+
+// Tarjeta de evento dentro del perfil: foto al costado y las dos acciones.
+function tarjetaEventoPerfil(e, f){
+  var voy = sesion && (e.asistentes||[]).indexOf(sesion.nombre) > -1;
+  return '<article class="fp-ev">'+
+    '<div class="fp-ev__foto"'+(e.imagen ? ' style="background-image:url('+e.imagen+')"' : '')+'></div>'+
+    '<div class="fp-ev__c">'+
+      '<p class="fp-ev__f">'+
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" '+
+        'stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5.2" width="17" height="15" rx="3"/>'+
+        '<path d="M3.5 10h17M8 3.4v3.4M16 3.4v3.4"/></svg>'+esc(e.f||"")+'</p>'+
+      '<h3>'+esc(e.n)+'</h3>'+
+      '<p class="fp-ev__l">'+
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" '+
+        'stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s6.4-5.6 6.4-10.2A6.4 6.4 0 0 0 5.6 10.8C5.6 15.4 12 21 12 21z"/>'+
+        '<circle cx="12" cy="10.6" r="2.4"/></svg>'+esc(e.lugar||"")+'</p>'+
+      (e.desc ? '<p class="fp-ev__d">'+esc(e.desc)+'</p>' : '')+
+      '<div class="fp-ev__pie">'+
+        '<button class="fx-b" data-evento-mas="'+e.id+'" data-fid="'+f.id+'">Ver evento</button>'+
+        (puedeAportar()
+          ? '<button class="fx-b'+(voy?'':' fx-b--don')+'" data-asistir="'+e.id+'" data-fid="'+f.id+'">'+
+            (voy ? 'Ya te anotaste' : 'Quiero participar')+'</button>'
+          : '')+
+      '</div>'+
+    '</div></article>';
 }
 
 /* ==================== flujos: fundación ==================== */
@@ -9241,7 +9471,6 @@ function filaApoyoMensual(x){
 }
 function tarjetaActividad(ico, titulo, n, texto, etiqueta, destino){
   return '<div class="ap2-tarj">'+
-    '<span class="ap2-tarj__i">'+ICONO_APOYO[ico]+'</span>'+
     '<span class="ap2-tarj__c"><b>'+esc(titulo)+'</b><em>'+n+'</em><span>'+texto+'</span></span>'+
     '<button class="ap2-b" data-ir="'+destino+'">'+esc(etiqueta)+' <i>&#8594;</i></button>'+
   '</div>';
@@ -12157,7 +12386,12 @@ document.addEventListener("click", function(e){
     }
     return;
   }
-  if((t = e.target.closest("[data-complementario]"))) return abrirPantallaAporte("complementario", t.dataset.complementario);
+  if((t = e.target.closest("[data-complementario]"))){
+    abrirPantallaAporte("complementario", t.dataset.complementario);
+    // Desde el perfil se puede llegar con la forma de ayudar ya elegida.
+    if(t.dataset.tipo){ aporte.tipo = t.dataset.tipo; pintarAporte(); }
+    return;
+  }
   // La foto de un sueño, en grande. Reusa el mismo visor que los lotes.
   if((t = e.target.closest("[data-ver-foto-sueno]"))){
     var sx = DB.solicitudes.filter(function(q){ return q.id === t.dataset.verFotoSueno; })[0];
@@ -12175,6 +12409,11 @@ document.addEventListener("click", function(e){
   // atributo seguido de "=". Sin ella, ninguna cabecera volvía a ningún lado.
   if(e.target.closest("[data-volver-inicio]")) return volverHome();
   if(e.target.closest("#btnVolverLista")) return cerrarFundacion();
+  if((t = e.target.closest("[data-nivel]"))){
+    nivelElegido = t.dataset.nivel;
+    pintarFundacionAbierta();
+    return;
+  }
   if((t = e.target.closest("[data-solapa-fund]"))){
     solapaFundPub = t.dataset.solapaFund;
     pintarFundacionAbierta();
